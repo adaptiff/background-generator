@@ -1,0 +1,11 @@
+.DS_Store
+.next
+node_modules
+
+# dotenv environment variables file (build for Zeit Now)
+.env
+.env.build
+
+# Logs
+npm-debug.log*
+.now

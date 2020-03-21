@@ -1,0 +1,46 @@
+.root {
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  & > * {
+    margin-top: 14px;
+  }
+}
+
+.plus-button {
+  background: transparent;
+}
+
+.color-input-wrapper {
+  position: relative;
+  &:hover {
+    .remove-button {
+      opacity: 1;
+    }
+  }
+}
+
+.remove-button {
+  position: absolute;
+  right: 40px;
+  top: 4px;
+  background: transparent;
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+.palette-button,
+.plus-button,
+.remove-button {
+  background: white;
+}
+
+.palette-button {
+  margin-bottom: 10px;
+}
+
+.plus-button {
+  margin-top: 22px;
+}

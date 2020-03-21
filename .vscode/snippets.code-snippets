@@ -1,0 +1,165 @@
+{
+  // Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+  // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+  // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+  // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+  // Placeholders with the same ids are connected.
+  // Example:
+  // "Print to console": {
+  // 	"scope": "javascript,typescript",
+  // 	"prefix": "log",
+  // 	"body": [
+  // 		"console.log('$1');",
+  // 		"$2"
+  // 	],
+  // 	"description": "Log output to console"
+  // }
+  "Class component": {
+    "scope": "typescriptreact",
+    "prefix": "ccomp",
+    "body": [
+      "import React from 'react';",
+      "",
+      "export interface Props {}",
+      "",
+      "export class ${1:$TM_FILENAME_BASE} extends React.Component<Props> {",
+      "  render() {",
+      "    return ${0:null};",
+      "  }",
+      "}",
+      "",
+      "export default ${1:$TM_FILENAME_BASE};"
+    ],
+    "description": "Create a React class component"
+  },
+  "FC component": {
+    "scope": "typescriptreact",
+    "prefix": "fcomp",
+    "body": [
+      "import React from 'react';",
+      "",
+      "export interface Props {}",
+      "",
+      "export const ${1:$TM_FILENAME_BASE}: React.FC<Props> = (props) => {",
+      "  return ${0:null};",
+      "}",
+      "${1:$TM_FILENAME_BASE}.displayName = '${1:$TM_FILENAME_BASE}'",
+      "",
+      "export default ${1:$TM_FILENAME_BASE};"
+    ],
+    "description": "Create a React functional component"
+  },
+  "SVG Icon": {
+    "scope": "typescriptreact",
+    "prefix": "svgicon",
+    "body": [
+      "/* I${2:XXX} in DS */",
+      "// from GDrive",
+      "import React from 'react';",
+      "import IconWrap, { Props } from '../IconWrap';",
+      "",
+      "let instances = 0;",
+      "",
+      "class ${1:$TM_FILENAME_BASE} extends React.Component<Props> {",
+      "  readonly instanceId = instances++;",
+      "  ",
+      "  render() {",
+      "    return (",
+      "      <IconWrap {...this.props}>",
+      "        <svg",
+      "          width=\"0\"",
+      "          height=\"0\"",
+      "          viewBox=\"0 0 24 24\"",
+      "          xmlns=\"http://www.w3.org/2000/svg\"",
+      "        >",
+      "          ${0}",
+      "        </svg>",
+      "      </IconWrap>",
+      "    );",
+      "  }",
+      "}",
+      "",
+      "export default ${1:$TM_FILENAME_BASE};"
+    ],
+    "description": "Create an SVG icon component"
+  },
+  "Redux container": {
+    "scope": "typescript, typescriptreact",
+    "prefix": "cont",
+    "body": [
+      "import { connect, MapStateToProps, MapDispatchToProps } from 'react-redux';",
+      "import { Props } from './${1:Component}';",
+      "import { AppState } from '../../types/store';",
+      "",
+      "export type StateProps = Pick<Props, never>;",
+      "export type DispatchProps = Pick<Props, never>;",
+      "export type OwnProps = Omit<Props, keyof (StateProps & DispatchProps)>;",
+      "",
+      "const mapStateToProps: MapStateToProps<",
+      "  StateProps,",
+      "  OwnProps,",
+      "  AppState",
+      "> = (state: AppState) => ({});",
+      "const mapDispatchToProps: MapDispatchToProps<DispatchProps, OwnProps> = {};",
+      "",
+      "export default connect(",
+      "  mapStateToProps,",
+      "  mapDispatchToProps",
+      ");"
+    ],
+    "description": "Scaffold a redux container"
+  },
+  "Redux container (no redux types)": {
+    "scope": "typescript, typescriptreact",
+    "prefix": "contsimple",
+    "body": [
+      "import { ComponentType } from 'react';",
+      "import { connect } from 'react-redux';",
+      "import { Props } from './${1:Component}';",
+      "import { AppState } from '../../types/store';",
+      "",
+      "export type StateProps = Pick<Props, never>;",
+      "export type DispatchProps = Pick<Props, never>;",
+      "export type OwnProps = Omit<Props, keyof (StateProps & DispatchProps)>;",
+      "",
+      "const mapStateToProps = (state: AppState, props: OwnProps): StateProps => ({});",
+      "const mapDispatchToProps: DispatchProps = {};",
+      "",
+      "export default connect(mapStateToProps, mapDispatchToProps) as (",
+      "  component: ComponentType<Props>",
+      ") => ComponentType<OwnProps>;"
+    ],
+    "description": "Scaffold a redux container without using the official types"
+  },
+  "Dumb index": {
+    "scope": "typescript, typescriptreact",
+    "prefix": "index",
+    "body": ["export { default } from './${0:Component}';"],
+    "description": "Scaffold a basic index without container"
+  },
+  "Index with container": {
+    "scope": "typescript, typescriptreact",
+    "prefix": "indexcont",
+    "body": [
+      "import ${0:Component} from './${0:Component}';",
+      "import ${0:Component}Container from './${0:Component}.container';",
+      "",
+      "export default ${0:Component}Container(${0:Component});"
+    ],
+    "description": "Scaffold an index with container file"
+  },
+  "Testkit method": {
+    "scope": "typescript",
+    "prefix": "testkit",
+    "body": [
+      "'/$1': {",
+      "  method: 'get',",
+      "  handler: (params: $2): $3 => ({",
+      "    $0",
+      "  }),",
+      "},"
+    ],
+    "description": "Scaffold a testkit method"
+  }
+}

@@ -1,0 +1,42 @@
+.layout-items {
+  display: grid;
+  grid-template-columns: 58px 58px 58px 58px;
+  grid-column-gap: 12px;
+  grid-row-gap: 12px;
+  user-select: none;
+}
+
+.item-thumb {
+  position: relative;
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    .plus-button {
+      opacity: 1;
+    }
+  }
+}
+
+.item-thumb > img {
+  width: 80%;
+}
+
+.form-item-with-show-more {
+  margin-bottom: -10px;
+}
+
+.show-more {
+  color: #3aa7f9;
+}
+
+.plus-button {
+  position: absolute;
+  top: -13px;
+  right: -11px;
+  transform-origin: center;
+  transform: scale(0.9);
+  opacity: 0;
+  transition: opacity 300ms;
+}
