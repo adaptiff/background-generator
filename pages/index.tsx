@@ -1,6 +1,6 @@
 import Head from "next/head";
-import { Button, Icon, Layout, Row, Col } from "antd";
-const { Header, Content } = Layout;
+import { Button, Icon, Layout, Row, Col, Popover } from "antd";
+const { Header, Content, Footer } = Layout;
 import { withRedux } from "../lib/withRedux";
 import Dimensions from "../components/Dimensions";
 import Canvas from "../components/Canvas";
@@ -51,9 +51,6 @@ const IndexPage = () => {
               <Row className={s["header-row"]}>
                 <Col span={8} className={s["explore-area"]}>
                   <Button icon="appstore">Explore</Button>
-                  <Button type="link" className={s["license-link"]}>
-                    License
-                  </Button>
                 </Col>
                 <Col span={8} className={s["dimensions-area"]}>
                   <Dimensions />
@@ -71,6 +68,35 @@ const IndexPage = () => {
                 <Icon type="down" className={s["scroll-icon"]} />
               </div>
             </Content>
+            <Footer className={s["footer"]}>
+              <Col span={12} className={s["license-area"]}>
+                <Popover
+                  content={
+                    <div className={s["license"]}>
+                      All images generated on this site can be used for free.
+                      <br />
+                      You can use them for commercial and noncommercial
+                      purposes.
+                    </div>
+                  }
+                  trigger="click"
+                >
+                  <Button type="link" className={s["link"]}>
+                    License
+                  </Button>
+                </Popover>
+              </Col>
+              <Col span={12} className={s["contact-area"]}>
+                <Button
+                  type="link"
+                  className={s["link"]}
+                  target="_blank"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSddoo8_28sRF5Pt7AZae5wtTXPH18dNYFoD8kujnf7omcKaDQ/viewform"
+                >
+                  Contact
+                </Button>
+              </Col>
+            </Footer>
           </Layout>
         </Layout>
       </Layout>

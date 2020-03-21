@@ -14,7 +14,8 @@
   bottom: 0;
 }
 
-.header {
+.header,
+.footer {
   position: absolute;
   left: 0;
   right: 0;
@@ -22,6 +23,11 @@
   background: rgb(241, 242, 245);
   padding: 0;
   z-index: 1;
+}
+
+.footer {
+  top: auto;
+  bottom: 0;
 }
 
 .content {
@@ -69,7 +75,19 @@
   padding-left: 18px;
 }
 
-.license-link {
+.license-area {
+  padding-left: 8px;
+  bottom: 6px;
+}
+
+.contact-area {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 8px;
+  bottom: 6px;
+}
+
+.link {
   color: rgba(0, 0, 0, 0.65);
 }
 

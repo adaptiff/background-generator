@@ -9,6 +9,7 @@ import s from "./ColorSidebar.less";
 export interface Props {
   configColors: any;
   className?: string;
+  hasNonSVGObjects: boolean;
   setBackgroundColor: (obj: Color) => void;
   setItemColor: (obj: { index: number; color: Color }) => void;
   addItemColor: () => void;
@@ -18,18 +19,29 @@ export interface Props {
 export const ColorSidebar: React.FC<Props> = ({
   className,
   configColors,
+  hasNonSVGObjects,
   setBackgroundColor,
   setItemColor,
   addItemColor,
   removeItemColor
 }) => {
+  const backgroundColorInput = (
+    <ColorInput
+      color={configColors.backgroundColor}
+      setColor={setBackgroundColor}
+    />
+  );
+  if (hasNonSVGObjects) {
+    return (
+      <div className={classnames(s["root"], className)}>
+        {backgroundColorInput}
+      </div>
+    );
+  }
   return (
     <div className={classnames(s["root"], className)}>
       <Button className={s["palette-button"]} shape="circle" icon="appstore" />
-      <ColorInput
-        color={configColors.backgroundColor}
-        setColor={setBackgroundColor}
-      />
+      {backgroundColorInput}
       {configColors.objectColors.map((itemColor, index) => (
         <div key={index} className={s["color-input-wrapper"]}>
           <ColorInput
