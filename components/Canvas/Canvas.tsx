@@ -143,10 +143,12 @@ const redrawCanvas = throttle(
         loadedFabricObjects[selectedObjects[currentObjectIndex].id].clone(
           (function(width, height, top, left) {
             return function(clone) {
-              clone.scaleToWidth(width || configValues.objectSize);
+              let itemWidth = width || configValues.objectSize;
+
+              clone.scaleToWidth(itemWidth);
               clone.set({
-                left: paddingX + left - width / 2,
-                top: paddingY + top - height / 2
+                left: paddingX + left - itemWidth / 2,
+                top: paddingY + top - itemWidth / 2
               });
               applyColorToFabricElement(
                 configColors.objectColors[currentColorIndex],
