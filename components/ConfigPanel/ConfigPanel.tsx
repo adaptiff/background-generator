@@ -5,9 +5,10 @@ import NumberInput from "./NumberInput";
 import RandomnessInput from "./RandomnessInput";
 import Objects from "./Objects";
 import Layouts from "./Layouts";
+import { ConfigFieldType } from "../../types";
+import Logo from "../Logo";
 
 import s from "./ConfigPanel.less";
-import { ConfigFieldType } from "../../types";
 
 export interface Props {
   selectedObjectCount: number;
@@ -22,13 +23,7 @@ export const ConfigPanel: React.FC<Props> = ({
 }) => {
   return (
     <Sider className={s["sider"]} width={330}>
-      <h1 className={s["logo"]}>
-        <div className={s["logo-symbol"]}>
-          <div className={s["block-1"]} />
-          <div className={s["block-2"]} />
-        </div>
-        <a href="/">background generator</a>
-      </h1>
+      <Logo />
       <Form layout="vertical" className={s["form"]}>
         <Layouts />
         <Objects />

@@ -1,0 +1,44 @@
+.top-header {
+  height: 64px;
+}
+
+.sider {
+  height: 100vh;
+  background: white;
+}
+
+.right-side {
+  position: relative;
+  box-sizing: border-box;
+  padding: 20px;
+  padding-top: 80px;
+}
+
+.header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  background: white;
+  padding: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  padding-left: 18px;
+}
+
+.card :global(.ant-card-body) {
+  display: none;
+}
+
+.top-header {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+  box-sizing: border-box;
+  padding: 5%;
+  grid-template-columns: 15% 15% 15% 15% 15% 15%;
+  grid-gap: 2%;
+  row-gap: 2vw;
+}

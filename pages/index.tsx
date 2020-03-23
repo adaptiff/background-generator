@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { Button, Icon, Layout, Row, Col, Popover } from "antd";
 const { Header, Content, Footer } = Layout;
 import { withRedux } from "../lib/withRedux";
@@ -7,6 +6,7 @@ import Canvas from "../components/Canvas";
 import ColorSidebar from "../components/ColorSidebar";
 import DownloadButton from "../components/DownloadButton";
 import ConfigPanel from "../components/ConfigPanel";
+import Head from "./_head";
 
 import "antd/dist/antd.css";
 import s from "./index.less";
@@ -34,15 +34,7 @@ screen.colorDepth:screen.pixelDepth))+';u'+escape(document.URL)+
 const IndexPage = () => {
   return (
     <>
-      <Head>
-        <title>background generator com</title>
-        <link rel="icon" type="image/png" href="/favicon.png"></link>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Poppins:600:latin,cyrillic"
-          media="all"
-        ></link>
-      </Head>
+      <Head />
       <Layout>
         <Layout>
           <ConfigPanel />
@@ -50,7 +42,9 @@ const IndexPage = () => {
             <Header className={s["header"]}>
               <Row className={s["header-row"]}>
                 <Col span={8} className={s["explore-area"]}>
-                  <Button icon="appstore">Explore</Button>
+                  <Button icon="appstore" href="/explore">
+                    Explore
+                  </Button>
                 </Col>
                 <Col span={8} className={s["dimensions-area"]}>
                   <Dimensions />
