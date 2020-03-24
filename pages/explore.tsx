@@ -26,6 +26,7 @@ export const Explore: React.FC<Props> = props => {
       </div>
       <div className={s["grid"]}>
         <Card
+          hoverable
           cover={<img src="https://adaptiff.com/thumbs/117.png" />}
           className={s["card"]}
         />

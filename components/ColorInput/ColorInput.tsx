@@ -12,15 +12,16 @@ import s from "./ColorInput.less";
 
 export interface Props {
   color: Color;
+  className?: string;
   setColor: (obj: Color) => void;
 }
 
-export const ColorInput: React.FC<Props> = ({ color, setColor }) => {
+export const ColorInput: React.FC<Props> = ({ color, className, setColor }) => {
   const ref = useRef();
   const [activeColor, setActiveColor] = useState(0);
 
   return (
-    <div ref={ref} className={s["root"]}>
+    <div ref={ref} className={classnames(s["root"], className)}>
       <Popover
         trigger="click"
         placement="left"

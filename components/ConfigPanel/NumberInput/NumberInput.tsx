@@ -10,6 +10,7 @@ export interface Props {
   configFieldName: string;
 }
 
+const refs = {};
 export const NumberInput: React.FC<Props> = ({ configFieldName }) => {
   const dispatch = useDispatch();
   const configValue = useSelector(
@@ -33,10 +34,18 @@ export const NumberInput: React.FC<Props> = ({ configFieldName }) => {
     <div className={s["config-input-wrapper"]}>
       <Input
         key={configValue}
+        ref={node => {
+          refs[configFieldName] = node;
+        }}
         defaultValue={configValue}
         className={s["config-input"]}
         onBlur={setConfigValueFromInput}
-        onPressEnter={setConfigValueFromInput}
+        onPressEnter={e => {
+          setConfigValueFromInput(e);
+          setTimeout(() => {
+            refs[configFieldName].select();
+          }, 1);
+        }}
       />
       <Slider
         min={configField.minValue}
@@ -50,6 +59,11 @@ export const NumberInput: React.FC<Props> = ({ configFieldName }) => {
             })
           )
         }
+        onAfterChange={value => {
+          if (value === configField.maxValue) {
+            refs[configFieldName].select();
+          }
+        }}
       />
     </div>
   );

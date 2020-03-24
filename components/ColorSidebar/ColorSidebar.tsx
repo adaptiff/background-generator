@@ -27,6 +27,7 @@ export const ColorSidebar: React.FC<Props> = ({
 }) => {
   const backgroundColorInput = (
     <ColorInput
+      className={s["background-color"]}
       color={configColors.backgroundColor}
       setColor={setBackgroundColor}
     />
@@ -45,6 +46,7 @@ export const ColorSidebar: React.FC<Props> = ({
       {configColors.objectColors.map((itemColor, index) => (
         <div key={index} className={s["color-input-wrapper"]}>
           <ColorInput
+            className={s["object-color"]}
             color={itemColor}
             setColor={newColor => setItemColor({ index, color: newColor })}
           />
