@@ -6,7 +6,7 @@ export interface Props {}
 export const HeadComp: React.FC<Props> = props => {
   return (
     <Head>
-      <title>background generator com</title>
+      <title>background generator</title>
       <link rel="icon" type="image/png" href="/favicon.png"></link>
       <link
         rel="stylesheet"
