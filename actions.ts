@@ -1,6 +1,8 @@
 import { createAction } from "redux-actions";
 import { Color } from "./types";
 
+export const dumpState = createAction("DUMP_STATE");
+
 export const refreshRandomSnapshot = createAction("REFRESH_RANDOM_SNAPSHOT");
 
 export const setCanvasDimensions = createAction<{
