@@ -50,6 +50,7 @@ export const NumberInput: React.FC<Props> = ({ configFieldName }) => {
       <Slider
         min={configField.minValue}
         max={configField.maxValue}
+        step={configField.step}
         value={configValue}
         onChange={value =>
           dispatch(
