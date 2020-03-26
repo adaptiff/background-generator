@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import classnames from "classnames";
 import { ChromePicker } from "react-color";
-import { Popover } from "antd";
+import { Popover, Button } from "antd";
 import { colorObjToString, colorObjToCSSBackground } from "../../utils";
 import { Radio } from "antd";
 import { Slider } from "antd";
@@ -150,6 +150,19 @@ export const ColorInput: React.FC<Props> = ({ color, className, setColor }) => {
                 </>
               )}
             </Form>
+            <div className={s["predefined-colors"]}>
+              <div className={s["predefined-color"]} />
+              <div className={s["predefined-color"]} />
+              <div className={s["predefined-color"]} />
+              <div className={s["predefined-color"]} />
+              <Button
+                className={classnames(
+                  s["palette-button"],
+                  s["predefined-color"]
+                )}
+                icon="ellipsis"
+              />
+            </div>
           </div>
         }
       >
