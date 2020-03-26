@@ -67,10 +67,10 @@ export default {
 
     //const figureInnerAngle = (180 * (figureAngles - 2)) / figureAngles;
     const figureCenterAngle = 360 / figureAngles;
-    const figureHalfSectorTg = Math.tan(deg2rad(figureCenterAngle / 2)).toFixed(6);
+    const figureHalfSectorTg = Math.tan(deg2rad(figureCenterAngle / 2));
     const figureHalfSectorCos = Math.cos(
       deg2rad(figureCenterAngle / 2)
-    ).toFixed(6);
+    );
 
     //определяем большую и меньшую стороны
     let bigSide = width;
@@ -97,17 +97,12 @@ export default {
       const bigRadius = smallRadius * radiusCoef;
       const radiusDiff = bigRadius - smallRadius;
 
-      //пустое пространство, которое не удалось заполнить (остаток)
-      const bottomSpace = smallRadius % figureMargin;
-      const topSpace = bottomSpace * radiusCoef;
-      const spaceDiff = topSpace - bottomSpace;
-
       squareRadius = smallRadius;
 
       //вращение на угол сектора принимаем за вращение на 360
       const rotatePercent = (360 * figureRotate) / figureCenterAngle;
       const topDiff =
-        (radiusDiff / 2) * Math.cos(deg2rad(rotatePercent)).toFixed(6);
+        (radiusDiff / 2) * Math.cos(deg2rad(rotatePercent));
 
       areaCenterPoint.top = height / 2 + topDiff;
     }
@@ -120,13 +115,8 @@ export default {
 
     let items = [];
     while (figureSmallRadius < squareRadius) {
-      const figureBigRadius = figureSmallRadius / figureHalfSectorCos;
       const figureSide = figureSmallRadius * figureHalfSectorTg * 2;
-      const distanceProgress = 1 - figureSmallRadius / squareRadius; //от 1 до 0
 
-      if (itemSizeIncrement === "auto") {
-        itemsSizeIncrement = distanceProgress;
-      }
 
       let itemsOnSide = Math.round(figureSide / itemMargin);
       const correctItemsMargin = figureSide / itemsOnSide;
@@ -153,11 +143,6 @@ export default {
             height: itemHeight * itemsSizeIncrement
           };
 
-          if (itemSizeIncrement === "auto") {
-            item.width = Math.max(item.width, 1);
-            item.height = Math.max(item.height, 1);
-          }
-
           if (partRotateAngle) {
             item = rotateItemCoords(item, areaCenterPoint, partRotateAngle);
           }
@@ -172,12 +157,11 @@ export default {
         itemIndex++;
       }
 
-      if (itemsSizeIncrement !== "auto") {
-        itemsSizeIncrement = itemsSizeIncrement + itemSizeIncrement;
-        if (itemsSizeIncrement <= 0) {
-          return items;
-        }
+      itemsSizeIncrement = itemsSizeIncrement + itemSizeIncrement;
+      if (itemsSizeIncrement <= 0) {
+        return items;
       }
+
       figureSmallRadius += figureMargin;
     }
 

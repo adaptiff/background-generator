@@ -76,12 +76,6 @@ export default {
       //угол поворота центра итема по окружности
       let angle = 0;
 
-      //начальная точка первого итема
-      let firstItemPosition = {
-        left: areaCenterPoint.left + circleRadius,
-        top: areaCenterPoint.top
-      };
-
       const itemsQty = Math.floor(circleLength / itemsMargin);
       let itemIndex = 0;
 
