@@ -41,7 +41,7 @@ export const ColorSidebar: React.FC<Props> = ({
   }
   return (
     <div className={classnames(s["root"], className)}>
-      <Button className={s["palette-button"]} shape="circle" icon="appstore" />
+      {/* not for v1 <Button className={s["palette-button"]} shape="circle" icon="appstore" /> */}
       {backgroundColorInput}
       {configColors.objectColors.map((itemColor, index) => (
         <div key={index} className={s["color-input-wrapper"]}>
