@@ -81,10 +81,10 @@ export const applyColorToFabricElement = (color, elem) => {
     });
   } else if (color.type === FillType.Radial) {
     elem.setGradient("fill", {
-      x1: width / 2,
-      y1: height / 2,
-      x2: width / 2,
-      y2: height / 2,
+      x1: width / 2 + (color.xShift / 100) * width,
+      y1: height / 2 + (color.yShift / 100) * height,
+      x2: width / 2 + (color.xShift / 100) * width,
+      y2: height / 2 + (color.yShift / 100) * height,
       type: "radial",
       r1: width / 2,
       r2: 10,

@@ -60,7 +60,9 @@ export const ColorInput: React.FC<Props> = ({ color, className, setColor }) => {
                 onChange={() =>
                   setColor({
                     ...color,
-                    type: FillType.Radial
+                    type: FillType.Radial,
+                    xShift: color.xShift ?? 0,
+                    yShift: color.yShift ?? 0
                   })
                 }
               >
@@ -126,19 +128,23 @@ export const ColorInput: React.FC<Props> = ({ color, className, setColor }) => {
                   <Form.Item label="X-Shift" className={s["form-item"]}>
                     <Slider
                       className={s["slider"]}
-                      min={1}
+                      min={-100}
                       max={100}
-                      value={50}
-                      onChange={f => f}
+                      value={color.xShift}
+                      onChange={value =>
+                        setColor({ ...color, xShift: value as number })
+                      }
                     />
                   </Form.Item>
                   <Form.Item label="Y-Shift" className={s["form-item"]}>
                     <Slider
                       className={s["slider"]}
-                      min={1}
+                      min={-100}
                       max={100}
-                      value={50}
-                      onChange={f => f}
+                      value={color.yShift}
+                      onChange={value =>
+                        setColor({ ...color, yShift: value as number })
+                      }
                     />
                   </Form.Item>
                 </>
