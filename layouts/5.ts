@@ -46,13 +46,20 @@ export default {
       type: ConfigFieldType.RandomnessInput,
       defaultValue: false
     },
+    {
+      name: "withBlur",
+      label: "Blur Objects",
+      type: ConfigFieldType.RandomnessInput,
+      defaultValue: false
+    },
     ...beforeBooleans
   ],
   generate(width, height, configValues) {
     const {
       maxScale, // пределы скейлинга
       cellWidth, //ширина ячейки
-      withRotate //вращать итемы или нет
+      withRotate, //вращать итемы или нет
+      withBlur //blur
     } = configValues;
 
     const explosionForce = (width * configValues.explosionForce) / 100 / 2;
@@ -78,7 +85,8 @@ export default {
           top: 0,
           width: itemWidth,
           height: itemHeight,
-          angle: 0
+          angle: 0,
+          blur: 0
         };
 
         //left-координата текущей ячейки
@@ -107,6 +115,11 @@ export default {
         item.height *= scale;
 
         item.angle = withRotate ? random(0, 360, true) : 0;
+        item.blur = withBlur ? random(0, 10) : 0;
+
+        if (item.blur < 2) {
+          item.blur = 0;
+        }
 
         const leftFromCenter = item.left - explosionCenter.left;
         const topFromCenter = item.top - explosionCenter.top;

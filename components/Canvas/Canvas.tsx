@@ -60,7 +60,8 @@ export const Canvas: React.FC<Props> = ({
   return (
     <>
       <Head>
-        <script src="https://unpkg.com/fabric@3.6.2/dist/fabric.min.js" />
+        {/*<script src="https://unpkg.com/fabric@3.6.2/dist/fabric.min.js" />*/}
+        <script src="/fabric_with_ctxFilter.js" />
       </Head>
       <div
         id="canvas-container"
@@ -144,7 +145,7 @@ const redrawCanvas = throttle(
       window["objects"] = [];
       layoutItems.forEach(item =>
         loadedFabricObjects[selectedObjects[currentObjectIndex].id].clone(
-          (function(width, height, top, left, angle) {
+          (function(width, height, top, left, angle, blur) {
             return function(clone) {
               let itemWidth = width || configValues.objectSize;
 
@@ -153,6 +154,7 @@ const redrawCanvas = throttle(
                 left: paddingX + left,
                 top: paddingY + top,
                 angle: angle || 0,
+                blur: blur,
                 originX: "center",
                 originY: "center"
               });
@@ -192,7 +194,7 @@ const redrawCanvas = throttle(
                 }
               }
             };
-          })(item.width, item.height, item.top, item.left, item.angle)
+          })(item.width, item.height, item.top, item.left, item.angle, item.blur)
         )
       );
     };
@@ -230,6 +232,7 @@ const redrawCanvas = throttle(
           options
         ) {
           const obj = window["fabric"].util.groupSVGElements(objects, options);
+
           addObjectToLoaded(selectedObject.id, obj);
         });
       } else {
