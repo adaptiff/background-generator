@@ -61,7 +61,7 @@ export const Canvas: React.FC<Props> = ({
     <>
       <Head>
         {/*<script src="https://unpkg.com/fabric@3.6.2/dist/fabric.min.js" />*/}
-        <script src="/fabric_with_ctxFilter.js" />
+        <script src="/fabric.js" />
       </Head>
       <div
         id="canvas-container"
@@ -158,6 +158,9 @@ const redrawCanvas = throttle(
                 originX: "center",
                 originY: "center"
               });
+
+              console.log('blur = ', clone.ctxFilter.blur);
+
               applyColorToFabricElement(
                 configColors.objectColors[currentColorIndex],
                 clone
