@@ -18805,14 +18805,16 @@ fabric.util.object.extend(fabric.Object.prototype, /** @lends fabric.Object.prot
 
       //формируем блур (пока только его)
       if (this.blur) {
-        var paddingX = (this.blur / bb.width) * 100 * 2.5,
-            paddingY = (this.blur / bb.height) * 100 * 2.5,
+        //указываем блур с учетом скейла, иначе для больших свг он будет слишком маленьким
+        var blur = this.blur / this.scaleX,
+            paddingX = (this.blur / bb.width) * 100 * 4,
+            paddingY = (this.blur / bb.height) * 100 * 4,
             width = 100 + (paddingX * 2),
             height = 100 + (paddingY * 2);
 
         markup += '<filter id="' + id + '" ' +
           'x="-' + paddingX + '%" y="-' + paddingY + '%" width="' + width + '%" height="' + height + '%">' +
-          '<feGaussianBlur stdDeviation="' + (this.blur * 0.8) + '"/>' +
+          '<feGaussianBlur stdDeviation="' + (blur * 0.8) + '"/>' +
           '</filter>';
       }
 
