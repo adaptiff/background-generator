@@ -50,7 +50,15 @@ export default {
       name: "withBlur",
       label: "Blur Objects",
       type: ConfigFieldType.RandomnessInput,
+      strengthConfigFieldName: "randomizeBlurStrength",
       defaultValue: false
+    },
+    {
+      type: ConfigFieldType.Hidden,
+      name: "randomizeBlurStrength",
+      defaultValue: 5,
+      minValue: 2,
+      maxValue: 30
     },
     ...beforeBooleans
   ],
@@ -59,7 +67,8 @@ export default {
       maxScale, // пределы скейлинга
       cellWidth, //ширина ячейки
       withRotate, //вращать итемы или нет
-      withBlur //blur
+      withBlur, //blur
+      randomizeBlurStrength
     } = configValues;
 
     const explosionForce = (width * configValues.explosionForce) / 100 / 2;
@@ -115,7 +124,7 @@ export default {
         item.height *= scale;
 
         item.angle = withRotate ? random(0, 360, true) : 0;
-        item.blur = withBlur ? random(0, 10) : 0;
+        item.blur = withBlur ? random(0, randomizeBlurStrength) : 0;
 
         if (item.blur < 2) {
           item.blur = 0;
