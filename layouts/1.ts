@@ -39,9 +39,13 @@ export default {
     } = configValues;
 
     const objectCountX = Math.floor(width / objectDistance);
-    const distanceX = objectDistance + (width % objectDistance) / objectCountX;
-
     const objectCountY = Math.floor(height / objectDistance);
+
+    if (objectCountX <= 0 || objectCountY <= 0) {
+      return [];
+    }
+
+    const distanceX = objectDistance + (width % objectDistance) / objectCountX;
     const distanceY = objectDistance + (height % objectDistance) / objectCountY;
 
     const randPower = withRandomPosition ? randomizePositionStrength / 10 : 0;
