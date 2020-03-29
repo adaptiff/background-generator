@@ -12,7 +12,7 @@ export default {
       label: "Item Margin",
       type: ConfigFieldType.NumberInput,
       defaultValue: 20,
-      minValue: 1,
+      minValue: 10,
       maxValue: 100
     },
     {
@@ -20,7 +20,7 @@ export default {
       label: "Circle Margin",
       type: ConfigFieldType.NumberInput,
       defaultValue: 20,
-      minValue: 1,
+      minValue: 5,
       maxValue: 100
     },
     {
