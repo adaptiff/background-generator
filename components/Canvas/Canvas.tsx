@@ -159,8 +159,6 @@ const redrawCanvas = throttle(
                 originY: "center"
               });
 
-              console.log('blur = ', clone.ctxFilter.blur);
-
               applyColorToFabricElement(
                 configColors.objectColors[currentColorIndex],
                 clone
