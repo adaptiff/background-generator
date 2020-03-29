@@ -69,31 +69,60 @@ export const applyColorToFabricElement = (color, elem) => {
       x: width - gradientStart.x,
       y: height - gradientStart.y
     };
-    elem.setGradient("fill", {
-      x1: gradientStart.x,
-      y1: gradientStart.y,
-      x2: gradientEnd.x,
-      y2: gradientEnd.y,
-      colorStops: {
-        0: colorObjToString(color.values[0]),
-        1: colorObjToString(color.values[1])
-      }
-    });
+    elem.set(
+      "fill",
+      new window["fabric"].Gradient({
+        coords: {
+          x1: gradientStart.x,
+          y1: gradientStart.y,
+          x2: gradientEnd.x,
+          y2: gradientEnd.y,
+        },
+        colorStops: [
+          {
+            offset: 0,
+            color: colorObjToString(color.values[0])
+          },
+          {
+            offset: 1,
+            color: colorObjToString(color.values[1])
+          }
+        ]
+      })
+    );
   } else if (color.type === FillType.Radial) {
-    elem.setGradient("fill", {
-      x1: width / 2 + (color.xShift / 100) * width,
-      y1: height / 2 + (color.yShift / 100) * height,
-      x2: width / 2 + (color.xShift / 100) * width,
-      y2: height / 2 + (color.yShift / 100) * height,
-      type: "radial",
-      r1: width / 2,
-      r2: 10,
-      colorStops: {
-        0: colorObjToString(color.values[0]),
-        1: colorObjToString(color.values[1])
-      }
+    elem.set({
+      fill: new window["fabric"].Gradient({
+        coords: {
+          x1: width / 2 + (color.xShift / 100) * width,
+          y1: height / 2 + (color.yShift / 100) * height,
+          x2: width / 2 + (color.xShift / 100) * width,
+          y2: height / 2 + (color.yShift / 100) * height,
+          r1: width / 2,
+          r2: 10,
+        },
+        type: "radial",
+        colorStops: [
+          {
+            offset: 0,
+            color: colorObjToString(color.values[0])
+          },
+          {
+            offset: 1,
+            color: colorObjToString(color.values[1])
+          }
+        ]
+      })
     });
   }
+};
+
+export const colorStopByColor = (position, rgbObj) => {
+  return {
+    offset: position,
+    color: `rgba(${rgbObj.r}, ${rgbObj.g}, ${rgbObj.b})`,
+    opacity: rgbObj.a
+  };
 };
 
 export const colorObjToString = rgbObj => {
