@@ -36,7 +36,7 @@ export const ColorInput: React.FC<Props> = ({ color, className, setColor }) => {
     <div ref={ref} className={classnames(s["root"], className)}>
       <Popover
         trigger="click"
-        placement="left"
+        placement="right"
         content={
           <div className={s["popover-content"]}>
             <Radio.Group
