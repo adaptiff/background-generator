@@ -52,6 +52,7 @@ export const NumberInput: React.FC<Props> = ({ configFieldName }) => {
         max={configField.maxValue}
         step={configField.step}
         value={configValue}
+        tipFormatter={null}
         onChange={value =>
           dispatch(
             setConfigValue({

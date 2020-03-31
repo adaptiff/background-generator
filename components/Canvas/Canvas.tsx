@@ -195,7 +195,14 @@ const redrawCanvas = throttle(
                 }
               }
             };
-          })(item.width, item.height, item.top, item.left, item.angle, item.blur)
+          })(
+            item.width,
+            item.height,
+            item.top,
+            item.left,
+            item.angle,
+            item.blur
+          )
         )
       );
     };
@@ -252,7 +259,8 @@ const redrawCanvas = throttle(
       }
     };
   },
-  100
+  100,
+  { traling: true }
 );
 
 export default Canvas;
