@@ -257,7 +257,8 @@ const redrawCanvas = throttle(
       }
     };
   },
-  100
+  100,
+  { traling: true }
 );
 
 export default Canvas;
