@@ -43,8 +43,7 @@ export const Canvas: React.FC<Props> = ({
       configValues,
       selectedObjectIds,
       selectedLayoutId,
-      uploadedObjects,
-      redrawCanvas
+      uploadedObjects
     });
   }, [
     width,
@@ -53,8 +52,7 @@ export const Canvas: React.FC<Props> = ({
     configValues,
     selectedObjectIds,
     selectedLayoutId,
-    uploadedObjects,
-    redrawCanvas
+    uploadedObjects
   ]);
 
   return (
@@ -195,7 +193,14 @@ const redrawCanvas = throttle(
                 }
               }
             };
-          })(item.width, item.height, item.top, item.left, item.angle, item.blur)
+          })(
+            item.width,
+            item.height,
+            item.top,
+            item.left,
+            item.angle,
+            item.blur
+          )
         )
       );
     };
