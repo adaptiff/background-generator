@@ -84,12 +84,16 @@ export default {
           angle = (itemCirclePosition * 180) / (Math.PI * circleRadius);
         }
 
-        items.push({
-          left: areaCenterPoint.left + circleRadius * Math.cos(deg2rad(angle)),
-          top: areaCenterPoint.top + circleRadius * Math.sin(deg2rad(angle)),
-          width: baseWidth * itemSizeIncrement,
-          height: baseHeight * itemSizeIncrement
-        });
+        let itemWidth = baseWidth * itemSizeIncrement;
+
+        if (itemWidth >= 1) {
+          items.push({
+            left: areaCenterPoint.left + circleRadius * Math.cos(deg2rad(angle)),
+            top: areaCenterPoint.top + circleRadius * Math.sin(deg2rad(angle)),
+            width: baseWidth * itemSizeIncrement,
+            height: baseHeight * itemSizeIncrement
+          });
+        }
 
         itemIndex++;
         itemCirclePosition = (circleLength / itemsQty) * itemIndex;
