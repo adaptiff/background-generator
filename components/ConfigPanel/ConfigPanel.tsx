@@ -19,7 +19,7 @@ export interface Props {
 export const ConfigPanel: React.FC<Props> = ({
   selectedObjectCount,
   objectColorCount,
-  configFields
+  configFields,
 }) => {
   return (
     <Sider className={s["sider"]} width={330}>
