@@ -12,7 +12,8 @@ import {
   selectObject,
   selectAsOnlyObject,
   deselectObject,
-  selectLayout
+  selectLayout,
+  addEmojiObject
 } from "./actions";
 import { FillType } from "./types";
 import layouts from "./layouts";
@@ -20,7 +21,7 @@ import { getDefaultConfigValues } from "./utils";
 
 const selectedLayoutId = 1;
 
-let nextUploadedObjectId = -1;
+let nextCustomObjectId = -1;
 
 export const initState: AppState = {
   canvasWidth: 600,
@@ -182,12 +183,29 @@ const reducer = handleActions<AppState, any>(
         uploadedObjects: [
           ...state.uploadedObjects,
           {
-            id: nextUploadedObjectId--,
+            id: nextCustomObjectId--,
             src: action.payload.src,
             type: action.payload.type
           }
         ],
-        selectedObjectIds: [nextUploadedObjectId + 1]
+        selectedObjectIds: [nextCustomObjectId + 1]
+      };
+    },
+    [addEmojiObject.toString()]: (
+      state,
+      action: ReturnType<typeof addUploadedObject>
+    ) => {
+      return {
+        ...state,
+        uploadedObjects: [
+          ...state.uploadedObjects,
+          {
+            id: nextCustomObjectId--,
+            src: action.payload.src,
+            type: "emoji"
+          }
+        ]
+        //selectedObjectIds: [nextCustomObjectId + 1]
       };
     }
   },

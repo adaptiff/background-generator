@@ -1,1 +1,4 @@
-export { default } from "./AddEmojiButton";
+import AddEmojiButton from "./AddEmojiButton";
+import AddEmojiButtonContainer from "./AddEmojiButton.container";
+
+export default AddEmojiButtonContainer(AddEmojiButton);

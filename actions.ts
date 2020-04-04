@@ -36,3 +36,5 @@ export const setConfigValue = createAction<{
 export const addUploadedObject = createAction<{ src: string; type: string }>(
   "ADD_UPLOADED_OBJECT"
 );
+
+export const addEmojiObject = createAction<{ src: string }>("ADD_EMOJI_OBJECT");

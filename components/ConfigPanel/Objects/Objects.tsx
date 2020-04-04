@@ -23,7 +23,7 @@ export const Objects: React.FC<Props> = ({
   selectedObjectIds,
   selectObject,
   selectAsOnlyObject,
-  deselectObject,
+  deselectObject
 }) => {
   const { isCollapsed, collapseButton } = useCollapse();
 
@@ -48,19 +48,23 @@ export const Objects: React.FC<Props> = ({
             shape="circle"
             icon="plus"
             size="small"
-            onClick={(e) => {
+            onClick={e => {
               selectObject({ id: object.id });
               e.stopPropagation();
             }}
           />
         )}
-        <img
-          src={object.src}
-          alt="image.png"
-          style={{
-            width: object.thumbSize,
-          }}
-        />
+        {object.type === "emoji" ? (
+          <span>{object.src}</span>
+        ) : (
+          <img
+            src={object.src}
+            alt="image.png"
+            style={{
+              width: object.thumbSize
+            }}
+          />
+        )}
       </BorderFrame>
     );
   };
