@@ -41,23 +41,23 @@ export const Canvas: React.FC<Props> = ({
 
   //componentDidMount
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      const canvas = window['fabricCanvas'].upperCanvasEl;
+    const handleClickOutside = e => {
+      const canvas = window["fabricCanvas"].upperCanvasEl;
       const clickedInside = canvas === e.target;
 
       if (!clickedInside) {
-        window['fabricCanvas'].discardActiveObject();
+        window["fabricCanvas"].discardActiveObject();
         renderAll();
       }
     };
 
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
 
     //componentWillUnmount
     return () => {
-      console.log('componentDidUnmount');
-      document.removeEventListener('click', handleClickOutside);
-    }
+      console.log("componentDidUnmount");
+      document.removeEventListener("click", handleClickOutside);
+    };
   }, []);
 
   useEffect(() => {
@@ -130,7 +130,6 @@ const calcAndDrawLayoutThrottle = throttle(
     selectedObjects,
     configColors
   ) => {
-    console.log("calcAndDrawLayoutThrottle");
     calcLayout(width, height, configValues, selectedLayoutId);
     drawLayout(selectedObjects, configValues, configColors);
   },
@@ -165,7 +164,7 @@ const initFabric = ({ width, height, canvasContainer, configColors }) => {
   canvasContainer.current.firstChild.style.transform = `scale(${scaleToFit})`;
 
   const fabricCanvas = new window["fabric"].Canvas("canvas");
-  
+
   window["fabricCanvas"] = fabricCanvas;
   fabricCanvas.setWidth(width);
   fabricCanvas.setHeight(height);
@@ -273,7 +272,7 @@ function loadObjects(selectedObjects, callback) {
 function drawLayout(selectedObjects, configValues, configColors) {
   const maxItems = Math.max(layoutItems.length, fabricObjects.length);
 
-  window['fabricCanvas'].discardActiveObject();
+  window["fabricCanvas"].discardActiveObject();
 
   for (let index = 0; index < maxItems; index++) {
     const layoutItem = layoutItems[index];
@@ -398,6 +397,5 @@ function removeAllObjects() {
   );
   fabricObjects = [];
 }
-
 
 export default Canvas;

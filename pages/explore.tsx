@@ -3,6 +3,8 @@ import Head from "./_head";
 import { Layout, Button, Card, Col, Row } from "antd";
 import Logo from "../components/Logo";
 const { Header, Sider } = Layout;
+import backgrounds from "../backgrounds";
+import LICounter from "./_licounter";
 
 import s from "./explore.less";
 
@@ -22,59 +24,21 @@ export const Explore: React.FC<Props> = props => {
               Create
             </Button>
           </Header>
+          <div className={s["grid"]}>
+            {backgrounds.map(background => (
+              <Card
+                hoverable
+                cover={<img src={background.preview} />}
+                className={s["card"]}
+                onClick={() => {
+                  location.href = `/background/${background.id}`;
+                }}
+              />
+            ))}
+          </div>
         </div>
       </div>
-      <div className={s["grid"]}>
-        <Card
-          hoverable
-          cover={<img src="https://adaptiff.com/thumbs/117.png" />}
-          className={s["card"]}
-        />
-        <Card
-          cover={<img src="https://adaptiff.com/thumbs/118.png" />}
-          className={s["card"]}
-        />
-        <Card
-          cover={<img src="https://adaptiff.com/thumbs/119.png" />}
-          className={s["card"]}
-        />
-        <Card
-          cover={<img src="https://adaptiff.com/thumbs/120.png" />}
-          className={s["card"]}
-        />
-        <Card
-          cover={<img src="https://adaptiff.com/thumbs/121.png" />}
-          className={s["card"]}
-        />
-        <Card
-          cover={<img src="https://adaptiff.com/thumbs/122.png" />}
-          className={s["card"]}
-        />
-        <Card
-          cover={<img src="https://adaptiff.com/thumbs/117.png" />}
-          className={s["card"]}
-        />
-        <Card
-          cover={<img src="https://adaptiff.com/thumbs/118.png" />}
-          className={s["card"]}
-        />
-        <Card
-          cover={<img src="https://adaptiff.com/thumbs/119.png" />}
-          className={s["card"]}
-        />
-        <Card
-          cover={<img src="https://adaptiff.com/thumbs/120.png" />}
-          className={s["card"]}
-        />
-        <Card
-          cover={<img src="https://adaptiff.com/thumbs/121.png" />}
-          className={s["card"]}
-        />
-        <Card
-          cover={<img src="https://adaptiff.com/thumbs/122.png" />}
-          className={s["card"]}
-        />
-      </div>
+      <LICounter />
     </>
   );
 };

@@ -30,6 +30,7 @@ function* dumpStateSaga() {
       configColors
     })
   );
+  console.log("dumped to clipboard");
 }
 
 function* rootSaga() {
