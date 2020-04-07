@@ -220,10 +220,16 @@ function loadObjects(selectedObjects, callback) {
   let loadedObjectsCount = 0;
 
   selectedObjects.forEach(selectedObject => {
-    if (selectedObject.type?.includes("svg")) {
-      createObjectFromSvg(selectedObject);
-    } else {
-      createObjectFromImage(selectedObject);
+    if (selectedObject.type?.includes("image")) {
+      if (selectedObject.type?.includes("svg")) {
+        createObjectFromSvg(selectedObject);
+      } else {
+        createObjectFromImage(selectedObject);
+      }
+    }
+
+    if (['emoji', 'text'].includes(selectedObject.type)) {
+      createObjectFromText(selectedObject);
     }
   });
 
@@ -258,6 +264,19 @@ function loadObjects(selectedObjects, callback) {
         afterObjectsLoaded();
       }
     });
+  }
+
+  function createObjectFromText(object) {
+    var text = new window["fabric"].Text(object.src, {
+      originX: "center",
+      originY: "center"
+    });
+
+    loadedObjects[object.id] = text;
+
+    if (++loadedObjectsCount === selectedObjects.length && callback) {
+      afterObjectsLoaded();
+    }
   }
 
   function afterObjectsLoaded() {
