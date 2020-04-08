@@ -3,6 +3,10 @@ import { Color } from "./types";
 
 export const dumpState = createAction("DUMP_STATE");
 
+export const overrideState = createAction<{
+  newState;
+}>("OVERRIDE_STATE");
+
 export const refreshRandomSnapshot = createAction("REFRESH_RANDOM_SNAPSHOT");
 
 export const setCanvasDimensions = createAction<{

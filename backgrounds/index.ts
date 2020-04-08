@@ -20,16 +20,20 @@ export default [
   },
   {
     id: 2,
-    canvasWidth: 600,
+    canvasWidth: 800,
     canvasHeight: 600,
-    selectedLayoutId: 1,
+    selectedLayoutId: 5,
     selectedObjectIds: [3],
     configValues: {
-      objectSize: 50,
-      objectDistance: 50,
-      padding: 10,
-      withRandomPosition: false,
-      randomizePositionStrength: 10
+      objectSize: 10,
+      explosionForce: 20,
+      cellWidth: 78,
+      cellPadding: 10,
+      maxScale: 4,
+      withRotate: false,
+      withBlur: false,
+      randomizeBlurStrength: 5,
+      padding: 10
     },
     configColors: {
       backgroundColor: { type: "solid", values: ["#fff", "#ccc"] },

@@ -12,7 +12,7 @@ import LICounter from "./_licounter";
 import "antd/dist/antd.css";
 import s from "./index.less";
 
-const IndexPage = () => {
+export const IndexPage = () => {
   return (
     <>
       <Head />

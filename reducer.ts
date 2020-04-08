@@ -13,7 +13,8 @@ import {
   selectAsOnlyObject,
   deselectObject,
   selectLayout,
-  addEmojiObject
+  addEmojiObject,
+  overrideState
 } from "./actions";
 import { FillType } from "./types";
 import layouts from "./layouts";
@@ -39,6 +40,13 @@ export const initState: AppState = {
 
 const reducer = handleActions<AppState, any>(
   {
+    [overrideState.toString()]: (
+      state,
+      action: ReturnType<typeof overrideState>
+    ) => ({
+      ...state,
+      ...action.payload.newState
+    }),
     [setCanvasDimensions.toString()]: (
       state,
       action: ReturnType<typeof setCanvasDimensions>
