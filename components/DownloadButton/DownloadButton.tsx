@@ -18,7 +18,7 @@ export const DownloadButton: React.FC<Props> = ({
         window.location.href.includes("localhost") && (
           <Button
             shape="circle"
-            icon="download"
+            icon="copy"
             style={{ marginRight: 10 }}
             onClick={dumpState}
           />

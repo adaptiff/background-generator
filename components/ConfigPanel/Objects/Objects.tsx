@@ -36,11 +36,7 @@ export const Objects: React.FC<Props> = ({
         isActive={isSelected}
         key={index}
         className={classnames(s["item-thumb"])}
-        onClick={() =>
-          isSelected
-            ? deselectObject({ id: object.id })
-            : selectAsOnlyObject({ id: object.id })
-        }
+        onClick={() => !isSelected && selectAsOnlyObject({ id: object.id })}
       >
         {!isSelected && (
           <Button
@@ -50,6 +46,18 @@ export const Objects: React.FC<Props> = ({
             size="small"
             onClick={e => {
               selectObject({ id: object.id });
+              e.stopPropagation();
+            }}
+          />
+        )}
+        {isSelected && selectedObjectIds.length > 1 && (
+          <Button
+            className={s["minus-button"]}
+            shape="circle"
+            icon="minus"
+            size="small"
+            onClick={e => {
+              deselectObject({ id: object.id });
               e.stopPropagation();
             }}
           />
