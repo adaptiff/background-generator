@@ -29,11 +29,18 @@ export default {
       defaultValue: 10,
       minValue: 1,
       maxValue: 100
+    },
+    {
+      name: "withRotate",
+      label: "Rotate Objects",
+      type: ConfigFieldType.RandomnessInput,
+      defaultValue: false
     }
   ],
   generate: (width, height, configValues) => {
     const {
       withRandomPosition,
+      withRotate,
       randomizePositionStrength,
       objectDistance
     } = configValues;
@@ -59,7 +66,8 @@ export default {
         const top = Math.floor(
           j + (random(0, distanceY) - distanceY / 2) * randPower
         );
-        items.push({ top, left });
+        const angle = withRotate ? random(0, 360, true) : 0;
+        items.push({ top, left, angle });
       }
     }
     return items;

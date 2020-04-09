@@ -28,7 +28,7 @@ export const Explore: React.FC<Props> = props => {
             {backgrounds.map(background => (
               <Card
                 hoverable
-                cover={<img src={background.preview} />}
+                cover={<img src={`/background_thumbs/${background.id}.png`} />}
                 className={s["card"]}
                 onClick={() => {
                   location.href = `/background/${background.id}`;
