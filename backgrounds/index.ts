@@ -148,5 +148,27 @@ export default [
         { type: "linear", values: ["#FFECD2", "#FCB69F"], angle: 0 }
       ]
     }
+  },
+  {
+    id: 6,
+    canvasWidth: 600,
+    canvasHeight: 600,
+    selectedLayoutId: 4,
+    selectedObjectIds: [4, 5, 6],
+    configValues: {
+      objectSize: 31,
+      itemMargin: 70,
+      figureMargin: 20,
+      figureRotate: 180,
+      figureAngles: 3,
+      sizeDecrement: 10,
+      padding: 10
+    },
+    configColors: {
+      backgroundColor: { type: "solid", values: ["#fff", "#ccc"] },
+      objectColors: [
+        { type: "linear", values: ["#00f2fe", "#4facfe"], angle: 0 }
+      ]
+    }
   }
 ];
