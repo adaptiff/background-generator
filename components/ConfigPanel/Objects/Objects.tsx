@@ -7,6 +7,7 @@ import BorderFrame from "../../BorderFrame";
 import { ImageObject } from "../../../types";
 import AddEmojiButton from "./AddEmojiButton";
 import useCollapse from "../../../hooks/useCollapse";
+import IconmnstrButton from "./IconmnstrButton";
 
 import s from "./Objects.less";
 
@@ -83,7 +84,9 @@ export const Objects: React.FC<Props> = ({
         <ImageUploadButton />
         {allObjects.slice(0, 3).map(renderObject)}
         {!isCollapsed && <AddEmojiButton />}
-        {!isCollapsed && allObjects.slice(3).map(renderObject)}
+        {!isCollapsed && allObjects.slice(3, 6).map(renderObject)}
+        {!isCollapsed && <IconmnstrButton />}
+        {!isCollapsed && allObjects.slice(6).map(renderObject)}
       </div>
       {collapseButton}
     </Form.Item>

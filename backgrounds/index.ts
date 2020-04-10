@@ -123,5 +123,30 @@ export default [
         }
       ]
     }
+  },
+  {
+    id: 5,
+    canvasWidth: 600,
+    canvasHeight: 600,
+    selectedLayoutId: 1,
+    selectedObjectIds: [6],
+    configValues: {
+      objectSize: 33,
+      objectDistance: 50,
+      padding: 10,
+      withRandomPosition: false,
+      randomizePositionStrength: 10,
+      withRotate: false
+    },
+    configColors: {
+      backgroundColor: {
+        type: "linear",
+        values: ["#FAD0C4", "#FFD1FF"],
+        angle: 0
+      },
+      objectColors: [
+        { type: "linear", values: ["#FFECD2", "#FCB69F"], angle: 0 }
+      ]
+    }
   }
 ];
