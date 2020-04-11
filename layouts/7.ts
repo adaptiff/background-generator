@@ -15,10 +15,30 @@ export default {
       minValue: 30,
       maxValue: 100
     },
-    ...beforeBooleans
+    ...beforeBooleans,
+    {
+      name: "withRandomSize",
+      label: "Randomize Object Size",
+      type: ConfigFieldType.RandomnessInput,
+      strengthConfigFieldName: "randomizeSizeStrength",
+      defaultValue: false
+    },
+    {
+      type: ConfigFieldType.Hidden,
+      name: "randomizeSizeStrength",
+      defaultValue: 4,
+      minValue: 1,
+      step: 0.1,
+      maxValue: 20
+    }
   ],
   generate: (width, height, configValues) => {
-    const { objectDistance } = configValues;
+    const {
+      objectDistance,
+      objectSize,
+      withRandomSize,
+      randomizeSizeStrength
+    } = configValues;
 
     const objectCountX = Math.floor(width / objectDistance);
     const objectCountY = Math.floor(height / objectDistance);
@@ -43,8 +63,14 @@ export default {
       for (let i = 0; i <= rowObjectCountX; i++) {
         const left = Math.floor(i * distanceX + startXPosition);
         const top = Math.floor(j * distanceY);
-
-        items.push({ top, left });
+        let width = objectSize;
+        let height = objectSize;
+        if (withRandomSize) {
+          const scale = random(1, randomizeSizeStrength, true);
+          width *= scale;
+          height *= scale;
+        }
+        items.push({ top, left, width, height });
       }
     }
 

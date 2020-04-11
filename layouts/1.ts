@@ -17,6 +17,21 @@ export default {
     },
     ...beforeBooleans,
     {
+      name: "withRandomSize",
+      label: "Randomize Object Size",
+      type: ConfigFieldType.RandomnessInput,
+      strengthConfigFieldName: "randomizeSizeStrength",
+      defaultValue: false
+    },
+    {
+      type: ConfigFieldType.Hidden,
+      name: "randomizeSizeStrength",
+      defaultValue: 4,
+      minValue: 1,
+      step: 0.1,
+      maxValue: 20
+    },
+    {
       name: "withRandomPosition",
       label: "Randomize Position",
       type: ConfigFieldType.RandomnessInput,
@@ -32,17 +47,20 @@ export default {
     },
     {
       name: "withRotate",
-      label: "Rotate Objects",
+      label: "Rotate Objects Randomly",
       type: ConfigFieldType.RandomnessInput,
       defaultValue: false
     }
   ],
   generate: (width, height, configValues) => {
     const {
+      withRandomSize,
+      randomizeSizeStrength,
       withRandomPosition,
       withRotate,
       randomizePositionStrength,
-      objectDistance
+      objectDistance,
+      objectSize
     } = configValues;
 
     const objectCountX = Math.floor(width / objectDistance);
@@ -66,8 +84,15 @@ export default {
         const top = Math.floor(
           j + (random(0, distanceY) - distanceY / 2) * randPower
         );
+        let width = objectSize;
+        let height = objectSize;
+        if (withRandomSize) {
+          const scale = random(1, randomizeSizeStrength, true);
+          width *= scale;
+          height *= scale;
+        }
         const angle = withRotate ? random(0, 360, true) : 0;
-        items.push({ top, left, angle });
+        items.push({ top, left, width, height, angle });
       }
     }
     return items;

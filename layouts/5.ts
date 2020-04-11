@@ -31,18 +31,25 @@ export default {
       minValue: 0,
       maxValue: 250
     },
+    ...beforeBooleans,
     {
-      name: "maxScale",
-      label: "Max Scale",
-      type: ConfigFieldType.NumberInput,
+      name: "withRandomSize",
+      label: "Randomize Object Size",
+      type: ConfigFieldType.RandomnessInput,
+      strengthConfigFieldName: "randomizeSizeStrength",
+      defaultValue: true
+    },
+    {
+      type: ConfigFieldType.Hidden,
+      name: "randomizeSizeStrength",
       defaultValue: 4,
       minValue: 1,
-      maxValue: 20,
-      step: 0.1
+      step: 0.1,
+      maxValue: 20
     },
     {
       name: "withRotate",
-      label: "Rotate Objects",
+      label: "Rotate Objects Randomly",
       type: ConfigFieldType.RandomnessInput,
       defaultValue: false
     },
@@ -57,14 +64,14 @@ export default {
       type: ConfigFieldType.Hidden,
       name: "randomizeBlurStrength",
       defaultValue: 5,
-      minValue: 2,
+      minValue: 1,
       maxValue: 30
-    },
-    ...beforeBooleans
+    }
   ],
   generate(width, height, configValues) {
     const {
-      maxScale, // пределы скейлинга
+      withRandomSize,
+      randomizeSizeStrength,
       cellWidth, //ширина ячейки
       withRotate, //вращать итемы или нет
       withBlur, //blur
@@ -119,9 +126,11 @@ export default {
           continue;
         }
 
-        const scale = random(1, maxScale, true);
-        item.width *= scale;
-        item.height *= scale;
+        if (withRandomSize) {
+          const scale = random(1, randomizeSizeStrength, true);
+          item.width *= scale;
+          item.height *= scale;
+        }
 
         item.angle = withRotate ? random(0, 360, true) : 0;
         item.blur = withBlur ? random(0, randomizeBlurStrength) : 0;
