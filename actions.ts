@@ -37,6 +37,11 @@ export const setConfigValue = createAction<{
   configValue: any;
 }>("SET_CONFIG_VALUE");
 
+export const setLayoutMaxValueOverride = createAction<{
+  configFieldName: string;
+  configValue: any;
+}>("SET_LAYOUT_MAX_VALUE_OVERRIDE");
+
 export const addUploadedObject = createAction<{ src: string; type: string }>(
   "ADD_UPLOADED_OBJECT"
 );

@@ -8,10 +8,19 @@ export const getConfigValue = configField => (state: AppState) =>
 export const getConfigFields = (state: AppState) =>
   getSelectedLayout(state).configFields || [];
 
-export const getConfigField = configFieldName => (state: AppState) =>
-  getConfigFields(state).find(
+export const getConfigField = configFieldName => (state: AppState) => {
+  let configField = getConfigFields(state).find(
     configField => configField.name === configFieldName
   );
+  const layoutMaxValuesOverrides = state.layoutMaxValuesOverrides;
+  if (layoutMaxValuesOverrides[configFieldName]) {
+    configField = {
+      ...configField,
+      maxValue: layoutMaxValuesOverrides[configFieldName]
+    };
+  }
+  return configField;
+};
 
 export const getSelectedLayout = (state: AppState) =>
   layouts.find(layout => layout.id === state.selectedLayoutId);

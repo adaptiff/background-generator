@@ -25,8 +25,9 @@ export const Explore: React.FC<Props> = props => {
             </Button>
           </Header>
           <div className={s["grid"]}>
-            {backgrounds.map(background => (
+            {backgrounds.map((background, index) => (
               <Card
+                key={index}
                 hoverable
                 cover={<img src={`/background_thumbs/${background.id}.png`} />}
                 className={s["card"]}

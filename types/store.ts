@@ -10,6 +10,7 @@ export interface AppState {
   configValues: any;
   currentRandomSnapshot: number;
   selectedLayoutId: number;
+  layoutMaxValuesOverrides: any;
   selectedObjectIds: number[];
   uploadedObjects: ImageObject[];
 }

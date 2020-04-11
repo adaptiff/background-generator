@@ -75,7 +75,5 @@ export const gradientPalettes = [
   ["#b8adfe", "#676bc2"],
   ["#f6d365", "#fda085"],
   ["#41295a", "#2f0743"],
-  ["#aff77e", "#89d405"],
-  ["#d57eeb", "#fccb90"],
   ["#c95c46", "#511414"]
 ];

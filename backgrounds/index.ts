@@ -18,7 +18,7 @@ export default [
       objectColors: [
         { type: "linear", values: ["#A18CD1", "#FBC2EB"], angle: 27 },
         { type: "linear", values: ["#FAD0C4", "#FFD1FF"], angle: 0 },
-        { type: "linear", values: ["#D4FC79", "#96E6A1"], angle: 0 }
+        { type: "linear", values: ["#0fd850", "#f9f047"], angle: 0 }
       ]
     }
   },

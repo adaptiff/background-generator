@@ -14,7 +14,8 @@ import {
   deselectObject,
   selectLayout,
   addEmojiObject,
-  overrideState
+  overrideState,
+  setLayoutMaxValueOverride
 } from "./actions";
 import { FillType } from "./types";
 import layouts from "./layouts";
@@ -33,6 +34,7 @@ export const initState: AppState = {
   },
   configValues: getDefaultConfigValues(selectedLayoutId),
   selectedLayoutId,
+  layoutMaxValuesOverrides: {},
   selectedObjectIds: [3],
   uploadedObjects: [],
   currentRandomSnapshot: Math.random()
@@ -47,6 +49,18 @@ const reducer = handleActions<AppState, any>(
       ...state,
       ...action.payload.newState
     }),
+    [setLayoutMaxValueOverride.toString()]: (
+      state,
+      action: ReturnType<typeof setLayoutMaxValueOverride>
+    ) => {
+      const newLayoutMaxValuesOverrides = { ...state.layoutMaxValuesOverrides };
+      newLayoutMaxValuesOverrides[action.payload.configFieldName] =
+        action.payload.configValue;
+      return {
+        ...state,
+        layoutMaxValuesOverrides: newLayoutMaxValuesOverrides
+      };
+    },
     [setCanvasDimensions.toString()]: (
       state,
       action: ReturnType<typeof setCanvasDimensions>

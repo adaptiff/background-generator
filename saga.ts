@@ -1,9 +1,14 @@
 /* global fetch */
 
-import { all, select, takeLatest } from "redux-saga/effects";
+import { all, select, put, takeLatest } from "redux-saga/effects";
 import es6promise from "es6-promise";
 import "isomorphic-unfetch";
-import { dumpState } from "./actions";
+import {
+  dumpState,
+  setConfigValue,
+  setLayoutMaxValueOverride
+} from "./actions";
+import { getSelectedLayout, getConfigField } from "./selectors";
 import { AppState } from "./types/store";
 import { copyToClipboard } from "./utils";
 
@@ -33,8 +38,21 @@ function* dumpStateSaga() {
   console.log("dumped to clipboard");
 }
 
+function* setConfigValueSaga(action) {
+  const { configFieldName, configValue } = action.payload;
+
+  const configField = yield select(getConfigField(configFieldName));
+
+  if (configField && configField.maxValue < configValue) {
+    yield put(setLayoutMaxValueOverride({ configFieldName, configValue }));
+  }
+}
+
 function* rootSaga() {
-  yield all([takeLatest(dumpState, dumpStateSaga)]);
+  yield all([
+    takeLatest(dumpState, dumpStateSaga),
+    takeLatest(setConfigValue, setConfigValueSaga)
+  ]);
 }
 
 export default rootSaga;
