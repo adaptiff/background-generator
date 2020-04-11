@@ -35,7 +35,7 @@ export default {
     {
       name: "withRandomSize",
       label: "Randomize Object Size",
-      type: ConfigFieldType.RandomnessInput,
+      type: ConfigFieldType.BoolWithNumberInput,
       strengthConfigFieldName: "randomizeSizeStrength",
       defaultValue: true
     },
@@ -50,13 +50,13 @@ export default {
     {
       name: "withRotate",
       label: "Rotate Objects Randomly",
-      type: ConfigFieldType.RandomnessInput,
+      type: ConfigFieldType.BoolWithNumberInput,
       defaultValue: false
     },
     {
       name: "withBlur",
       label: "Blur Objects",
-      type: ConfigFieldType.RandomnessInput,
+      type: ConfigFieldType.BoolWithNumberInput,
       strengthConfigFieldName: "randomizeBlurStrength",
       defaultValue: false
     },

@@ -5,23 +5,24 @@ import NumberInput from "../NumberInput";
 import { setConfigValue, refreshRandomSnapshot } from "../../../actions";
 import { getConfigValue } from "../../../selectors";
 
-import s from "./RandomnessInput.less";
+import s from "./BoolWithNumberInput.less";
 
 export interface Props {
   boolConfigFieldName: string;
   strengthConfigFieldName?: string;
+  withRefresh?: boolean;
 }
 
-export const RandomnessInput: React.FC<Props> = ({
+export const BoolWithNumberInput: React.FC<Props> = ({
   boolConfigFieldName,
-  strengthConfigFieldName
+  strengthConfigFieldName,
+  withRefresh = true
 }) => {
   const dispatch = useDispatch();
   const withRandomness = useSelector(
     getConfigValue(boolConfigFieldName),
     shallowEqual
   );
-  console.log({ boolConfigFieldName, withRandomness });
   return (
     <>
       <div className={s["top-row"]}>
@@ -38,7 +39,7 @@ export const RandomnessInput: React.FC<Props> = ({
             )
           }
         />
-        {withRandomness && (
+        {withRandomness && withRefresh && (
           <Tooltip title="Refresh">
             <Button
               icon="reload"
@@ -56,6 +57,6 @@ export const RandomnessInput: React.FC<Props> = ({
     </>
   );
 };
-RandomnessInput.displayName = "RandomnessInput";
+BoolWithNumberInput.displayName = "BoolWithNumberInput";
 
-export default RandomnessInput;
+export default BoolWithNumberInput;

@@ -228,7 +228,7 @@ function loadObjects(selectedObjects, callback) {
       }
     }
 
-    if (['emoji', 'text'].includes(selectedObject.type)) {
+    if (["emoji", "text"].includes(selectedObject.type)) {
       createObjectFromText(selectedObject);
     }
   });
@@ -327,7 +327,7 @@ function drawLayout(selectedObjects, configValues, configColors) {
     fabricObject.set({
       left: item.left,
       top: item.top,
-      angle: item.angle | 0,
+      angle: item.angle || 0,
       blur: item.blur
     });
 

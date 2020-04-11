@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Layout } from "antd";
 const { Sider } = Layout;
 import NumberInput from "./NumberInput";
-import RandomnessInput from "./RandomnessInput";
+import BoolWithNumberInput from "./BoolWithNumberInput";
 import Objects from "./Objects";
 import Layouts from "./Layouts";
 import { ConfigFieldType } from "../../types";
@@ -36,11 +36,12 @@ export const ConfigPanel: React.FC<Props> = ({
             case ConfigFieldType.NumberInput:
               formField = <NumberInput configFieldName={configField.name} />;
               break;
-            case ConfigFieldType.RandomnessInput:
+            case ConfigFieldType.BoolWithNumberInput:
               formField = (
-                <RandomnessInput
+                <BoolWithNumberInput
                   boolConfigFieldName={configField.name}
                   strengthConfigFieldName={configField.strengthConfigFieldName}
+                  withRefresh={configField.withRefresh}
                 />
               );
               break;
@@ -53,12 +54,12 @@ export const ConfigPanel: React.FC<Props> = ({
         })}
         {objectColorCount > 1 && (
           <Form.Item label="Randomize Color">
-            <RandomnessInput boolConfigFieldName="withRandomColor" />
+            <BoolWithNumberInput boolConfigFieldName="withRandomColor" />
           </Form.Item>
         )}
         {selectedObjectCount > 1 && (
           <Form.Item label="Randomize Object Order">
-            <RandomnessInput boolConfigFieldName="withRandomObjectOrder" />
+            <BoolWithNumberInput boolConfigFieldName="withRandomObjectOrder" />
           </Form.Item>
         )}
       </Form>

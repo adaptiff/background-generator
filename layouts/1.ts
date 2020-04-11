@@ -19,7 +19,7 @@ export default {
     {
       name: "withRandomSize",
       label: "Randomize Object Size",
-      type: ConfigFieldType.RandomnessInput,
+      type: ConfigFieldType.BoolWithNumberInput,
       strengthConfigFieldName: "randomizeSizeStrength",
       defaultValue: false
     },
@@ -34,7 +34,7 @@ export default {
     {
       name: "withRandomPosition",
       label: "Randomize Position",
-      type: ConfigFieldType.RandomnessInput,
+      type: ConfigFieldType.BoolWithNumberInput,
       strengthConfigFieldName: "randomizePositionStrength",
       defaultValue: false
     },
@@ -46,9 +46,24 @@ export default {
       maxValue: 100
     },
     {
-      name: "withRotate",
+      name: "withRotation",
+      label: "Rotate Objects",
+      type: ConfigFieldType.BoolWithNumberInput,
+      strengthConfigFieldName: "rotationStrength",
+      withRefresh: false,
+      defaultValue: false
+    },
+    {
+      type: ConfigFieldType.Hidden,
+      name: "rotationStrength",
+      defaultValue: 45,
+      minValue: 0,
+      maxValue: 360
+    },
+    {
+      name: "withRandomRotation",
       label: "Rotate Objects Randomly",
-      type: ConfigFieldType.RandomnessInput,
+      type: ConfigFieldType.BoolWithNumberInput,
       defaultValue: false
     }
   ],
@@ -57,7 +72,9 @@ export default {
       withRandomSize,
       randomizeSizeStrength,
       withRandomPosition,
-      withRotate,
+      withRotation,
+      rotationStrength,
+      withRandomRotation,
       randomizePositionStrength,
       objectDistance,
       objectSize
@@ -91,7 +108,13 @@ export default {
           width *= scale;
           height *= scale;
         }
-        const angle = withRotate ? random(0, 360, true) : 0;
+        let angle = 0;
+        if (withRotation) {
+          angle = rotationStrength;
+        }
+        if (withRandomRotation) {
+          angle = random(0, 360, true);
+        }
         items.push({ top, left, width, height, angle });
       }
     }
