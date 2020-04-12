@@ -55,7 +55,7 @@ export default {
     },
     {
       name: "withBlur",
-      label: "Blur Objects",
+      label: "Blur Objects Randomly",
       type: ConfigFieldType.BoolWithNumberInput,
       strengthConfigFieldName: "randomizeBlurStrength",
       defaultValue: false

@@ -65,6 +65,21 @@ export default {
       label: "Rotate Objects Randomly",
       type: ConfigFieldType.BoolWithNumberInput,
       defaultValue: false
+    },
+    {
+      name: "withBlur",
+      label: "Blur Objects",
+      type: ConfigFieldType.BoolWithNumberInput,
+      strengthConfigFieldName: "blurStrength",
+      withRefresh: false,
+      defaultValue: false
+    },
+    {
+      type: ConfigFieldType.Hidden,
+      name: "blurStrength",
+      defaultValue: 5,
+      minValue: 1,
+      maxValue: 30
     }
   ],
   generate: (width, height, configValues) => {
@@ -77,7 +92,9 @@ export default {
       withRandomRotation,
       randomizePositionStrength,
       objectDistance,
-      objectSize
+      objectSize,
+      withBlur,
+      blurStrength
     } = configValues;
 
     const objectCountX = Math.floor(width / objectDistance);
@@ -115,7 +132,11 @@ export default {
         if (withRandomRotation) {
           angle = random(0, 360, true);
         }
-        items.push({ top, left, width, height, angle });
+        let blur = 0;
+        if (withBlur) {
+          blur = blurStrength;
+        }
+        items.push({ top, left, width, height, angle, blur });
       }
     }
     return items;

@@ -170,5 +170,40 @@ export default [
         { type: "linear", values: ["#00f2fe", "#4facfe"], angle: 0 }
       ]
     }
+  },
+  {
+    id: 7,
+    canvasWidth: 600,
+    canvasHeight: 600,
+    selectedLayoutId: 1,
+    selectedObjectIds: [-1],
+    configValues: {
+      objectSize: 50,
+      objectDistance: 120,
+      padding: 10,
+      withRandomSize: true,
+      randomizeSizeStrength: 3.3,
+      withRandomPosition: true,
+      randomizePositionStrength: 36,
+      withRotation: false,
+      rotationStrength: 45,
+      withRandomRotation: true,
+      currentRandomSnapshot: 0.15422010095250416,
+      withBlur: true,
+      blurStrength: 8
+    },
+    configColors: {
+      backgroundColor: { type: "solid", values: ["#101010", "#FFD1FF"] },
+      objectColors: [
+        { type: "linear", values: ["#009CFF", "#68E24A", "#EDDE42"], angle: 0 }
+      ]
+    },
+    uploadedObjects: [
+      {
+        id: -1,
+        src: "/uploads/1.svg",
+        type: "image/svg+xml"
+      }
+    ]
   }
 ];

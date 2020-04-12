@@ -15,8 +15,7 @@ export interface Props {
 
 export const BoolWithNumberInput: React.FC<Props> = ({
   boolConfigFieldName,
-  strengthConfigFieldName,
-  withRefresh = true
+  strengthConfigFieldName
 }) => {
   const dispatch = useDispatch();
   const withRandomness = useSelector(
@@ -39,17 +38,6 @@ export const BoolWithNumberInput: React.FC<Props> = ({
             )
           }
         />
-        {withRandomness && withRefresh && (
-          <Tooltip title="Refresh">
-            <Button
-              icon="reload"
-              shape="circle"
-              size="small"
-              className={s["refresh-button"]}
-              onClick={() => dispatch(refreshRandomSnapshot())}
-            />
-          </Tooltip>
-        )}
       </div>
       {withRandomness && strengthConfigFieldName && (
         <NumberInput configFieldName={strengthConfigFieldName} />

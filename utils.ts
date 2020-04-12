@@ -69,6 +69,16 @@ export const applyColorToFabricElement = (color, elem) => {
       x: width - gradientStart.x,
       y: height - gradientStart.y
     };
+    let currentOffset = 0;
+    const offsetStep = Math.floor(100 / (color.values.length - 1));
+    const colorStops = [];
+    color.values.forEach(color => {
+      colorStops.push({
+        offset: currentOffset / 100,
+        color: colorObjToString(color)
+      });
+      currentOffset += offsetStep;
+    });
     elem.set(
       "fill",
       new window["fabric"].Gradient({
@@ -76,18 +86,9 @@ export const applyColorToFabricElement = (color, elem) => {
           x1: gradientStart.x,
           y1: gradientStart.y,
           x2: gradientEnd.x,
-          y2: gradientEnd.y,
+          y2: gradientEnd.y
         },
-        colorStops: [
-          {
-            offset: 0,
-            color: colorObjToString(color.values[0])
-          },
-          {
-            offset: 1,
-            color: colorObjToString(color.values[1])
-          }
-        ]
+        colorStops
       })
     );
   } else if (color.type === FillType.Radial) {
@@ -99,7 +100,7 @@ export const applyColorToFabricElement = (color, elem) => {
           x2: width / 2 + (color.xShift / 100) * width,
           y2: height / 2 + (color.yShift / 100) * height,
           r1: width / 2,
-          r2: 10,
+          r2: 10
         },
         type: "radial",
         colorStops: [
@@ -135,13 +136,11 @@ export const colorObjToCSSBackground = color => {
   if (color.type === FillType.Solid) {
     return colorObjToString(color.values[0]);
   } else if (color.type === FillType.Linear) {
-    return `linear-gradient(to bottom, ${colorObjToString(
-      color.values[0]
-    )}, ${colorObjToString(color.values[1])})`;
+    const colors = color.values.map(colorObjToString).join(",");
+    return `linear-gradient(to bottom, ${colors})`;
   } else if (color.type === FillType.Radial) {
-    return `radial-gradient(${colorObjToString(
-      color.values[1]
-    )}, ${colorObjToString(color.values[0])})`;
+    const colors = color.values.map(colorObjToString).join(",");
+    return `radial-gradient(${colors})`;
   }
 };
 
