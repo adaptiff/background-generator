@@ -1,5 +1,5 @@
 import { ConfigFieldType, Layout } from "../types";
-import { beforeAll, beforeBooleans } from "./_shared";
+import { beforeAll, beforeBooleans, afterAll } from "./_shared";
 
 export default {
   id: 6,
@@ -14,7 +14,8 @@ export default {
       minValue: 10,
       maxValue: 100
     },
-    ...beforeBooleans
+    ...beforeBooleans,
+    ...afterAll
   ],
   generate(width, height, configValues) {
     const {

@@ -15,6 +15,20 @@ export const getHasRandomnessOnAnyField = (state: AppState) => {
     if (field.withRandomness && getConfigValue(field.name)(state)) {
       hasRandomness = true;
     }
+    if (
+      field.name === "withRandomObjectOrder" &&
+      getConfigValue(field.name)(state) &&
+      state.selectedObjectIds.length > 1
+    ) {
+      hasRandomness = true;
+    }
+    if (
+      field.name === "withRandomColor" &&
+      getConfigValue(field.name)(state) &&
+      state.configColors.objectColors.length > 1
+    ) {
+      hasRandomness = true;
+    }
   });
   return hasRandomness;
 };

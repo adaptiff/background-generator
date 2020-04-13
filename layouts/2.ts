@@ -1,6 +1,6 @@
 import random from "lodash.random";
 import { ConfigFieldType, Layout } from "../types";
-import { beforeAll, beforeBooleans } from "./_shared";
+import { beforeAll, beforeBooleans, afterAll } from "./_shared";
 
 export default {
   id: 2,
@@ -39,7 +39,8 @@ export default {
       minValue: 1,
       step: 0.1,
       maxValue: 20
-    }
+    },
+    ...afterAll
   ],
   generate: (width, height, configValues) => {
     const {

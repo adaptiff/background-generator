@@ -33,6 +33,15 @@ export const ConfigPanel: React.FC<Props> = ({
           if (configField.type === ConfigFieldType.Hidden) {
             return null;
           }
+          if (configField.name === "withRandomColor" && objectColorCount <= 1) {
+            return null;
+          }
+          if (
+            configField.name === "withRandomObjectOrder" &&
+            selectedObjectCount <= 1
+          ) {
+            return null;
+          }
           switch (configField.type) {
             case ConfigFieldType.NumberInput:
               formField = <NumberInput configFieldName={configField.name} />;
@@ -53,16 +62,6 @@ export const ConfigPanel: React.FC<Props> = ({
             </Form.Item>
           );
         })}
-        {objectColorCount > 1 && (
-          <Form.Item label="Randomize Color">
-            <BoolWithNumberInput boolConfigFieldName="withRandomColor" />
-          </Form.Item>
-        )}
-        {selectedObjectCount > 1 && (
-          <Form.Item label="Randomize Object Order">
-            <BoolWithNumberInput boolConfigFieldName="withRandomObjectOrder" />
-          </Form.Item>
-        )}
       </Form>
       <RefreshButton className={s["refresh-button-container"]} />
     </Sider>

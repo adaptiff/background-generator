@@ -205,5 +205,65 @@ export default [
         type: "image/svg+xml"
       }
     ]
+  },
+  {
+    id: 8,
+    canvasWidth: 160,
+    canvasHeight: 160,
+    selectedLayoutId: 1,
+    selectedObjectIds: [3],
+    configValues: {
+      objectSize: 19,
+      objectDistance: 50,
+      padding: 18,
+      withRandomSize: false,
+      randomizeSizeStrength: 4,
+      withRandomPosition: false,
+      randomizePositionStrength: 10,
+      withRotation: false,
+      rotationStrength: 45,
+      withRandomRotation: false,
+      withBlur: false,
+      blurStrength: 5,
+      withRandomColor: false
+    },
+    configColors: {
+      backgroundColor: { type: "solid", values: ["#fff", "#ccc"] },
+      objectColors: [
+        {
+          type: "linear",
+          values: [
+            { r: 123, g: 245, b: 116, a: 1 },
+            { r: 218, g: 255, b: 215, a: 1 }
+          ],
+          angle: 0
+        },
+        {
+          type: "linear",
+          values: [
+            { r: 251, g: 132, b: 91, a: 1 },
+            { r: 255, g: 179, b: 185, a: 1 }
+          ],
+          angle: 0
+        },
+        {
+          type: "linear",
+          values: [
+            { r: 147, g: 49, b: 253, a: 1 },
+            { r: 255, g: 179, b: 185, a: 1 }
+          ],
+          angle: 0
+        },
+        {
+          type: "linear",
+          values: [
+            { r: 57, g: 193, b: 255, a: 1 },
+            { r: 160, g: 223, b: 253, a: 1 }
+          ],
+          angle: 0
+        },
+        { type: "linear", values: ["#ffb347", "#ffcc33"], angle: 0 }
+      ]
+    }
   }
 ];

@@ -1,5 +1,5 @@
 import { ConfigFieldType } from "../types";
-import { beforeAll, beforeBooleans } from "./_shared";
+import { beforeAll, beforeBooleans, afterAll } from "./_shared";
 import { deg2rad, rotateItemCoords } from "../utils";
 
 export default {
@@ -47,7 +47,8 @@ export default {
       minValue: 1,
       maxValue: 100
     },
-    ...beforeBooleans
+    ...beforeBooleans,
+    ...afterAll
   ],
   generate: (width, height, configValues) => {
     const {
@@ -67,7 +68,9 @@ export default {
 
     //const figureInnerAngle = (180 * (figureAngles - 2)) / figureAngles;
     const figureCenterAngle = 360 / figureAngles;
-    const figureHalfSectorTg = Math.tan(deg2rad(figureCenterAngle / 2)).toFixed(6);
+    const figureHalfSectorTg = Math.tan(deg2rad(figureCenterAngle / 2)).toFixed(
+      6
+    );
     const figureHalfSectorCos = Math.cos(
       deg2rad(figureCenterAngle / 2)
     ).toFixed(6);

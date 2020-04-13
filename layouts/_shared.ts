@@ -23,3 +23,18 @@ export const beforeBooleans = [
     maxValue: 50
   }
 ];
+
+export const afterAll = [
+  {
+    name: "withRandomColor",
+    label: "Randomize Color",
+    type: ConfigFieldType.BoolWithNumberInput,
+    defaultValue: false
+  },
+  {
+    name: "withRandomObjectOrder",
+    label: "Randomize Object Order",
+    type: ConfigFieldType.BoolWithNumberInput,
+    defaultValue: false
+  }
+];
