@@ -29,7 +29,8 @@ export default {
       label: "Randomize Object Size",
       type: ConfigFieldType.BoolWithNumberInput,
       strengthConfigFieldName: "randomizeSizeStrength",
-      defaultValue: false
+      defaultValue: false,
+      withRandomness: true
     },
     {
       type: ConfigFieldType.Hidden,

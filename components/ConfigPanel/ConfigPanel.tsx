@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Layout } from "antd";
+import { Form, Layout, Button } from "antd";
 const { Sider } = Layout;
 import NumberInput from "./NumberInput";
 import BoolWithNumberInput from "./BoolWithNumberInput";
@@ -9,6 +9,7 @@ import { ConfigFieldType } from "../../types";
 import Logo from "../Logo";
 
 import s from "./ConfigPanel.less";
+import RefreshButton from "./RefreshButton";
 
 export interface Props {
   selectedObjectCount: number;
@@ -41,7 +42,7 @@ export const ConfigPanel: React.FC<Props> = ({
                 <BoolWithNumberInput
                   boolConfigFieldName={configField.name}
                   strengthConfigFieldName={configField.strengthConfigFieldName}
-                  withRefresh={configField.withRefresh}
+                  withRandomness={configField.withRandomness}
                 />
               );
               break;
@@ -63,6 +64,7 @@ export const ConfigPanel: React.FC<Props> = ({
           </Form.Item>
         )}
       </Form>
+      <RefreshButton className={s["refresh-button-container"]} />
     </Sider>
   );
 };

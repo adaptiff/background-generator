@@ -10,7 +10,7 @@ import s from "./BoolWithNumberInput.less";
 export interface Props {
   boolConfigFieldName: string;
   strengthConfigFieldName?: string;
-  withRefresh?: boolean;
+  withRandomness?: boolean;
 }
 
 export const BoolWithNumberInput: React.FC<Props> = ({

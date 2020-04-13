@@ -1,5 +1,5 @@
 import React from "react";
-import { Icon, Input, Dropdown, Menu, Tooltip, Button } from "antd";
+import { Icon, Input, Dropdown, Menu } from "antd";
 import s from "./Dimensions.less";
 
 export interface Props {
@@ -19,8 +19,6 @@ const presetDimensions = [
   { width: 1080, height: 1920, label: "Instagram Story" }
 ];
 
-// onClick={() => dispatch(refreshRandomSnapshot())}
-
 export const Dimensions: React.FC<Props> = ({
   canvasWidth,
   canvasHeight,
@@ -36,9 +34,6 @@ export const Dimensions: React.FC<Props> = ({
       key={`${canvasWidth}-${canvasHeight}`}
       className={s["dimensions-form-wrapper"]}
     >
-      <Tooltip title="Refresh">
-        <Button icon="reload" shape="circle" className={s["refresh-button"]} />
-      </Tooltip>
       <Input
         key={`w-${canvasWidth}`}
         className={s["dimensions-input"]}
