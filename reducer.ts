@@ -226,8 +226,8 @@ const reducer = handleActions<AppState, any>(
             src: action.payload.src,
             type: "emoji"
           }
-        ]
-        //selectedObjectIds: [nextCustomObjectId + 1]
+        ],
+        selectedObjectIds: [nextCustomObjectId + 1]
       };
     }
   },

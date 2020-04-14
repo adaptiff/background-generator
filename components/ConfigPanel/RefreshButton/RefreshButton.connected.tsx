@@ -6,24 +6,20 @@ import { refreshRandomSnapshot } from "../../../actions";
 
 import s from "./RefreshButton.less";
 
-export interface Props {
-  className?: string;
-}
+export interface Props {}
 
-export const RefreshButton: React.FC<Props> = ({ className }) => {
+export const RefreshButton: React.FC<Props> = () => {
   const dispatch = useDispatch();
   const hasRandomness = useSelector(getHasRandomnessOnAnyField, shallowEqual);
   if (!hasRandomness) {
     return null;
   }
   return (
-    <div className={s["refresh-button-container"]}>
-      <Button
-        icon="reload"
-        type="link"
-        className={className}
-        onClick={() => dispatch(refreshRandomSnapshot())}
-      >
+    <div
+      className={s["refresh-button-container"]}
+      onClick={() => dispatch(refreshRandomSnapshot())}
+    >
+      <Button icon="reload" type="link" className={s["button"]}>
         Refresh
       </Button>
     </div>

@@ -63,7 +63,7 @@ export const ConfigPanel: React.FC<Props> = ({
           );
         })}
       </Form>
-      <RefreshButton className={s["refresh-button-container"]} />
+      <RefreshButton />
     </Sider>
   );
 };

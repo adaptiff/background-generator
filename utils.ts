@@ -59,10 +59,10 @@ export const rotateItemCoords = (item, origin, angle) => {
 
 export const applyColorToFabricElement = (color, elem) => {
   const { width, height } = elem;
+
+  let fabricColor;
   if (color.type === FillType.Solid) {
-    elem.set({
-      fill: colorObjToString(color.values[0])
-    });
+    fabricColor = colorObjToString(color.values[0]);
   } else if (color.type === FillType.Linear) {
     const gradientStart = angle2rect(color.angle, width, height);
     const gradientEnd = {
@@ -79,42 +79,44 @@ export const applyColorToFabricElement = (color, elem) => {
       });
       currentOffset += offsetStep;
     });
-    elem.set(
-      "fill",
-      new window["fabric"].Gradient({
-        coords: {
-          x1: gradientStart.x,
-          y1: gradientStart.y,
-          x2: gradientEnd.x,
-          y2: gradientEnd.y
-        },
-        colorStops
-      })
-    );
-  } else if (color.type === FillType.Radial) {
-    elem.set({
-      fill: new window["fabric"].Gradient({
-        coords: {
-          x1: width / 2 + (color.xShift / 100) * width,
-          y1: height / 2 + (color.yShift / 100) * height,
-          x2: width / 2 + (color.xShift / 100) * width,
-          y2: height / 2 + (color.yShift / 100) * height,
-          r1: width / 2,
-          r2: 10
-        },
-        type: "radial",
-        colorStops: [
-          {
-            offset: 0,
-            color: colorObjToString(color.values[0])
-          },
-          {
-            offset: 1,
-            color: colorObjToString(color.values[1])
-          }
-        ]
-      })
+    fabricColor = new window["fabric"].Gradient({
+      coords: {
+        x1: gradientStart.x,
+        y1: gradientStart.y,
+        x2: gradientEnd.x,
+        y2: gradientEnd.y
+      },
+      colorStops
     });
+  } else if (color.type === FillType.Radial) {
+    fabricColor = new window["fabric"].Gradient({
+      coords: {
+        x1: width / 2 + (color.xShift / 100) * width,
+        y1: height / 2 + (color.yShift / 100) * height,
+        x2: width / 2 + (color.xShift / 100) * width,
+        y2: height / 2 + (color.yShift / 100) * height,
+        r1: width / 2,
+        r2: 10
+      },
+      type: "radial",
+      colorStops: [
+        {
+          offset: 0,
+          color: colorObjToString(color.values[0])
+        },
+        {
+          offset: 1,
+          color: colorObjToString(color.values[1])
+        }
+      ]
+    });
+  }
+  if (elem.fill) {
+    elem.set("fill", fabricColor);
+    elem.set("stroke", null);
+  } else if (elem.stroke) {
+    elem.set("fill", null);
+    elem.set("stroke", fabricColor);
   }
 };
 
