@@ -1045,5 +1045,70 @@ export default [
         }
       ]
     }
+  },
+  {
+    id: 24,
+    canvasWidth: 600,
+    canvasHeight: 600,
+    selectedLayoutId: 5,
+    selectedObjectIds: [-5, -4, -1, -2, -3],
+    configValues: {
+      objectSize: 50,
+      explosionForce: 28,
+      cellWidth: 193,
+      cellPadding: 10,
+      padding: 10,
+      withRandomSize: true,
+      randomizeSizeStrength: 4,
+      withRotate: true,
+      withBlur: false,
+      randomizeBlurStrength: 5,
+      withRandomColor: false,
+      withRandomObjectOrder: true
+    },
+    configColors: {
+      backgroundColor: {
+        type: "linear",
+        values: [
+          { r: 244, g: 255, b: 251, a: 1 },
+          { r: 198, g: 219, b: 213, a: 1 }
+        ],
+        angle: 0
+      },
+      objectColors: [{ type: "solid", values: ["#000", "#ccc"] }]
+    },
+    uploadedObjects: [
+      {
+        id: -1,
+        src: "/uploads/o/16.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -2,
+        src: "/uploads/o/17.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -3,
+        src: "/uploads/o/18.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -4,
+        src: "/uploads/o/19.svg",
+        type: "image/svg+xml"
+      },
+      ,
+      {
+        id: -5,
+        src: "/uploads/o/20.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -6,
+        src: "/uploads/o/21.svg",
+        type: "image/svg+xml"
+      }
+    ]
   }
 ];
