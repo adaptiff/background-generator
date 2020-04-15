@@ -28,6 +28,7 @@ export const IndexPage = () => {
                   </Button>
                   <Button
                     className={s["create-new-button"]}
+                    shape="circle"
                     icon="plus"
                     href="/"
                   />
