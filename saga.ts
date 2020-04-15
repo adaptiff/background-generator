@@ -6,9 +6,10 @@ import "isomorphic-unfetch";
 import {
   dumpState,
   setConfigValue,
-  setLayoutMaxValueOverride
+  setLayoutMaxValueOverride,
+  overrideState,
 } from "./actions";
-import { getSelectedLayout, getConfigField } from "./selectors";
+import { getConfigField, getConfigFields } from "./selectors";
 import { AppState } from "./types/store";
 import { copyToClipboard } from "./utils";
 
@@ -32,14 +33,14 @@ function* dumpStateSaga() {
       selectedLayoutId,
       selectedObjectIds,
       configValues,
-      configColors
+      configColors,
     })
   );
   console.log("dumped to clipboard");
 }
 
 function* setConfigValueSaga(action) {
-  const { configFieldName, configValue } = action.payload;
+  const { configFieldName, configValue, isChangingDone } = action.payload;
 
   const configField = yield select(getConfigField(configFieldName));
 
@@ -48,10 +49,31 @@ function* setConfigValueSaga(action) {
   }
 }
 
+function* overrideStateSaga(action) {
+  const { configValues } = action.payload!.newState!;
+  const configFields = yield select(getConfigFields);
+  const actions = [];
+  configFields.forEach((configField) => {
+    if (
+      configField.maxValue &&
+      configValues[configField.name] > configField.maxValue
+    ) {
+      actions.push(
+        setLayoutMaxValueOverride({
+          configFieldName: configField.name,
+          configValue: configValues[configField.name],
+        })
+      );
+    }
+  });
+  yield all(actions.map((action) => put(action)));
+}
+
 function* rootSaga() {
   yield all([
     takeLatest(dumpState, dumpStateSaga),
-    takeLatest(setConfigValue, setConfigValueSaga)
+    takeLatest(setConfigValue, setConfigValueSaga),
+    takeLatest(overrideState, overrideStateSaga),
   ]);
 }
 

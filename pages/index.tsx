@@ -26,6 +26,11 @@ export const IndexPage = () => {
                   <Button icon="appstore" href="/explore">
                     Explore
                   </Button>
+                  <Button
+                    className={s["create-new-button"]}
+                    icon="plus"
+                    href="/"
+                  />
                 </Col>
                 <Col span={8} className={s["dimensions-area"]}>
                   <Dimensions />

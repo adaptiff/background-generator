@@ -13,7 +13,7 @@ export default {
       type: ConfigFieldType.NumberInput,
       defaultValue: 50,
       minValue: 30,
-      maxValue: 100
+      maxValue: 100,
     },
     ...beforeBooleans,
     {
@@ -22,7 +22,7 @@ export default {
       type: ConfigFieldType.BoolWithNumberInput,
       strengthConfigFieldName: "randomizeSizeStrength",
       defaultValue: false,
-      withRandomness: true
+      withRandomness: true,
     },
     {
       type: ConfigFieldType.Hidden,
@@ -30,7 +30,7 @@ export default {
       defaultValue: 4,
       minValue: 1,
       step: 0.1,
-      maxValue: 20
+      maxValue: 20,
     },
     {
       name: "withRandomPosition",
@@ -38,14 +38,14 @@ export default {
       type: ConfigFieldType.BoolWithNumberInput,
       strengthConfigFieldName: "randomizePositionStrength",
       defaultValue: false,
-      withRandomness: true
+      withRandomness: true,
     },
     {
       type: ConfigFieldType.Hidden,
       name: "randomizePositionStrength",
       defaultValue: 10,
       minValue: 1,
-      maxValue: 100
+      maxValue: 100,
     },
     {
       name: "withRotation",
@@ -53,37 +53,37 @@ export default {
       type: ConfigFieldType.BoolWithNumberInput,
       strengthConfigFieldName: "rotationStrength",
       withRandomness: false,
-      defaultValue: false
+      defaultValue: false,
     },
     {
       type: ConfigFieldType.Hidden,
       name: "rotationStrength",
       defaultValue: 45,
       minValue: 0,
-      maxValue: 360
+      maxValue: 360,
     },
     {
       name: "withRandomRotation",
       label: "Rotate Objects Randomly",
       type: ConfigFieldType.BoolWithNumberInput,
       defaultValue: false,
-      withRandomness: true
+      withRandomness: true,
     },
     {
       name: "withBlur",
       label: "Blur Objects",
       type: ConfigFieldType.BoolWithNumberInput,
       strengthConfigFieldName: "blurStrength",
-      defaultValue: false
+      defaultValue: false,
     },
     {
       type: ConfigFieldType.Hidden,
       name: "blurStrength",
       defaultValue: 5,
       minValue: 1,
-      maxValue: 30
+      maxValue: 30,
     },
-    ...afterAll
+    ...afterAll,
   ],
   generate: (width, height, configValues) => {
     const {
@@ -97,7 +97,7 @@ export default {
       objectDistance,
       objectSize,
       withBlur,
-      blurStrength
+      blurStrength,
     } = configValues;
 
     const objectCountX = Math.floor(width / objectDistance);
@@ -143,5 +143,5 @@ export default {
       }
     }
     return items;
-  }
+  },
 } as Layout;

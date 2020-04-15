@@ -15,7 +15,7 @@ import {
   selectLayout,
   addEmojiObject,
   overrideState,
-  setLayoutMaxValueOverride
+  setLayoutMaxValueOverride,
 } from "./actions";
 import { FillType } from "./types";
 import layouts from "./layouts";
@@ -30,14 +30,14 @@ export const initState: AppState = {
   canvasHeight: 600,
   configColors: {
     backgroundColor: { type: FillType.Solid, values: ["#fff", "#ccc"] },
-    objectColors: [{ type: FillType.Solid, values: ["#000", "#ccc"] }]
+    objectColors: [{ type: FillType.Solid, values: ["#000", "#ccc"] }],
   },
   configValues: getDefaultConfigValues(selectedLayoutId),
   selectedLayoutId,
   layoutMaxValuesOverrides: {},
   selectedObjectIds: [3],
   uploadedObjects: [],
-  currentRandomSnapshot: Math.random()
+  currentRandomSnapshot: Math.random(),
 };
 
 const reducer = handleActions<AppState, any>(
@@ -45,20 +45,29 @@ const reducer = handleActions<AppState, any>(
     [overrideState.toString()]: (
       state,
       action: ReturnType<typeof overrideState>
-    ) => ({
-      ...state,
-      ...action.payload.newState
-    }),
+    ) => {
+      nextCustomObjectId =
+        Math.min(
+          nextCustomObjectId,
+          ...((action.payload.newState.uploadedObjects || []).map(
+            (obj) => obj.id
+          ) || [])
+        ) - 1;
+      return {
+        ...state,
+        ...action.payload.newState,
+      };
+    },
     [setLayoutMaxValueOverride.toString()]: (
       state,
       action: ReturnType<typeof setLayoutMaxValueOverride>
     ) => {
       const newLayoutMaxValuesOverrides = { ...state.layoutMaxValuesOverrides };
       newLayoutMaxValuesOverrides[action.payload.configFieldName] =
-        action.payload.configValue;
+        action.payload.configValue * 1.5;
       return {
         ...state,
-        layoutMaxValuesOverrides: newLayoutMaxValuesOverrides
+        layoutMaxValuesOverrides: newLayoutMaxValuesOverrides,
       };
     },
     [setCanvasDimensions.toString()]: (
@@ -67,7 +76,7 @@ const reducer = handleActions<AppState, any>(
     ) => ({
       ...state,
       canvasWidth: action.payload.width,
-      canvasHeight: action.payload.height
+      canvasHeight: action.payload.height,
     }),
     [setBackgroundColor.toString()]: (
       state,
@@ -78,9 +87,9 @@ const reducer = handleActions<AppState, any>(
         ...state.configColors,
         backgroundColor: {
           ...state.configColors["backgroundColor"],
-          ...action.payload
-        }
-      }
+          ...action.payload,
+        },
+      },
     }),
     [setItemColor.toString()]: (
       state,
@@ -94,23 +103,23 @@ const reducer = handleActions<AppState, any>(
         ...state,
         configColors: {
           ...state.configColors,
-          objectColors: newObjectColors
-        }
+          objectColors: newObjectColors,
+        },
       };
     },
-    [addItemColor.toString()]: state => {
+    [addItemColor.toString()]: (state) => {
       const { objectColors } = state.configColors;
       const newObjectColors = [
         ...objectColors,
-        objectColors[objectColors.length - 1]
+        objectColors[objectColors.length - 1],
       ];
 
       return {
         ...state,
         configColors: {
           ...state.configColors,
-          objectColors: newObjectColors
-        }
+          objectColors: newObjectColors,
+        },
       };
     },
     [removeItemColor.toString()]: (
@@ -123,8 +132,8 @@ const reducer = handleActions<AppState, any>(
         ...state,
         configColors: {
           ...state.configColors,
-          objectColors: newObjectColors
-        }
+          objectColors: newObjectColors,
+        },
       };
     },
     [setConfigValue.toString()]: (
@@ -134,8 +143,8 @@ const reducer = handleActions<AppState, any>(
       ...state,
       configValues: {
         ...state.configValues,
-        [action.payload.configFieldName]: action.payload.configValue
-      }
+        [action.payload.configFieldName]: action.payload.configValue,
+      },
     }),
     [refreshRandomSnapshot.toString()]: (
       state,
@@ -144,8 +153,8 @@ const reducer = handleActions<AppState, any>(
       ...state,
       configValues: {
         ...state.configValues,
-        currentRandomSnapshot: Math.random()
-      }
+        currentRandomSnapshot: Math.random(),
+      },
     }),
     [selectObject.toString()]: (
       state,
@@ -153,7 +162,7 @@ const reducer = handleActions<AppState, any>(
     ) => {
       return {
         ...state,
-        selectedObjectIds: [...state.selectedObjectIds, action.payload.id]
+        selectedObjectIds: [...state.selectedObjectIds, action.payload.id],
       };
     },
     [deselectObject.toString()]: (
@@ -163,8 +172,8 @@ const reducer = handleActions<AppState, any>(
       return {
         ...state,
         selectedObjectIds: state.selectedObjectIds.filter(
-          id => id !== action.payload.id
-        )
+          (id) => id !== action.payload.id
+        ),
       };
     },
     [selectAsOnlyObject.toString()]: (
@@ -173,7 +182,7 @@ const reducer = handleActions<AppState, any>(
     ) => {
       return {
         ...state,
-        selectedObjectIds: [action.payload.id]
+        selectedObjectIds: [action.payload.id],
       };
     },
     [selectLayout.toString()]: (
@@ -183,9 +192,9 @@ const reducer = handleActions<AppState, any>(
       const oldConfigValues = state.configValues;
       const newConfigValues = {};
       const newSelectedLayout = layouts.find(
-        layout => layout.id === action.payload.id
+        (layout) => layout.id === action.payload.id
       );
-      newSelectedLayout.configFields.forEach(configField => {
+      newSelectedLayout.configFields.forEach((configField) => {
         newConfigValues[configField.name] = configField.isShared
           ? oldConfigValues[configField.name]
           : configField.defaultValue;
@@ -193,7 +202,7 @@ const reducer = handleActions<AppState, any>(
       return {
         ...state,
         selectedLayoutId: action.payload.id,
-        configValues: newConfigValues
+        configValues: newConfigValues,
       };
     },
     [addUploadedObject.toString()]: (
@@ -207,10 +216,10 @@ const reducer = handleActions<AppState, any>(
           {
             id: nextCustomObjectId--,
             src: action.payload.src,
-            type: action.payload.type
-          }
+            type: action.payload.type,
+          },
         ],
-        selectedObjectIds: [nextCustomObjectId + 1]
+        selectedObjectIds: [nextCustomObjectId + 1],
       };
     },
     [addEmojiObject.toString()]: (
@@ -224,12 +233,12 @@ const reducer = handleActions<AppState, any>(
           {
             id: nextCustomObjectId--,
             src: action.payload.src,
-            type: "emoji"
-          }
+            type: "emoji",
+          },
         ],
-        selectedObjectIds: [nextCustomObjectId + 1]
+        selectedObjectIds: [nextCustomObjectId + 1],
       };
-    }
+    },
   },
   initState
 );

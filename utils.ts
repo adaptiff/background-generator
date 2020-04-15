@@ -1,7 +1,7 @@
 import { FillType } from "./types";
 import layouts from "./layouts";
 
-export const copyToClipboard = text => {
+export const copyToClipboard = (text) => {
   if (window["clipboardData"] && window["clipboardData"].setData) {
     // IE specific code path to prevent textarea being shown while dialog is visible.
     return window["clipboardData"].setData("Text", text);
@@ -25,16 +25,16 @@ export const copyToClipboard = text => {
   }
 };
 
-export const getDefaultConfigValues = layoutId => {
-  const layout = layouts.find(layout => layout.id === layoutId);
+export const getDefaultConfigValues = (layoutId) => {
+  const layout = layouts.find((layout) => layout.id === layoutId);
   const configValues = {};
-  layout.configFields.forEach(configField => {
+  layout.configFields.forEach((configField) => {
     configValues[configField.name] = configField.defaultValue;
   });
   return configValues;
 };
 
-export const deg2rad = angle => {
+export const deg2rad = (angle) => {
   return angle * (Math.PI / 180);
 };
 
@@ -67,15 +67,15 @@ export const applyColorToFabricElement = (color, elem) => {
     const gradientStart = angle2rect(color.angle, width, height);
     const gradientEnd = {
       x: width - gradientStart.x,
-      y: height - gradientStart.y
+      y: height - gradientStart.y,
     };
     let currentOffset = 0;
     const offsetStep = Math.floor(100 / (color.values.length - 1));
     const colorStops = [];
-    color.values.forEach(color => {
+    color.values.forEach((color) => {
       colorStops.push({
         offset: currentOffset / 100,
-        color: colorObjToString(color)
+        color: colorObjToString(color),
       });
       currentOffset += offsetStep;
     });
@@ -84,9 +84,9 @@ export const applyColorToFabricElement = (color, elem) => {
         x1: gradientStart.x,
         y1: gradientStart.y,
         x2: gradientEnd.x,
-        y2: gradientEnd.y
+        y2: gradientEnd.y,
       },
-      colorStops
+      colorStops,
     });
   } else if (color.type === FillType.Radial) {
     fabricColor = new window["fabric"].Gradient({
@@ -96,27 +96,27 @@ export const applyColorToFabricElement = (color, elem) => {
         x2: width / 2 + (color.xShift / 100) * width,
         y2: height / 2 + (color.yShift / 100) * height,
         r1: width / 2,
-        r2: 10
+        r2: 10,
       },
       type: "radial",
       colorStops: [
         {
           offset: 0,
-          color: colorObjToString(color.values[0])
+          color: colorObjToString(color.values[0]),
         },
         {
           offset: 1,
-          color: colorObjToString(color.values[1])
-        }
-      ]
+          color: colorObjToString(color.values[1]),
+        },
+      ],
     });
   }
-  if (elem.fill) {
-    elem.set("fill", fabricColor);
-    elem.set("stroke", null);
-  } else if (elem.stroke) {
+  if (elem.stroke) {
     elem.set("fill", null);
     elem.set("stroke", fabricColor);
+  } else {
+    elem.set("fill", fabricColor);
+    elem.set("stroke", null);
   }
 };
 
@@ -124,17 +124,17 @@ export const colorStopByColor = (position, rgbObj) => {
   return {
     offset: position,
     color: `rgba(${rgbObj.r}, ${rgbObj.g}, ${rgbObj.b})`,
-    opacity: rgbObj.a
+    opacity: rgbObj.a,
   };
 };
 
-export const colorObjToString = rgbObj => {
+export const colorObjToString = (rgbObj) => {
   return typeof rgbObj === "string"
     ? rgbObj
     : `rgba(${rgbObj.r}, ${rgbObj.g}, ${rgbObj.b}, ${rgbObj.a})`;
 };
 
-export const colorObjToCSSBackground = color => {
+export const colorObjToCSSBackground = (color) => {
   if (color.type === FillType.Solid) {
     return colorObjToString(color.values[0]);
   } else if (color.type === FillType.Linear) {
