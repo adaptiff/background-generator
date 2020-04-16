@@ -35,7 +35,6 @@ export const Canvas: React.FC<Props> = ({
 }) => {
   const canvasContainer = useRef<HTMLDivElement>();
 
-  console.log({ uploadedObjects });
   const selectedObjects = selectedObjectIds.map(id =>
     [...uploadedObjects, ...objects].find(item => item.id === id)
   );
@@ -253,6 +252,7 @@ function loadObjects(selectedObjects, callback) {
   }
 
   function createObjectFromImage(object) {
+    console.log(object.src);
     window["fabric"].Image.fromURL(object.src, function(img) {
       img.set({
         originX: "center",
@@ -287,13 +287,12 @@ function loadObjects(selectedObjects, callback) {
 }
 
 /*****************************************************************
- * Change Object Views
+ * Draw Layout
  ****************************************************************/
 function drawLayout(selectedObjects, configValues, configColors) {
-  const maxItems = Math.max(layoutItems.length, fabricObjects.length);
-
   window["fabricCanvas"].discardActiveObject();
 
+<<<<<<< HEAD
   for (let index = 0; index < maxItems; index++) {
     const layoutItem = layoutItems[index];
     let fabricObject = fabricObjects[index];
@@ -316,9 +315,25 @@ function drawLayout(selectedObjects, configValues, configColors) {
 
       break;
     }
+=======
+  //Delete remaining fabric objects
+  if (fabricObjects.length > layoutItems.length) {
+    const removedFabricObjects = fabricObjects.splice(
+      layoutItems.length,
+      fabricObjects.length - layoutItems.length
+    );
+    removedFabricObjects.forEach(fabricObject => {
+      window["fabricCanvas"].remove(fabricObject);
+    });
+>>>>>>> 4fc3c5c99bcbfa2545bcae8b1a7233c5c3e7f244
   }
 
-  renderAll();
+  //Create additional fabric objects
+  createObjects(fabricObjects.length, layoutItems.length, function() {
+    //Set for all fabric objects props from layout
+    setObjectsProps();
+    renderAll();
+  });
 
   function setPropsFromLayoutItem(fabricObject, item) {
     let itemWidth = item.width || configValues.objectSize;
@@ -355,16 +370,23 @@ function drawLayout(selectedObjects, configValues, configColors) {
     return loadedObjects[selectedObjects[currentObjectIndex].id];
   }
 
-  function createObject(item, itemIndex) {
+  function createObject(itemIndex, callback) {
     const currentLoadedObject = getCurrentLoadedObject(itemIndex);
+
+    callback = callback || function() {};
 
     if (!currentLoadedObject) {
       return false;
     }
 
+<<<<<<< HEAD
     //clone loaded object and add on canvas to layout position
     currentLoadedObject.clone(clonedLoadedObject => {
       setPropsFromLayoutItem(clonedLoadedObject, item);
+=======
+    //clone loaded object and add on canvas
+    currentLoadedObject.clone(clonedLoadedObject => {
+>>>>>>> 4fc3c5c99bcbfa2545bcae8b1a7233c5c3e7f244
       setCurrentColor(
         clonedLoadedObject,
         itemIndex,
@@ -373,9 +395,34 @@ function drawLayout(selectedObjects, configValues, configColors) {
       );
       fabricObjects[itemIndex] = clonedLoadedObject;
       window["fabricCanvas"] && window["fabricCanvas"].add(clonedLoadedObject);
+      callback(itemIndex);
     });
 
     return true;
+  }
+
+  function createObjects(startIndex, endIndex, callback) {
+    let created = 0;
+    callback = callback || function() {};
+    if (startIndex == endIndex) {
+      callback();
+      return;
+    }
+
+    for (let index = startIndex; index < endIndex; index++) {
+      createObject(index, function(itemIndex) {
+        created++;
+        if (created === endIndex - startIndex) {
+          callback();
+        }
+      });
+    }
+  }
+
+  function setObjectsProps() {
+    layoutItems.forEach(function(layoutItem, index) {
+      setPropsFromLayoutItem(fabricObjects[index], layoutItem);
+    });
   }
 }
 
