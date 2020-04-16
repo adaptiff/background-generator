@@ -1098,7 +1098,6 @@ export default [
         src: "/uploads/o/19.svg",
         type: "image/svg+xml"
       },
-      ,
       {
         id: -5,
         src: "/uploads/o/20.svg",

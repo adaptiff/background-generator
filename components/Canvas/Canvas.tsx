@@ -31,17 +31,18 @@ export const Canvas: React.FC<Props> = ({
   configColors,
   selectedObjectIds,
   selectedLayoutId,
-  uploadedObjects,
+  uploadedObjects
 }) => {
   const canvasContainer = useRef<HTMLDivElement>();
 
-  const selectedObjects = selectedObjectIds.map((id) =>
-    [...uploadedObjects, ...objects].find((item) => item.id === id)
+  console.log({ uploadedObjects });
+  const selectedObjects = selectedObjectIds.map(id =>
+    [...uploadedObjects, ...objects].find(item => item.id === id)
   );
 
   //componentDidMount
   useEffect(() => {
-    const handleClickOutside = (e) => {
+    const handleClickOutside = e => {
       const canvas = window["fabricCanvas"].upperCanvasEl;
       const clickedInside = canvas === e.target;
 
@@ -72,7 +73,7 @@ export const Canvas: React.FC<Props> = ({
     uploadedObjects,
     selectedObjectIds,
     configValues.withRandomObjectOrder,
-    configValues.currentRandomSnapshot,
+    configValues.currentRandomSnapshot
   ]);
 
   useEffect(() => {
@@ -91,7 +92,7 @@ export const Canvas: React.FC<Props> = ({
   }, [
     configColors,
     configValues.withRandomColor,
-    configValues.currentRandomSnapshot,
+    configValues.currentRandomSnapshot
   ]);
 
   return (
@@ -157,7 +158,7 @@ const initFabric = ({ width, height, canvasContainer, configColors }) => {
     width,
     height,
     maxWidth: containerRect.width - 70 * 2,
-    maxHeight: containerRect.height - 70 * 2,
+    maxHeight: containerRect.height - 70 * 2
   });
 
   canvasContainer.current.innerHTML = `<div id="canvas-scale-wrapper"><canvas id="canvas"></canvas></div>`;
@@ -176,7 +177,7 @@ const initFabric = ({ width, height, canvasContainer, configColors }) => {
     left: 0,
     top: 0,
     selectable: false,
-    hoverCursor: "default",
+    hoverCursor: "default"
   });
   applyColorToFabricElement(configColors.backgroundColor, canvasBackgroundRect);
 
@@ -219,7 +220,7 @@ function setCurrentColor(fabricObject, index, configColors, withRandomColor) {
 function loadObjects(selectedObjects, callback) {
   let loadedObjectsCount = 0;
 
-  selectedObjects.forEach((selectedObject) => {
+  selectedObjects.forEach(selectedObject => {
     if (selectedObject.type?.includes("image")) {
       if (selectedObject.type?.includes("svg")) {
         createObjectFromSvg(selectedObject);
@@ -242,7 +243,7 @@ function loadObjects(selectedObjects, callback) {
 
       loadedObjects[object.id].set({
         originX: "center",
-        originY: "center",
+        originY: "center"
       });
 
       if (++loadedObjectsCount === selectedObjects.length && callback) {
@@ -255,7 +256,7 @@ function loadObjects(selectedObjects, callback) {
     window["fabric"].Image.fromURL(object.src, function(img) {
       img.set({
         originX: "center",
-        originY: "center",
+        originY: "center"
       });
 
       loadedObjects[object.id] = img;
@@ -269,7 +270,7 @@ function loadObjects(selectedObjects, callback) {
   function createObjectFromText(object) {
     var text = new window["fabric"].Text(object.src, {
       originX: "center",
-      originY: "center",
+      originY: "center"
     });
 
     loadedObjects[object.id] = text;
@@ -309,7 +310,7 @@ function drawLayout(selectedObjects, configValues, configColors) {
         index,
         fabricObjects.length
       );
-      removerFabricObjects.forEach((fabricObject) => {
+      removerFabricObjects.forEach(fabricObject => {
         window["fabricCanvas"].remove(fabricObject);
       });
 
@@ -328,7 +329,7 @@ function drawLayout(selectedObjects, configValues, configColors) {
       left: item.left,
       top: item.top,
       angle: item.angle || 0,
-      blur: item.blur,
+      blur: item.blur
     });
 
     return fabricObject;
@@ -362,7 +363,7 @@ function drawLayout(selectedObjects, configValues, configColors) {
     }
 
     //clone loaded object and add on canvas to layout position
-    currentLoadedObject.clone((clonedLoadedObject) => {
+    currentLoadedObject.clone(clonedLoadedObject => {
       setPropsFromLayoutItem(clonedLoadedObject, item);
       setCurrentColor(
         clonedLoadedObject,
@@ -385,14 +386,14 @@ function calcLayout(width, height, configValues, selectedLayoutId) {
   const paddingX = width * (configValues.padding / 100);
   const paddingY = height * (configValues.padding / 100);
 
-  const layout = layouts.find((l) => l.id === selectedLayoutId);
+  const layout = layouts.find(l => l.id === selectedLayoutId);
   layoutItems = layout.generate(
     width - 2 * paddingX,
     height - 2 * paddingY,
     configValues
   );
 
-  layoutItems.forEach((item) => {
+  layoutItems.forEach(item => {
     if (item.width) {
       item.width = Math.max(item.width, 1);
     }
