@@ -10,6 +10,9 @@ export interface Props {
 export const ImageUpload: React.FC<Props> = ({ addUploadedObject }) => {
   const onFileChange = e => {
     const file = e.target.files[0];
+    if (!file || !window["URL"] || !window["URL"].createObjectURL) {
+      return;
+    }
     const objectURL = window["URL"].createObjectURL(file);
     addUploadedObject({ src: objectURL, type: file.type });
     const fileReader = new FileReader();

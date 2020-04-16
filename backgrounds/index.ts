@@ -1109,5 +1109,185 @@ export default [
         type: "image/svg+xml"
       }
     ]
+  },
+  {
+    id: 25,
+    canvasWidth: 600,
+    canvasHeight: 600,
+    selectedLayoutId: 5,
+    selectedObjectIds: [-4, -2, -1, -3],
+    configValues: {
+      objectSize: 31,
+      explosionForce: 20,
+      cellWidth: 240,
+      cellPadding: 10,
+      padding: 0,
+      withRandomSize: true,
+      randomizeSizeStrength: 11.1,
+      withRotate: false,
+      withBlur: false,
+      randomizeBlurStrength: 5,
+      withRandomColor: false,
+      withRandomObjectOrder: true,
+      currentRandomSnapshot: 0.6163846554563046
+    },
+    uploadedObjects: [
+      {
+        id: -1,
+        src: "/uploads/5.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -2,
+        src: "/uploads/6.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -3,
+        src: "/uploads/9.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -4,
+        src: "/uploads/10.svg",
+        type: "image/svg+xml"
+      }
+    ],
+    configColors: {
+      backgroundColor: { type: "solid", values: ["#fff", "#fff"] },
+      objectColors: [
+        {
+          type: "linear",
+          values: ["#fff", "#000"],
+          angle: 45
+        }
+      ]
+    }
+  },
+  {
+    id: 26,
+    canvasWidth: 600,
+    canvasHeight: 600,
+    selectedLayoutId: 5,
+    selectedObjectIds: [-4, -2, -1, -3],
+    configValues: {
+      objectSize: 31,
+      explosionForce: 20,
+      cellWidth: 240,
+      cellPadding: 10,
+      padding: 0,
+      withRandomSize: true,
+      randomizeSizeStrength: 11.1,
+      withRotate: false,
+      withBlur: false,
+      randomizeBlurStrength: 5,
+      withRandomColor: false,
+      withRandomObjectOrder: true,
+      currentRandomSnapshot: 0.6163846554563046
+    },
+    uploadedObjects: [
+      {
+        id: -1,
+        src: "/uploads/5.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -2,
+        src: "/uploads/6.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -3,
+        src: "/uploads/9.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -4,
+        src: "/uploads/10.svg",
+        type: "image/svg+xml"
+      }
+    ],
+    configColors: {
+      backgroundColor: { type: "solid", values: ["#efd7e7", "#efd7e7"] },
+      objectColors: [
+        {
+          type: "linear",
+          values: ["#edbdd7", "#f590bb", "#f7c1bf", "#c8ddd2"],
+          angle: 45
+        },
+        { type: "linear", values: ["#89b4eb", "#edbdd7"], angle: 45 },
+        { type: "linear", values: ["#c8ddd2", "#f7c1bf"], angle: 45 },
+        { type: "linear", values: ["#f7c1bf", "#edbdd7"], angle: 45 }
+      ]
+    }
+  },
+  {
+    id: 27,
+    canvasWidth: 600,
+    canvasHeight: 600,
+    selectedLayoutId: 5,
+    selectedObjectIds: [-1, -2, -3, -4, -5, -6],
+    configValues: {
+      objectSize: 31,
+      explosionForce: 20,
+      cellWidth: 240,
+      cellPadding: 10,
+      padding: 0,
+      withRandomSize: true,
+      randomizeSizeStrength: 11.1,
+      withRotate: false,
+      withBlur: false,
+      randomizeBlurStrength: 5,
+      withRandomColor: false,
+      withRandomObjectOrder: true,
+      currentRandomSnapshot: 0.6163846554563046
+    },
+    configColors: {
+      backgroundColor: {
+        type: "solid",
+        values: [{ r: 61, g: 0, b: 129, a: 1 }, "#efd7e7"]
+      },
+      objectColors: [
+        {
+          type: "linear",
+          values: ["#3AD5FA", "#3F5CAB", "#3d0081"],
+          angle: 45
+        },
+        { type: "linear", values: ["#E5CB23", "#3d0081"], angle: 45 },
+        { type: "linear", values: ["#3d0081", "#FF0097"], angle: 45 }
+      ]
+    },
+    uploadedObjects: [
+      {
+        id: -1,
+        src: "/uploads/5.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -2,
+        src: "/uploads/8.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -3,
+        src: "/uploads/10.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -4,
+        src: "/uploads/11.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -5,
+        src: "/uploads/12.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -6,
+        src: "/uploads/13.svg",
+        type: "image/svg+xml"
+      }
+    ]
   }
 ];

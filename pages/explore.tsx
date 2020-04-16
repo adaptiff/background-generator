@@ -29,7 +29,12 @@ export const Explore: React.FC<Props> = props => {
               <Card
                 key={index}
                 hoverable
-                cover={<img src={`/background_thumbs/${background.id}.png`} />}
+                cover={
+                  <img
+                    loading="lazy"
+                    src={`/background_thumbs/${background.id}.png`}
+                  />
+                }
                 className={s["card"]}
                 onClick={() => {
                   location.href = `/background/${background.id}`;
