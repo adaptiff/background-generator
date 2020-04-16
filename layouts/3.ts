@@ -1,5 +1,5 @@
 import { ConfigFieldType, Layout } from "../types";
-import { beforeAll, beforeBooleans } from "./_shared";
+import { beforeAll, beforeBooleans, afterAll } from "./_shared";
 import { deg2rad } from "../utils";
 
 export default {
@@ -31,7 +31,8 @@ export default {
       minValue: 1,
       maxValue: 100
     },
-    ...beforeBooleans
+    ...beforeBooleans,
+    ...afterAll
   ],
   generate: (width, height, configValues) => {
     const {
@@ -88,7 +89,8 @@ export default {
 
         if (itemWidth >= 1) {
           items.push({
-            left: areaCenterPoint.left + circleRadius * Math.cos(deg2rad(angle)),
+            left:
+              areaCenterPoint.left + circleRadius * Math.cos(deg2rad(angle)),
             top: areaCenterPoint.top + circleRadius * Math.sin(deg2rad(angle)),
             width: baseWidth * itemSizeIncrement,
             height: baseHeight * itemSizeIncrement

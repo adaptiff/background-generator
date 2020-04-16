@@ -7,6 +7,7 @@ import BorderFrame from "../../BorderFrame";
 import { ImageObject } from "../../../types";
 import AddEmojiButton from "./AddEmojiButton";
 import useCollapse from "../../../hooks/useCollapse";
+import IconmnstrButton from "./IconmnstrButton";
 
 import s from "./Objects.less";
 
@@ -36,11 +37,7 @@ export const Objects: React.FC<Props> = ({
         isActive={isSelected}
         key={index}
         className={classnames(s["item-thumb"])}
-        onClick={() =>
-          isSelected
-            ? deselectObject({ id: object.id })
-            : selectAsOnlyObject({ id: object.id })
-        }
+        onClick={() => !isSelected && selectAsOnlyObject({ id: object.id })}
       >
         {!isSelected && (
           <Button
@@ -50,6 +47,18 @@ export const Objects: React.FC<Props> = ({
             size="small"
             onClick={e => {
               selectObject({ id: object.id });
+              e.stopPropagation();
+            }}
+          />
+        )}
+        {isSelected && selectedObjectIds.length > 1 && (
+          <Button
+            className={s["minus-button"]}
+            shape="circle"
+            icon="minus"
+            size="small"
+            onClick={e => {
+              deselectObject({ id: object.id });
               e.stopPropagation();
             }}
           />
@@ -75,7 +84,9 @@ export const Objects: React.FC<Props> = ({
         <ImageUploadButton />
         {allObjects.slice(0, 3).map(renderObject)}
         {!isCollapsed && <AddEmojiButton />}
-        {!isCollapsed && allObjects.slice(3).map(renderObject)}
+        {!isCollapsed && allObjects.slice(3, 6).map(renderObject)}
+        {!isCollapsed && <IconmnstrButton />}
+        {!isCollapsed && allObjects.slice(6).map(renderObject)}
       </div>
       {collapseButton}
     </Form.Item>

@@ -22,11 +22,11 @@ export const NumberInput: React.FC<Props> = ({ configFieldName }) => {
     shallowEqual
   );
 
-  const setConfigValueFromInput = e =>
+  const setConfigValueFromInput = (e) =>
     dispatch(
       setConfigValue({
         configFieldName,
-        configValue: +e.target.value
+        configValue: +e.target.value,
       })
     );
 
@@ -34,13 +34,13 @@ export const NumberInput: React.FC<Props> = ({ configFieldName }) => {
     <div className={s["config-input-wrapper"]}>
       <Input
         key={configValue}
-        ref={node => {
+        ref={(node) => {
           refs[configFieldName] = node;
         }}
         defaultValue={configValue}
         className={s["config-input"]}
         onBlur={setConfigValueFromInput}
-        onPressEnter={e => {
+        onPressEnter={(e) => {
           setConfigValueFromInput(e);
           setTimeout(() => {
             refs[configFieldName].select();
@@ -48,20 +48,20 @@ export const NumberInput: React.FC<Props> = ({ configFieldName }) => {
         }}
       />
       <Slider
-        min={configField.minValue}
-        max={configField.maxValue}
+        min={Math.min(configValue, configField.minValue)}
+        max={Math.max(configValue, configField.maxValue)}
         step={configField.step}
         value={configValue}
         tipFormatter={null}
-        onChange={value =>
+        onChange={(value) =>
           dispatch(
             setConfigValue({
               configFieldName,
-              configValue: value
+              configValue: value,
             })
           )
         }
-        onAfterChange={value => {
+        onAfterChange={(value) => {
           if (value === configField.maxValue) {
             refs[configFieldName].select();
           }

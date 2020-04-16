@@ -3,6 +3,10 @@ import { Color } from "./types";
 
 export const dumpState = createAction("DUMP_STATE");
 
+export const overrideState = createAction<{
+  newState;
+}>("OVERRIDE_STATE");
+
 export const refreshRandomSnapshot = createAction("REFRESH_RANDOM_SNAPSHOT");
 
 export const setCanvasDimensions = createAction<{
@@ -32,6 +36,11 @@ export const setConfigValue = createAction<{
   configFieldName: string;
   configValue: any;
 }>("SET_CONFIG_VALUE");
+
+export const setLayoutMaxValueOverride = createAction<{
+  configFieldName: string;
+  configValue: any;
+}>("SET_LAYOUT_MAX_VALUE_OVERRIDE");
 
 export const addUploadedObject = createAction<{ src: string; type: string }>(
   "ADD_UPLOADED_OBJECT"

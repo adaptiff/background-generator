@@ -1,5 +1,5 @@
 import { ConfigFieldType } from "../types";
-import { beforeAll, beforeBooleans } from "./_shared";
+import { beforeAll, beforeBooleans, afterAll } from "./_shared";
 import { deg2rad, rotateItemCoords } from "../utils";
 
 export default {
@@ -11,7 +11,7 @@ export default {
       name: "itemMargin",
       label: "Item Margin",
       type: ConfigFieldType.NumberInput,
-      defaultValue: 20,
+      defaultValue: 70,
       minValue: 10,
       maxValue: 100
     },
@@ -37,7 +37,7 @@ export default {
       type: ConfigFieldType.NumberInput,
       defaultValue: 3,
       minValue: 3,
-      maxValue: 20
+      maxValue: 10
     },
     {
       name: "sizeDecrement",
@@ -47,7 +47,8 @@ export default {
       minValue: 1,
       maxValue: 100
     },
-    ...beforeBooleans
+    ...beforeBooleans,
+    ...afterAll
   ],
   generate: (width, height, configValues) => {
     const {
@@ -68,9 +69,7 @@ export default {
     //const figureInnerAngle = (180 * (figureAngles - 2)) / figureAngles;
     const figureCenterAngle = 360 / figureAngles;
     const figureHalfSectorTg = Math.tan(deg2rad(figureCenterAngle / 2));
-    const figureHalfSectorCos = Math.cos(
-      deg2rad(figureCenterAngle / 2)
-    );
+    const figureHalfSectorCos = Math.cos(deg2rad(figureCenterAngle / 2));
 
     //определяем большую и меньшую стороны
     let bigSide = width;
@@ -101,8 +100,7 @@ export default {
 
       //вращение на угол сектора принимаем за вращение на 360
       const rotatePercent = (360 * figureRotate) / figureCenterAngle;
-      const topDiff =
-        (radiusDiff / 2) * Math.cos(deg2rad(rotatePercent));
+      const topDiff = (radiusDiff / 2) * Math.cos(deg2rad(rotatePercent));
 
       areaCenterPoint.top = height / 2 + topDiff;
     }
@@ -116,7 +114,6 @@ export default {
     let items = [];
     while (figureSmallRadius < squareRadius) {
       const figureSide = figureSmallRadius * figureHalfSectorTg * 2;
-
 
       let itemsOnSide = Math.round(figureSide / itemMargin);
       const correctItemsMargin = figureSide / itemsOnSide;

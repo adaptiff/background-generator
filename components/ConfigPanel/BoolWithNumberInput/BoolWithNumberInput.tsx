@@ -1,18 +1,19 @@
 import React from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
-import { Switch, Button } from "antd";
+import { Switch, Button, Tooltip } from "antd";
 import NumberInput from "../NumberInput";
 import { setConfigValue, refreshRandomSnapshot } from "../../../actions";
 import { getConfigValue } from "../../../selectors";
 
-import s from "./RandomnessInput.less";
+import s from "./BoolWithNumberInput.less";
 
 export interface Props {
   boolConfigFieldName: string;
   strengthConfigFieldName?: string;
+  withRandomness?: boolean;
 }
 
-export const RandomnessInput: React.FC<Props> = ({
+export const BoolWithNumberInput: React.FC<Props> = ({
   boolConfigFieldName,
   strengthConfigFieldName
 }) => {
@@ -25,6 +26,7 @@ export const RandomnessInput: React.FC<Props> = ({
     <>
       <div className={s["top-row"]}>
         <Switch
+          key={`${boolConfigFieldName}-${withRandomness}`}
           defaultChecked={withRandomness}
           className={s["switch"]}
           onChange={() =>
@@ -36,15 +38,6 @@ export const RandomnessInput: React.FC<Props> = ({
             )
           }
         />
-        {withRandomness && (
-          <Button
-            icon="reload"
-            className={s["refresh-button"]}
-            onClick={() => dispatch(refreshRandomSnapshot())}
-          >
-            Refresh
-          </Button>
-        )}
       </div>
       {withRandomness && strengthConfigFieldName && (
         <NumberInput configFieldName={strengthConfigFieldName} />
@@ -52,6 +45,6 @@ export const RandomnessInput: React.FC<Props> = ({
     </>
   );
 };
-RandomnessInput.displayName = "RandomnessInput";
+BoolWithNumberInput.displayName = "BoolWithNumberInput";
 
-export default RandomnessInput;
+export default BoolWithNumberInput;

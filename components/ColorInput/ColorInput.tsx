@@ -127,7 +127,7 @@ export const ColorInput: React.FC<Props> = ({ color, className, setColor }) => {
               />
             )}
             {!isSelectingFromPredefined && (
-              <Form layout="vertical">
+              <Form layout="vertical" className={s["form"]}>
                 {color.type === FillType.Linear && (
                   <Form.Item label="Angle" className={s["form-item"]}>
                     <Slider
@@ -171,7 +171,7 @@ export const ColorInput: React.FC<Props> = ({ color, className, setColor }) => {
             )}
             <div className={s["predefined-colors"]}>
               {getPredefinedColors()
-                .slice(0, isSelectingFromPredefined ? 25 : 4)
+                .slice(0, isSelectingFromPredefined ? undefined : 4)
                 .map((color, index) => (
                   <div
                     key={index}

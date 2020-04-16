@@ -12,7 +12,7 @@ import LICounter from "./_licounter";
 import "antd/dist/antd.css";
 import s from "./index.less";
 
-const IndexPage = () => {
+export const IndexPage = () => {
   return (
     <>
       <Head />
@@ -26,6 +26,12 @@ const IndexPage = () => {
                   <Button icon="appstore" href="/explore">
                     Explore
                   </Button>
+                  <Button
+                    className={s["create-new-button"]}
+                    shape="circle"
+                    icon="plus"
+                    href="/"
+                  />
                 </Col>
                 <Col span={8} className={s["dimensions-area"]}>
                   <Dimensions />
