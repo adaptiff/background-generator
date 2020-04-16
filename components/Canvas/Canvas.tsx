@@ -292,30 +292,6 @@ function loadObjects(selectedObjects, callback) {
 function drawLayout(selectedObjects, configValues, configColors) {
   window["fabricCanvas"].discardActiveObject();
 
-<<<<<<< HEAD
-  for (let index = 0; index < maxItems; index++) {
-    const layoutItem = layoutItems[index];
-    let fabricObject = fabricObjects[index];
-
-    if (layoutItem) {
-      if (fabricObject) {
-        setPropsFromLayoutItem(fabricObject, layoutItem);
-      } else {
-        createObject(layoutItem, index);
-      }
-    } else {
-      //all layout items already created. Delete remaining fabric objects
-      const removerFabricObjects = fabricObjects.splice(
-        index,
-        fabricObjects.length
-      );
-      removerFabricObjects.forEach(fabricObject => {
-        window["fabricCanvas"].remove(fabricObject);
-      });
-
-      break;
-    }
-=======
   //Delete remaining fabric objects
   if (fabricObjects.length > layoutItems.length) {
     const removedFabricObjects = fabricObjects.splice(
@@ -325,7 +301,6 @@ function drawLayout(selectedObjects, configValues, configColors) {
     removedFabricObjects.forEach(fabricObject => {
       window["fabricCanvas"].remove(fabricObject);
     });
->>>>>>> 4fc3c5c99bcbfa2545bcae8b1a7233c5c3e7f244
   }
 
   //Create additional fabric objects
@@ -379,14 +354,8 @@ function drawLayout(selectedObjects, configValues, configColors) {
       return false;
     }
 
-<<<<<<< HEAD
-    //clone loaded object and add on canvas to layout position
-    currentLoadedObject.clone(clonedLoadedObject => {
-      setPropsFromLayoutItem(clonedLoadedObject, item);
-=======
     //clone loaded object and add on canvas
     currentLoadedObject.clone(clonedLoadedObject => {
->>>>>>> 4fc3c5c99bcbfa2545bcae8b1a7233c5c3e7f244
       setCurrentColor(
         clonedLoadedObject,
         itemIndex,
