@@ -313,15 +313,15 @@ function drawLayout(selectedObjects, configValues, configColors) {
   function setPropsFromLayoutItem(fabricObject, item) {
     let itemWidth = item.width || configValues.objectSize;
 
-    fabricObject.scaleToWidth(itemWidth);
-
     fabricObject.set({
       left: item.left,
       top: item.top,
       angle: item.angle || 0,
-      blur: item.blur
+      blur: item.blur,
+      scaleX: itemWidth / fabricObject.width,
+      scaleY: itemWidth / fabricObject.width
     });
-
+    
     return fabricObject;
   }
 
@@ -390,6 +390,9 @@ function drawLayout(selectedObjects, configValues, configColors) {
 
   function setObjectsProps() {
     layoutItems.forEach(function(layoutItem, index) {
+      if (index === 0) {
+        console.log(fabricObjects[index]);
+      }
       setPropsFromLayoutItem(fabricObjects[index], layoutItem);
     });
   }
