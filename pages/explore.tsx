@@ -26,6 +26,7 @@ export const Explore: React.FC<Props> = props => {
           </Header>
           <div className={s["grid"]}>
             {backgrounds.map((background, index) => (
+              /* tslint:disable */
               <Card
                 key={index}
                 hoverable
@@ -35,6 +36,7 @@ export const Explore: React.FC<Props> = props => {
                   location.href = `/background/${background.id}`;
                 }}
               />
+              /* tslint:enable */
             ))}
           </div>
         </div>

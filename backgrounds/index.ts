@@ -1289,5 +1289,193 @@ export default [
         type: "image/svg+xml"
       }
     ]
+  },
+  {
+    id: 28,
+    canvasWidth: 600,
+    canvasHeight: 600,
+    selectedLayoutId: 1,
+    selectedObjectIds: [3],
+    configValues: {
+      objectSize: 9,
+      objectDistance: 44,
+      padding: 10,
+      withRandomSize: true,
+      randomizeSizeStrength: 3.1,
+      withRandomPosition: false,
+      randomizePositionStrength: 10,
+      withRotation: false,
+      rotationStrength: 45,
+      withRandomRotation: false,
+      withBlur: false,
+      blurStrength: 5,
+      withRandomColor: false,
+      withRandomObjectOrder: false
+    },
+    configColors: {
+      backgroundColor: { type: "solid", values: ["#fff", "#ccc"] },
+      objectColors: [{ type: "solid", values: ["#000", "#ccc"] }]
+    }
+  },
+  {
+    id: 29,
+    canvasWidth: 600,
+    canvasHeight: 600,
+    selectedLayoutId: 7,
+    selectedObjectIds: [-1],
+    configValues: {
+      objectSize: 32,
+      objectDistance: 97,
+      padding: 10,
+      withRandomSize: true,
+      randomizeSizeStrength: 3.6,
+      withRandomColor: false,
+      withRandomObjectOrder: false,
+      currentRandomSnapshot: 0.17625711918409737
+    },
+    configColors: {
+      backgroundColor: {
+        type: "solid",
+        values: [{ r: 44, g: 37, b: 53, a: 1 }, "#ccc"]
+      },
+      objectColors: [{ type: "solid", values: ["#000", "#ccc"] }]
+    },
+    uploadedObjects: [
+      {
+        id: -1,
+        src: "/uploads/f/1.svg",
+        type: "image/svg+xml"
+      }
+    ]
+  },
+  {
+    id: 30,
+    canvasWidth: 600,
+    canvasHeight: 600,
+    selectedLayoutId: 5,
+    selectedObjectIds: [
+      -17,
+      -1,
+      -2,
+      -3,
+      -4,
+      -5,
+      -6,
+      -9,
+      -7,
+      -10,
+      -11,
+      -12,
+      -13,
+      -14,
+      -15,
+      -16
+    ],
+    configValues: {
+      objectSize: 30,
+      explosionForce: 58,
+      cellWidth: 78,
+      cellPadding: 10,
+      padding: 10,
+      withRandomSize: true,
+      randomizeSizeStrength: 4,
+      withRotate: true,
+      withBlur: true,
+      randomizeBlurStrength: 5,
+      withRandomColor: false,
+      withRandomObjectOrder: false,
+      currentRandomSnapshot: 0.6896327827879918
+    },
+    configColors: {
+      backgroundColor: {
+        type: "solid",
+        values: [{ r: 44, g: 37, b: 53, a: 1 }, "#ccc"]
+      },
+      objectColors: [
+        { type: "solid", values: [{ r: 234, g: 143, b: 148, a: 1 }, "#ccc"] }
+      ]
+    },
+    uploadedObjects: [
+      {
+        id: -1,
+        src: "/uploads/f/1.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -2,
+        src: "/uploads/f/2.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -3,
+        src: "/uploads/f/3.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -4,
+        src: "/uploads/f/4.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -5,
+        src: "/uploads/f/5.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -6,
+        src: "/uploads/f/6.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -7,
+        src: "/uploads/f/7.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -9,
+        src: "/uploads/f/9.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -10,
+        src: "/uploads/f/10.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -11,
+        src: "/uploads/f/11.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -12,
+        src: "/uploads/f/12.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -13,
+        src: "/uploads/f/13.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -14,
+        src: "/uploads/f/14.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -15,
+        src: "/uploads/f/15.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -16,
+        src: "/uploads/f/16.svg",
+        type: "image/svg+xml"
+      },
+      {
+        id: -17,
+        src: "/uploads/f/17.svg",
+        type: "image/svg+xml"
+      }
+    ]
   }
 ];

@@ -40,6 +40,21 @@ export default {
       step: 0.1,
       maxValue: 20
     },
+    {
+      name: "withRotation",
+      label: "Rotate Objects",
+      type: ConfigFieldType.BoolWithNumberInput,
+      strengthConfigFieldName: "rotationStrength",
+      withRandomness: false,
+      defaultValue: false
+    },
+    {
+      type: ConfigFieldType.Hidden,
+      name: "rotationStrength",
+      defaultValue: 45,
+      minValue: 0,
+      maxValue: 360
+    },
     ...afterAll
   ],
   generate: (width, height, configValues) => {
@@ -48,7 +63,9 @@ export default {
       rowCount,
       objectSize,
       withRandomSize,
-      randomizeSizeStrength
+      randomizeSizeStrength,
+      withRotation,
+      rotationStrength
     } = configValues;
 
     const px = width / columnCount;
@@ -65,7 +82,11 @@ export default {
           width *= scale;
           height *= scale;
         }
-        items.push({ top, left, width, height });
+        let angle = 0;
+        if (withRotation) {
+          angle = rotationStrength;
+        }
+        items.push({ top, left, width, height, angle });
       }
     }
 
