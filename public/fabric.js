@@ -16617,7 +16617,7 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, /** @lends fabric.Stati
     _prepareCtxFilterValue: function(key, value){
 
       if (key === 'blur') {
-        value = value + 'px';
+        value = (value * this.scaleX) + 'px';
       }
 
       return value;
@@ -18912,9 +18912,9 @@ fabric.util.object.extend(fabric.Object.prototype, /** @lends fabric.Object.prot
       //generate blur filter
       if (this.blur) {
         //scale blur for reduced svg objects
-        var blur = this.blur / this.scaleX,
-            paddingX = (this.blur / bb.width) * 100 * 4,
-            paddingY = (this.blur / bb.height) * 100 * 4,
+        var blur = this.blur,
+            paddingX = (this.blurPadding / this.width) * 100 * 4,
+            paddingY = (this.blurPadding / this.height) * 100 * 4,
             width = 100 + (paddingX * 2),
             height = 100 + (paddingY * 2);
 
