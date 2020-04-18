@@ -582,7 +582,7 @@ export default [
     selectedLayoutId: 1,
     selectedObjectIds: [-1],
     configValues: {
-      objectSize: 100,
+      objectSize: 86,
       objectDistance: 88,
       padding: 10,
       withRandomSize: false,

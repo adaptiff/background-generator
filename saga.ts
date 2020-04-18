@@ -56,7 +56,7 @@ function* overrideStateSaga(action) {
   configFields.forEach((configField) => {
     if (
       configField.maxValue &&
-      configValues[configField.name] > configField.maxValue
+      configValues[configField.name] >= configField.maxValue
     ) {
       actions.push(
         setLayoutMaxValueOverride({
