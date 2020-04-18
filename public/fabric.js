@@ -5769,7 +5769,8 @@ fabric.warn = console.warn;
         opacity:              'opacity',
         'clip-path':          'clipPath',
         'clip-rule':          'clipRule',
-        'vector-effect':      'strokeUniform'
+        'vector-effect':      'strokeUniform',
+        filter: 'filter'
       },
 
       colorAttributes = {
@@ -5786,6 +5787,7 @@ fabric.warn = console.warn;
 
   fabric.cssRules = { };
   fabric.gradientDefs = { };
+  fabric.blurDefs = { };
   fabric.clipPaths = { };
 
   function normalizeAttr(attr) {
@@ -6424,13 +6426,16 @@ fabric.warn = console.warn;
         return fabric.svgValidTagNamesRegEx.test(el.nodeName.replace('svg:', ''));
       });
     });
+    fabric.blurDefs[svgUid] = fabric.getBlurDefs(doc);
     fabric.gradientDefs[svgUid] = fabric.getGradientDefs(doc);
     fabric.cssRules[svgUid] = fabric.getCSSRules(doc);
     fabric.clipPaths[svgUid] = clipPaths;
+
     // Precedence of rules:   style > class > attribute
     fabric.parseElements(elements, function(instances, elements) {
       if (callback) {
         callback(instances, options, elements, descendants);
+        delete fabric.blurDefs[svgUid];
         delete fabric.gradientDefs[svgUid];
         delete fabric.cssRules[svgUid];
         delete fabric.clipPaths[svgUid];
@@ -6531,6 +6536,23 @@ fabric.warn = console.warn;
         gradientDefs[el.getAttribute('id')] = el;
       }
       return gradientDefs;
+    },
+
+
+    getBlurDefs: function(doc) {
+      var tagArray = ['filter'], elList = _getMultipleNodes(doc, tagArray), el, j = 0, blursDefs = { }, blurEl, blur;
+      j = elList.length;
+      while (j--) {
+        el = elList[j];
+        if (el.getElementsByTagName('feMerge').length) {
+          continue;
+        }
+
+        blurEl = el.getElementsByTagName('feGaussianBlur')[0];
+        blur = blurEl.getAttribute('stdDeviation');
+        blursDefs[el.getAttribute('id')] = blur / 0.8;
+      }
+      return blursDefs;
     },
 
     /**
@@ -6850,6 +6872,7 @@ fabric.ElementsParser = function(elements, callback, options, reviver, parsingOp
       var _options;
       _this.resolveGradient(obj, el, 'fill');
       _this.resolveGradient(obj, el, 'stroke');
+      _this.resolveBlur(obj, el);
       if (obj instanceof fabric.Image && obj._originalElement) {
         _options = obj.parsePreserveAspectRatioAttribute(el);
       }
@@ -6878,6 +6901,33 @@ fabric.ElementsParser = function(elements, callback, options, reviver, parsingOp
       var opacityAttr = el.getAttribute(property + '-opacity');
       var gradient = fabric.Gradient.fromElement(gradientDef, obj, opacityAttr, this.options);
       obj.set(property, gradient);
+    }
+  };
+
+  proto.resolveBlur = function(obj, el) {
+    var blur = 0,
+        parent = el,
+        regexUrl = /^url\(['"]?#([^'"]+)['"]?\)/,
+        filterAttr, id;
+
+    while (parent && parent.getAttribute) {
+      filterAttr = parent.getAttribute('filter');
+      id = '';
+
+      if (filterAttr && regexUrl.test(filterAttr)) {
+        id = filterAttr.match(regexUrl)[1];
+      }
+
+      if (id && fabric.blurDefs[this.svgUid][id]) {
+        blur += fabric.blurDefs[this.svgUid][id];
+      }
+
+      parent = parent.parentNode;
+    }
+
+    if (blur) {
+      obj.set('blur', blur);
+      obj.set('origBlur', blur);
     }
   };
 
@@ -9238,7 +9288,6 @@ fabric.ElementsParser = function(elements, callback, options, reviver, parsingOp
         if (typeof opacity !== 'undefined') {
           color = new fabric.Color(color).setAlpha(opacity).toRgba();
         }
-
         gradient.addColorStop(offset, color);
       }
 
@@ -16136,6 +16185,9 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, /** @lends fabric.Stati
      */
     inverted: false,
 
+    blur: 0,
+    origBlur: 0,
+
     /**
      * Meaningful ONLY when the object is used as clipPath.
      * if true, the clipPath will have its top and left relative to canvas, and will
@@ -16272,7 +16324,7 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, /** @lends fabric.Stati
       var canvas = this._cacheCanvas,
           dims = this._limitCacheSize(this._getCacheCanvasDimensions()),
           minCacheSize = fabric.minCacheSideLimit,
-          width = dims.width, height = dims.height, drawingWidth, drawingHeight,
+          width = dims.width + this.blur * 2, height = dims.height + this.blur * 2, drawingWidth, drawingHeight,
           zoomX = dims.zoomX, zoomY = dims.zoomY,
           dimensionsChanged = width !== this.cacheWidth || height !== this.cacheHeight,
           zoomChanged = this.zoomX !== zoomX || this.zoomY !== zoomY,
@@ -16303,8 +16355,8 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, /** @lends fabric.Stati
         drawingHeight = dims.y / 2;
         this.cacheTranslationX = Math.round(canvas.width / 2 - drawingWidth) + drawingWidth;
         this.cacheTranslationY = Math.round(canvas.height / 2 - drawingHeight) + drawingHeight;
-        this.cacheWidth = width;
-        this.cacheHeight = height;
+        this.cacheWidth = width + this.blur * 2;
+        this.cacheHeight = height + this.blur * 2;
         this._cacheContext.translate(this.cacheTranslationX, this.cacheTranslationY);
         this._cacheContext.scale(zoomX, zoomY);
         this.zoomX = zoomX;
