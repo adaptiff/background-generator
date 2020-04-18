@@ -55,7 +55,6 @@ export const Canvas: React.FC<Props> = ({
 
     //componentWillUnmount
     return () => {
-      console.log("componentDidUnmount");
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
@@ -252,7 +251,6 @@ function loadObjects(selectedObjects, callback) {
   }
 
   function createObjectFromImage(object) {
-    console.log(object.src);
     window["fabric"].Image.fromURL(object.src, function(img) {
       img.set({
         originX: "center",
@@ -316,12 +314,16 @@ function drawLayout(selectedObjects, configValues, configColors) {
     fabricObject.set({
       left: item.left,
       top: item.top,
+      blur: fabricObject.origBlur + item.blur,
       angle: item.angle || 0,
-      blur: item.blur,
       scaleX: itemWidth / fabricObject.width,
       scaleY: itemWidth / fabricObject.width
     });
-    
+
+
+    fabricObject.setCoords();
+    fabricObject.dirty = true;
+
     return fabricObject;
   }
 
@@ -365,7 +367,7 @@ function drawLayout(selectedObjects, configValues, configColors) {
       fabricObjects[itemIndex] = clonedLoadedObject;
       window["fabricCanvas"] && window["fabricCanvas"].add(clonedLoadedObject);
       callback(itemIndex);
-    });
+    }, ['blur', 'origBlur']);
 
     return true;
   }
@@ -390,9 +392,6 @@ function drawLayout(selectedObjects, configValues, configColors) {
 
   function setObjectsProps() {
     layoutItems.forEach(function(layoutItem, index) {
-      if (index === 0) {
-        console.log(fabricObjects[index]);
-      }
       setPropsFromLayoutItem(fabricObjects[index], layoutItem);
     });
   }
