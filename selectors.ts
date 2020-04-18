@@ -3,7 +3,8 @@ import layouts from "./layouts";
 import objects from "./objects";
 
 export const getConfigValue = configField => (state: AppState) =>
-  state.configValues[configField];
+  state.configValues[configField] ||
+  (getConfigField(configField)(state) || {})["defaultValue"];
 
 export const getConfigFields = (state: AppState) =>
   getSelectedLayout(state).configFields || [];
