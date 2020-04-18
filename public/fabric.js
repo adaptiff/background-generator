@@ -16187,6 +16187,7 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, /** @lends fabric.Stati
 
     blur: 0,
     origBlur: 0,
+    blurPadding: 0,
 
     /**
      * Meaningful ONLY when the object is used as clipPath.
@@ -16321,10 +16322,12 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, /** @lends fabric.Stati
           return false;
         }
       }
+
       var canvas = this._cacheCanvas,
           dims = this._limitCacheSize(this._getCacheCanvasDimensions()),
           minCacheSize = fabric.minCacheSideLimit,
-          width = dims.width + this.blur * 2, height = dims.height + this.blur * 2, drawingWidth, drawingHeight,
+          width = dims.width + this.blurPadding * 2, height = dims.height + this.blurPadding * 2,
+          drawingWidth, drawingHeight,
           zoomX = dims.zoomX, zoomY = dims.zoomY,
           dimensionsChanged = width !== this.cacheWidth || height !== this.cacheHeight,
           zoomChanged = this.zoomX !== zoomX || this.zoomY !== zoomY,
@@ -16355,8 +16358,8 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, /** @lends fabric.Stati
         drawingHeight = dims.y / 2;
         this.cacheTranslationX = Math.round(canvas.width / 2 - drawingWidth) + drawingWidth;
         this.cacheTranslationY = Math.round(canvas.height / 2 - drawingHeight) + drawingHeight;
-        this.cacheWidth = width + this.blur * 2;
-        this.cacheHeight = height + this.blur * 2;
+        this.cacheWidth = width;
+        this.cacheHeight = height;
         this._cacheContext.translate(this.cacheTranslationX, this.cacheTranslationY);
         this._cacheContext.scale(zoomX, zoomY);
         this.zoomX = zoomX;
@@ -16434,6 +16437,9 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, /** @lends fabric.Stati
             globalCompositeOperation: this.globalCompositeOperation,
             skewX:                    toFixed(this.skewX, NUM_FRACTION_DIGITS),
             skewY:                    toFixed(this.skewY, NUM_FRACTION_DIGITS),
+            blur:                     this.blur,
+            origBlur:                 this.origBlur,
+            blurPadding:              this.blurPadding
           };
 
       if (this.clipPath) {
@@ -16569,6 +16575,9 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, /** @lends fabric.Stati
       this[key] = value;
 
       if (isChanged) {
+        if (key === 'blur') {
+          this.calcBlurPadding();
+        }
         groupNeedsUpdate = this.group && this.group.isOnACache();
         if (this.cacheProperties.indexOf(key) > -1) {
           this.dirty = true;
@@ -16641,6 +16650,36 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, /** @lends fabric.Stati
       return ctxFilter;
     },
 
+    /**
+     * Calc and update object blurPadding
+     */
+    calcBlurPadding: function(){
+      this.blurPadding = this.findMaxBlur();
+    },
+
+
+    /**
+     * Find max blur recursively
+     * @return {Number}
+     */
+    findMaxBlur: function(){
+      var blur = this.blur;
+
+      if (this.type === 'group') {
+        var inGroupBlur = 0;
+
+        this.forEachObject(function(object){
+          var objectMaxBlur = object.findMaxBlur();
+          if (objectMaxBlur > inGroupBlur) {
+            inGroupBlur = objectMaxBlur;
+          }
+        });
+
+        blur += inGroupBlur;
+      }
+
+      return blur;
+    },
 
     /**
      * This callback function is called by the parent group of an object every
