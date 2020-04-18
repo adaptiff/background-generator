@@ -96,7 +96,7 @@ export const Canvas: React.FC<Props> = ({
   return (
     <>
       <Head>
-        <script src="/fabric.min.js" />
+        <script src="/fabric.js" />
       </Head>
       <div
         id="canvas-container"
@@ -310,16 +310,20 @@ function drawLayout(selectedObjects, configValues, configColors) {
 
   function setPropsFromLayoutItem(fabricObject, item) {
     let itemWidth = item.width || configValues.objectSize;
+    let blur =  fabricObject.origBlur;
+
+    if (item.blur) {
+      blur += item.blur;
+    }
 
     fabricObject.set({
       left: item.left,
       top: item.top,
-      blur: fabricObject.origBlur + item.blur,
+      blur: blur,
       angle: item.angle || 0,
       scaleX: itemWidth / fabricObject.width,
       scaleY: itemWidth / fabricObject.width
     });
-
 
     fabricObject.setCoords();
     fabricObject.dirty = true;
