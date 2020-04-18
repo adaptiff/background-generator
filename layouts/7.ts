@@ -67,7 +67,7 @@ export default {
     }
 
     const distanceX = width / objectCountX;
-    const distanceY = width / objectCountY;
+    const distanceY = height / objectCountY;
 
     const items = [];
     for (let j = 0; j <= objectCountY; j++) {

@@ -92,10 +92,13 @@ export default {
     const cellsQty = Math.ceil(width / cellWidth) + 1;
     const rowsQty = Math.ceil(height / cellWidth) + 1;
 
+    console.log(rowsQty);
+
     const explosionCenter = areaCenterPoint;
 
     const items = [];
     for (let rowIndex = 0; rowIndex < rowsQty; rowIndex++) {
+      console.log(rowIndex);
       //top-координата текущей ячейки
       const cellTop = rowIndex * cellWidth - cellWidth / 2;
 
@@ -122,7 +125,7 @@ export default {
 
         //исключаем частицы за пределами области отрисовки
         if (
-          item.top > width + itemWidth ||
+          item.top > height + itemWidth ||
           item.top < -itemWidth ||
           item.left > width + itemWidth ||
           item.left < -itemWidth
