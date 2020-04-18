@@ -310,10 +310,11 @@ function drawLayout(selectedObjects, configValues, configColors) {
 
   function setPropsFromLayoutItem(fabricObject, item) {
     let itemWidth = item.width || configValues.objectSize;
+    const scale = itemWidth / fabricObject.width;
     let blur =  fabricObject.origBlur;
 
     if (item.blur) {
-      blur += item.blur;
+      blur += item.blur / scale;
     }
 
     fabricObject.set({
@@ -321,8 +322,8 @@ function drawLayout(selectedObjects, configValues, configColors) {
       top: item.top,
       blur: blur,
       angle: item.angle || 0,
-      scaleX: itemWidth / fabricObject.width,
-      scaleY: itemWidth / fabricObject.width
+      scaleX: scale,
+      scaleY: scale
     });
 
     fabricObject.setCoords();
@@ -371,7 +372,7 @@ function drawLayout(selectedObjects, configValues, configColors) {
       fabricObjects[itemIndex] = clonedLoadedObject;
       window["fabricCanvas"] && window["fabricCanvas"].add(clonedLoadedObject);
       callback(itemIndex);
-    }, ['blur', 'origBlur']);
+    });
 
     return true;
   }
