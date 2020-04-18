@@ -11,16 +11,16 @@ export default [
         type: "linear",
         values: [
           { r: 255, g: 255, b: 255, a: 1 },
-          { r: 250, g: 229, b: 255, a: 1 }
+          { r: 250, g: 229, b: 255, a: 1 },
         ],
-        angle: 44
+        angle: 44,
       },
       objectColors: [
         { type: "linear", values: ["#A18CD1", "#FBC2EB"], angle: 27 },
         { type: "linear", values: ["#FAD0C4", "#FFD1FF"], angle: 0 },
-        { type: "linear", values: ["#0fd850", "#f9f047"], angle: 0 }
-      ]
-    }
+        { type: "linear", values: ["#0fd850", "#f9f047"], angle: 0 },
+      ],
+    },
   },
   {
     id: 2,
@@ -39,23 +39,23 @@ export default [
       randomizeBlurStrength: 13,
       padding: 10,
       withRandomSize: true,
-      randomizeSizeStrength: 1.9
+      randomizeSizeStrength: 1.9,
     },
     configColors: {
       backgroundColor: {
         type: "linear",
         values: ["#FF9A9E", "#FAD0C4"],
-        angle: -92
+        angle: -92,
       },
-      objectColors: [{ type: "solid", values: ["#000", "#ccc"] }]
+      objectColors: [{ type: "solid", values: ["#000", "#ccc"] }],
     },
     uploadedObjects: [
       {
         id: -1,
         src: "🔥",
-        type: "emoji"
-      }
-    ]
+        type: "emoji",
+      },
+    ],
   },
   {
     id: 3,
@@ -73,7 +73,7 @@ export default [
       withRotate: false,
       withBlur: true,
       randomizeBlurStrength: 12,
-      padding: 10
+      padding: 10,
     },
     configColors: {
       backgroundColor: {
@@ -81,13 +81,13 @@ export default [
         values: ["#A18CD1", { r: 252, g: 186, b: 255, a: 1 }],
         angle: -60,
         xShift: 0,
-        yShift: 0
+        yShift: 0,
       },
       objectColors: [
         { type: "linear", values: ["#FFECD2", "#FCB69F"], angle: 0 },
-        { type: "linear", values: ["#fedfe7", "#e9e5f4"], angle: 0 }
-      ]
-    }
+        { type: "linear", values: ["#fedfe7", "#e9e5f4"], angle: 0 },
+      ],
+    },
   },
   {
     id: 4,
@@ -102,30 +102,30 @@ export default [
       figureRotate: 152,
       figureAngles: 3,
       sizeDecrement: 13,
-      padding: 10
+      padding: 10,
     },
     configColors: {
       backgroundColor: {
         type: "linear",
         values: [
           { r: 255, g: 206, b: 220, a: 1 },
-          { r: 224, g: 214, b: 255, a: 1 }
+          { r: 224, g: 214, b: 255, a: 1 },
         ],
         angle: -112,
         xShift: 0,
-        yShift: 0
+        yShift: 0,
       },
       objectColors: [
         {
           type: "linear",
           values: [
             { r: 255, g: 255, b: 255, a: 1 },
-            { r: 212, g: 218, b: 255, a: 1 }
+            { r: 212, g: 218, b: 255, a: 1 },
           ],
-          angle: 0
-        }
-      ]
-    }
+          angle: 0,
+        },
+      ],
+    },
   },
   {
     id: 5,
@@ -139,18 +139,18 @@ export default [
       padding: 10,
       withRandomPosition: false,
       randomizePositionStrength: 10,
-      withRotate: false
+      withRotate: false,
     },
     configColors: {
       backgroundColor: {
         type: "linear",
         values: ["#FAD0C4", "#FFD1FF"],
-        angle: 0
+        angle: 0,
       },
       objectColors: [
-        { type: "linear", values: ["#FFECD2", "#FCB69F"], angle: 0 }
-      ]
-    }
+        { type: "linear", values: ["#FFECD2", "#FCB69F"], angle: 0 },
+      ],
+    },
   },
   {
     id: 6,
@@ -165,14 +165,14 @@ export default [
       figureRotate: 180,
       figureAngles: 3,
       sizeDecrement: 10,
-      padding: 10
+      padding: 10,
     },
     configColors: {
       backgroundColor: { type: "solid", values: ["#fff", "#ccc"] },
       objectColors: [
-        { type: "linear", values: ["#00f2fe", "#4facfe"], angle: 0 }
-      ]
-    }
+        { type: "linear", values: ["#00f2fe", "#4facfe"], angle: 0 },
+      ],
+    },
   },
   {
     id: 7,
@@ -193,21 +193,21 @@ export default [
       withRandomRotation: true,
       currentRandomSnapshot: 0.15422010095250416,
       withBlur: true,
-      blurStrength: 8
+      blurStrength: 8,
     },
     configColors: {
       backgroundColor: { type: "solid", values: ["#101010", "#FFD1FF"] },
       objectColors: [
-        { type: "linear", values: ["#009CFF", "#68E24A", "#EDDE42"], angle: 0 }
-      ]
+        { type: "linear", values: ["#009CFF", "#68E24A", "#EDDE42"], angle: 0 },
+      ],
     },
     uploadedObjects: [
       {
         id: -1,
         src: "/uploads/1.svg",
-        type: "image/svg+xml"
-      }
-    ]
+        type: "image/svg+xml",
+      },
+    ],
   },
   {
     id: 8,
@@ -228,7 +228,7 @@ export default [
       withRandomRotation: false,
       withBlur: false,
       blurStrength: 5,
-      withRandomColor: false
+      withRandomColor: false,
     },
     configColors: {
       backgroundColor: { type: "solid", values: ["#fff", "#ccc"] },
@@ -237,37 +237,37 @@ export default [
           type: "linear",
           values: [
             { r: 123, g: 245, b: 116, a: 1 },
-            { r: 218, g: 255, b: 215, a: 1 }
+            { r: 218, g: 255, b: 215, a: 1 },
           ],
-          angle: 0
+          angle: 0,
         },
         {
           type: "linear",
           values: [
             { r: 251, g: 132, b: 91, a: 1 },
-            { r: 255, g: 179, b: 185, a: 1 }
+            { r: 255, g: 179, b: 185, a: 1 },
           ],
-          angle: 0
+          angle: 0,
         },
         {
           type: "linear",
           values: [
             { r: 147, g: 49, b: 253, a: 1 },
-            { r: 255, g: 179, b: 185, a: 1 }
+            { r: 255, g: 179, b: 185, a: 1 },
           ],
-          angle: 0
+          angle: 0,
         },
         {
           type: "linear",
           values: [
             { r: 57, g: 193, b: 255, a: 1 },
-            { r: 160, g: 223, b: 253, a: 1 }
+            { r: 160, g: 223, b: 253, a: 1 },
           ],
-          angle: 0
+          angle: 0,
         },
-        { type: "linear", values: ["#ffb347", "#ffcc33"], angle: 0 }
-      ]
-    }
+        { type: "linear", values: ["#ffb347", "#ffcc33"], angle: 0 },
+      ],
+    },
   },
   {
     id: 9,
@@ -288,16 +288,43 @@ export default [
       randomizeBlurStrength: 1,
       withRandomColor: false,
       withRandomObjectOrder: false,
-      currentRandomSnapshot: 0.8835994599290684
+      currentRandomSnapshot: 0.8835994599290684,
     },
     configColors: {
       backgroundColor: {
         type: "linear",
         values: ["#CFD9DF", "#E2EBF0"],
-        angle: 0
+        angle: 0,
       },
-      objectColors: [{ type: "solid", values: ["#000", "#ccc"] }]
-    }
+      objectColors: [{ type: "solid", values: ["#000", "#ccc"] }],
+    },
+    uploadedObjects: [
+      {
+        id: -1,
+        src: "🐛",
+        type: "emoji",
+      },
+      {
+        id: -2,
+        src: "🐞",
+        type: "emoji",
+      },
+      {
+        id: -3,
+        src: "🦋",
+        type: "emoji",
+      },
+      {
+        id: -5,
+        src: "🍃",
+        type: "emoji",
+      },
+      {
+        id: -6,
+        src: "🐝",
+        type: "emoji",
+      },
+    ],
   },
   {
     id: 10,
@@ -318,7 +345,7 @@ export default [
       randomizeBlurStrength: 16,
       withRandomColor: false,
       withRandomObjectOrder: false,
-      currentRandomSnapshot: 0.365057953165856
+      currentRandomSnapshot: 0.365057953165856,
     },
     configColors: {
       backgroundColor: {
@@ -326,17 +353,17 @@ export default [
         values: [{ r: 252, g: 218, b: 159, a: 1 }, "#FCB69F"],
         angle: 0,
         xShift: 26,
-        yShift: 0
+        yShift: 0,
       },
-      objectColors: [{ type: "solid", values: ["#000", "#ccc"] }]
+      objectColors: [{ type: "solid", values: ["#000", "#ccc"] }],
     },
     uploadedObjects: [
       {
         id: -1,
         src: "😍",
-        type: "emoji"
-      }
-    ]
+        type: "emoji",
+      },
+    ],
   },
   {
     id: 11,
@@ -352,26 +379,26 @@ export default [
       withRandomSize: true,
       randomizeSizeStrength: 1.6,
       withRandomColor: false,
-      withRandomObjectOrder: true
+      withRandomObjectOrder: true,
     },
     configColors: {
       backgroundColor: {
         type: "linear",
         values: ["#09203f", "#537895"],
-        angle: 0
+        angle: 0,
       },
       objectColors: [
         {
           type: "linear",
           values: [
             { r: 254, g: 231, b: 205, a: 1 },
-            { r: 254, g: 186, b: 165, a: 1 }
+            { r: 254, g: 186, b: 165, a: 1 },
           ],
-          angle: 7
+          angle: 7,
         },
-        { type: "linear", values: ["#ff9966", "#ff5e62"], angle: 0 }
-      ]
-    }
+        { type: "linear", values: ["#ff9966", "#ff5e62"], angle: 0 },
+      ],
+    },
   },
   {
     id: 12,
@@ -394,28 +421,28 @@ export default [
       blurStrength: 5,
       withRandomColor: false,
       withRandomObjectOrder: false,
-      currentRandomSnapshot: 0.37740493312229795
+      currentRandomSnapshot: 0.37740493312229795,
     },
     configColors: {
       backgroundColor: {
         type: "linear",
         values: [
           { r: 229, g: 251, b: 255, a: 1 },
-          { r: 253, g: 234, b: 229, a: 1 }
+          { r: 253, g: 234, b: 229, a: 1 },
         ],
-        angle: 46
+        angle: 46,
       },
       objectColors: [
         {
           type: "linear",
           values: [
             { r: 254, g: 231, b: 205, a: 1 },
-            { r: 254, g: 186, b: 165, a: 1 }
+            { r: 254, g: 186, b: 165, a: 1 },
           ],
-          angle: 7
-        }
-      ]
-    }
+          angle: 7,
+        },
+      ],
+    },
   },
   {
     id: 13,
@@ -438,36 +465,36 @@ export default [
       blurStrength: 5,
       withRandomColor: false,
       withRandomObjectOrder: false,
-      currentRandomSnapshot: 0.4408447985398183
+      currentRandomSnapshot: 0.4408447985398183,
     },
     configColors: {
       backgroundColor: {
         type: "linear",
         values: [
           { r: 229, g: 251, b: 255, a: 1 },
-          { r: 253, g: 234, b: 229, a: 1 }
+          { r: 253, g: 234, b: 229, a: 1 },
         ],
-        angle: 46
+        angle: 46,
       },
       objectColors: [
         {
           type: "linear",
           values: [
             { r: 254, g: 231, b: 205, a: 1 },
-            { r: 254, g: 186, b: 165, a: 1 }
+            { r: 254, g: 186, b: 165, a: 1 },
           ],
-          angle: 7
+          angle: 7,
         },
         {
           type: "linear",
           values: [
             { r: 254, g: 186, b: 165, a: 1 },
-            { r: 250, g: 211, b: 251, a: 1 }
+            { r: 250, g: 211, b: 251, a: 1 },
           ],
-          angle: 7
-        }
-      ]
-    }
+          angle: 7,
+        },
+      ],
+    },
   },
   {
     id: 14,
@@ -482,28 +509,28 @@ export default [
       sizeDecrement: 1,
       padding: 6,
       withRandomColor: false,
-      withRandomObjectOrder: false
+      withRandomObjectOrder: false,
     },
     configColors: {
       backgroundColor: {
         type: "linear",
         values: [
           { r: 64, g: 74, b: 164, a: 1 },
-          { r: 236, g: 78, b: 151, a: 1 }
+          { r: 236, g: 78, b: 151, a: 1 },
         ],
-        angle: 104
+        angle: 104,
       },
       objectColors: [
         {
           type: "linear",
           values: [
             { r: 254, g: 189, b: 29, a: 1 },
-            { r: 251, g: 91, b: 15, a: 1 }
+            { r: 251, g: 91, b: 15, a: 1 },
           ],
-          angle: 0
-        }
-      ]
-    }
+          angle: 0,
+        },
+      ],
+    },
   },
   {
     id: 15,
@@ -518,35 +545,35 @@ export default [
       withRandomSize: false,
       randomizeSizeStrength: 4,
       withRandomColor: false,
-      withRandomObjectOrder: false
+      withRandomObjectOrder: false,
     },
     configColors: {
       backgroundColor: {
         type: "linear",
         values: [
           { r: 67, g: 77, b: 166, a: 1 },
-          { r: 234, g: 143, b: 186, a: 1 }
+          { r: 234, g: 143, b: 186, a: 1 },
         ],
-        angle: 116
+        angle: 116,
       },
       objectColors: [
         {
           type: "linear",
           values: [
             { r: 67, g: 77, b: 166, a: 1 },
-            { r: 234, g: 143, b: 186, a: 1 }
+            { r: 234, g: 143, b: 186, a: 1 },
           ],
-          angle: -63
-        }
-      ]
+          angle: -63,
+        },
+      ],
     },
     uploadedObjects: [
       {
         id: -1,
         src: "/uploads/2.svg",
-        type: "image/svg+xml"
-      }
-    ]
+        type: "image/svg+xml",
+      },
+    ],
   },
   {
     id: 16,
@@ -568,25 +595,25 @@ export default [
       withBlur: false,
       blurStrength: 5,
       withRandomColor: false,
-      withRandomObjectOrder: false
+      withRandomObjectOrder: false,
     },
     configColors: {
       backgroundColor: {
         type: "linear",
         values: ["#f83600", "#f9d423"],
-        angle: -68
+        angle: -68,
       },
       objectColors: [
-        { type: "linear", values: ["#f83600", "#f9d423"], angle: 0 }
-      ]
+        { type: "linear", values: ["#f83600", "#f9d423"], angle: 0 },
+      ],
     },
     uploadedObjects: [
       {
         id: -1,
         src: "/uploads/3.svg",
-        type: "image/svg+xml"
-      }
-    ]
+        type: "image/svg+xml",
+      },
+    ],
   },
   {
     id: 17,
@@ -609,26 +636,26 @@ export default [
       blurStrength: 5,
       withRandomColor: false,
       withRandomObjectOrder: false,
-      currentRandomSnapshot: 0.11445337081804019
+      currentRandomSnapshot: 0.11445337081804019,
     },
     configColors: {
       backgroundColor: {
         type: "linear",
         values: ["#0ba360", "#3cba92"],
-        angle: 0
+        angle: 0,
       },
       objectColors: [
         { type: "linear", values: ["#f83600", "#f9d423"], angle: 0 },
-        { type: "linear", values: ["#fddb92", "#d1fdff"], angle: 0 }
-      ]
+        { type: "linear", values: ["#fddb92", "#d1fdff"], angle: 0 },
+      ],
     },
     uploadedObjects: [
       {
         id: -1,
         src: "/uploads/3.svg",
-        type: "image/svg+xml"
-      }
-    ]
+        type: "image/svg+xml",
+      },
+    ],
   },
   {
     id: 18,
@@ -643,18 +670,18 @@ export default [
       sizeDecrement: 7,
       padding: 0,
       withRandomColor: false,
-      withRandomObjectOrder: false
+      withRandomObjectOrder: false,
     },
     configColors: {
       backgroundColor: {
         type: "linear",
         values: ["#35c8cb", "#7b2dd6"],
-        angle: 0
+        angle: 0,
       },
       objectColors: [
-        { type: "linear", values: ["#d4f9fe", "#b4b0be"], angle: 0 }
-      ]
-    }
+        { type: "linear", values: ["#d4f9fe", "#b4b0be"], angle: 0 },
+      ],
+    },
   },
   {
     id: 19,
@@ -675,30 +702,30 @@ export default [
       randomizeBlurStrength: 19,
       withRandomColor: false,
       withRandomObjectOrder: false,
-      currentRandomSnapshot: 0.13637643815875466
+      currentRandomSnapshot: 0.13637643815875466,
     },
     configColors: {
       backgroundColor: {
         type: "linear",
         values: [
           { r: 0, g: 1, b: 2, a: 1 },
-          { r: 27, g: 68, b: 113, a: 1 }
+          { r: 27, g: 68, b: 113, a: 1 },
         ],
-        angle: -108
+        angle: -108,
       },
       objectColors: [
         {
           type: "linear",
           values: [
             { r: 0, g: 255, b: 172, a: 1 },
-            { r: 0, g: 51, b: 105, a: 1 }
+            { r: 0, g: 51, b: 105, a: 1 },
           ],
           angle: 15,
           xShift: -35,
-          yShift: -14
-        }
-      ]
-    }
+          yShift: -14,
+        },
+      ],
+    },
   },
   {
     id: 20,
@@ -719,110 +746,110 @@ export default [
       randomizeBlurStrength: 19,
       withRandomColor: false,
       withRandomObjectOrder: false,
-      currentRandomSnapshot: 0.5267967948404655
+      currentRandomSnapshot: 0.5267967948404655,
     },
     configColors: {
       backgroundColor: {
         type: "solid",
         values: [
           { r: 255, g: 255, b: 255, a: 1 },
-          { r: 27, g: 68, b: 113, a: 1 }
+          { r: 27, g: 68, b: 113, a: 1 },
         ],
-        angle: -108
+        angle: -108,
       },
       objectColors: [
         {
           type: "linear",
           values: [
             { r: 251, g: 250, b: 0, a: 1 },
-            { r: 152, g: 229, b: 217, a: 1 }
+            { r: 152, g: 229, b: 217, a: 1 },
           ],
           angle: 15,
           xShift: -35,
-          yShift: -14
+          yShift: -14,
         },
         {
           type: "linear",
           values: [
             { r: 255, g: 236, b: 210, a: 1 },
-            { r: 252, g: 182, b: 159, a: 1 }
+            { r: 252, g: 182, b: 159, a: 1 },
           ],
           angle: 15,
           xShift: -35,
-          yShift: -14
+          yShift: -14,
         },
         {
           type: "linear",
           values: [
             { r: 255, g: 173, b: 150, a: 1 },
-            { r: 235, g: 30, b: 128, a: 1 }
+            { r: 235, g: 30, b: 128, a: 1 },
           ],
           angle: 15,
           xShift: -35,
-          yShift: -14
+          yShift: -14,
         },
         {
           type: "linear",
           values: [
             { r: 251, g: 194, b: 235, a: 1 },
-            { r: 161, g: 140, b: 209, a: 1 }
+            { r: 161, g: 140, b: 209, a: 1 },
           ],
           angle: 15,
           xShift: -35,
-          yShift: -14
+          yShift: -14,
         },
         {
           type: "linear",
           values: [
             { r: 178, g: 207, b: 255, a: 1 },
-            { r: 33, g: 120, b: 255, a: 1 }
+            { r: 33, g: 120, b: 255, a: 1 },
           ],
           angle: 15,
           xShift: -35,
-          yShift: -14
+          yShift: -14,
         },
         {
           type: "linear",
           values: [
             { r: 109, g: 16, b: 126, a: 1 },
-            { r: 240, g: 51, b: 88, a: 1 }
+            { r: 240, g: 51, b: 88, a: 1 },
           ],
           angle: 15,
           xShift: -35,
-          yShift: -14
+          yShift: -14,
         },
         {
           type: "linear",
           values: [
             { r: 120, g: 2, b: 6, a: 1 },
-            { r: 6, g: 17, b: 97, a: 1 }
+            { r: 6, g: 17, b: 97, a: 1 },
           ],
           angle: 15,
           xShift: -35,
-          yShift: -14
+          yShift: -14,
         },
         {
           type: "linear",
           values: [
             { r: 255, g: 179, b: 71, a: 1 },
-            { r: 255, g: 204, b: 51, a: 1 }
+            { r: 255, g: 204, b: 51, a: 1 },
           ],
           angle: 15,
           xShift: -35,
-          yShift: -14
+          yShift: -14,
         },
         {
           type: "linear",
           values: [
             { r: 0, g: 255, b: 172, a: 1 },
-            { r: 0, g: 51, b: 105, a: 1 }
+            { r: 0, g: 51, b: 105, a: 1 },
           ],
           angle: 15,
           xShift: -35,
-          yShift: -14
-        }
-      ]
-    }
+          yShift: -14,
+        },
+      ],
+    },
   },
   {
     id: 21,
@@ -843,30 +870,30 @@ export default [
       randomizeBlurStrength: 19,
       withRandomColor: false,
       withRandomObjectOrder: false,
-      currentRandomSnapshot: 0.13637643815875466
+      currentRandomSnapshot: 0.13637643815875466,
     },
     configColors: {
       backgroundColor: {
         type: "linear",
         values: [
           { r: 55, g: 3, b: 0, a: 1 },
-          { r: 237, g: 71, b: 55, a: 1 }
+          { r: 237, g: 71, b: 55, a: 1 },
         ],
-        angle: -108
+        angle: -108,
       },
       objectColors: [
         {
           type: "linear",
           values: [
             { r: 251, g: 218, b: 0, a: 1 },
-            { r: 249, g: 21, b: 21, a: 1 }
+            { r: 249, g: 21, b: 21, a: 1 },
           ],
           angle: 15,
           xShift: -35,
-          yShift: -14
-        }
-      ]
-    }
+          yShift: -14,
+        },
+      ],
+    },
   },
   {
     id: 22,
@@ -887,70 +914,70 @@ export default [
       randomizeBlurStrength: 19,
       withRandomColor: false,
       withRandomObjectOrder: false,
-      currentRandomSnapshot: 0.5766981524962014
+      currentRandomSnapshot: 0.5766981524962014,
     },
     configColors: {
       backgroundColor: {
         type: "linear",
         values: [
           { r: 252, g: 239, b: 246, a: 1 },
-          { r: 235, g: 241, b: 255, a: 1 }
+          { r: 235, g: 241, b: 255, a: 1 },
         ],
-        angle: -108
+        angle: -108,
       },
       objectColors: [
         {
           type: "linear",
           values: [
             { r: 255, g: 255, b: 255, a: 1 },
-            { r: 203, g: 216, b: 249, a: 0.79 }
+            { r: 203, g: 216, b: 249, a: 0.79 },
           ],
           angle: 15,
           xShift: -35,
-          yShift: -14
+          yShift: -14,
         },
         {
           type: "linear",
           values: [
             { r: 234, g: 189, b: 217, a: 0.42 },
-            { r: 176, g: 197, b: 248, a: 1 }
+            { r: 176, g: 197, b: 248, a: 1 },
           ],
           angle: 15,
           xShift: -35,
-          yShift: -14
+          yShift: -14,
         },
         {
           type: "linear",
           values: [
             { r: 251, g: 218, b: 0, a: 1 },
-            { r: 249, g: 21, b: 21, a: 1 }
+            { r: 249, g: 21, b: 21, a: 1 },
           ],
           angle: 15,
           xShift: -35,
-          yShift: -14
+          yShift: -14,
         },
         {
           type: "linear",
           values: [
             { r: 255, g: 250, b: 52, a: 1 },
-            { r: 83, g: 146, b: 0, a: 1 }
+            { r: 83, g: 146, b: 0, a: 1 },
           ],
           angle: 15,
           xShift: -35,
-          yShift: -14
+          yShift: -14,
         },
         {
           type: "linear",
           values: [
             { r: 75, g: 191, b: 214, a: 1 },
-            { r: 132, g: 86, b: 215, a: 1 }
+            { r: 132, g: 86, b: 215, a: 1 },
           ],
           angle: 15,
           xShift: -35,
-          yShift: -14
-        }
-      ]
-    }
+          yShift: -14,
+        },
+      ],
+    },
   },
   {
     id: 23,
@@ -971,80 +998,80 @@ export default [
       randomizeBlurStrength: 14,
       withRandomColor: true,
       withRandomObjectOrder: false,
-      currentRandomSnapshot: 0.8011729061457542
+      currentRandomSnapshot: 0.8011729061457542,
     },
     configColors: {
       backgroundColor: {
         type: "linear",
         values: [
           { r: 250, g: 208, b: 196, a: 1 },
-          { r: 255, g: 209, b: 255, a: 1 }
+          { r: 255, g: 209, b: 255, a: 1 },
         ],
-        angle: -108
+        angle: -108,
       },
       objectColors: [
         {
           type: "linear",
           values: [
             { r: 255, g: 255, b: 255, a: 1 },
-            { r: 203, g: 216, b: 249, a: 0.79 }
+            { r: 203, g: 216, b: 249, a: 0.79 },
           ],
           angle: 15,
           xShift: -35,
-          yShift: -14
+          yShift: -14,
         },
         {
           type: "linear",
           values: [
             { r: 255, g: 206, b: 237, a: 1 },
-            { r: 176, g: 197, b: 248, a: 1 }
+            { r: 176, g: 197, b: 248, a: 1 },
           ],
           angle: 15,
           xShift: -35,
-          yShift: -14
+          yShift: -14,
         },
         {
           type: "linear",
           values: [
             { r: 251, g: 218, b: 0, a: 1 },
-            { r: 249, g: 21, b: 21, a: 1 }
+            { r: 249, g: 21, b: 21, a: 1 },
           ],
           angle: 15,
           xShift: -35,
-          yShift: -14
+          yShift: -14,
         },
         {
           type: "linear",
           values: [
             { r: 255, g: 250, b: 52, a: 1 },
-            { r: 83, g: 146, b: 0, a: 1 }
+            { r: 83, g: 146, b: 0, a: 1 },
           ],
           angle: 15,
           xShift: -35,
-          yShift: -14
+          yShift: -14,
         },
         {
           type: "linear",
           values: [
             { r: 75, g: 191, b: 214, a: 1 },
-            { r: 132, g: 86, b: 215, a: 1 }
+            { r: 132, g: 86, b: 215, a: 1 },
           ],
           angle: 15,
           xShift: -35,
-          yShift: -14
+          yShift: -14,
         },
         {
           type: "linear",
           values: [
             { r: 255, g: 255, b: 255, a: 0.42 },
-            { r: 247, g: 243, b: 255, a: 0.2 }
+            { r: 247, g: 243, b: 255, a: 0.2 },
           ],
           angle: 15,
           xShift: -35,
-          yShift: -14
-        }
-      ]
-    }
+          yShift: -14,
+        },
+      ],
+    },
   },
   {
     id: 24,
@@ -1064,51 +1091,51 @@ export default [
       withBlur: false,
       randomizeBlurStrength: 5,
       withRandomColor: false,
-      withRandomObjectOrder: true
+      withRandomObjectOrder: true,
     },
     configColors: {
       backgroundColor: {
         type: "linear",
         values: [
           { r: 244, g: 255, b: 251, a: 1 },
-          { r: 198, g: 219, b: 213, a: 1 }
+          { r: 198, g: 219, b: 213, a: 1 },
         ],
-        angle: 0
+        angle: 0,
       },
-      objectColors: [{ type: "solid", values: ["#000", "#ccc"] }]
+      objectColors: [{ type: "solid", values: ["#000", "#ccc"] }],
     },
     uploadedObjects: [
       {
         id: -1,
         src: "/uploads/o/16.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -2,
         src: "/uploads/o/17.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -3,
         src: "/uploads/o/18.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -4,
         src: "/uploads/o/19.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -5,
         src: "/uploads/o/20.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -6,
         src: "/uploads/o/21.svg",
-        type: "image/svg+xml"
-      }
-    ]
+        type: "image/svg+xml",
+      },
+    ],
   },
   {
     id: 25,
@@ -1129,29 +1156,29 @@ export default [
       randomizeBlurStrength: 5,
       withRandomColor: false,
       withRandomObjectOrder: true,
-      currentRandomSnapshot: 0.6163846554563046
+      currentRandomSnapshot: 0.6163846554563046,
     },
     uploadedObjects: [
       {
         id: -1,
         src: "/uploads/5.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -2,
         src: "/uploads/6.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -3,
         src: "/uploads/9.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -4,
         src: "/uploads/10.svg",
-        type: "image/svg+xml"
-      }
+        type: "image/svg+xml",
+      },
     ],
     configColors: {
       backgroundColor: { type: "solid", values: ["#fff", "#fff"] },
@@ -1159,10 +1186,10 @@ export default [
         {
           type: "linear",
           values: ["#fff", "#000"],
-          angle: 45
-        }
-      ]
-    }
+          angle: 45,
+        },
+      ],
+    },
   },
   {
     id: 26,
@@ -1183,29 +1210,29 @@ export default [
       randomizeBlurStrength: 5,
       withRandomColor: false,
       withRandomObjectOrder: true,
-      currentRandomSnapshot: 0.6163846554563046
+      currentRandomSnapshot: 0.6163846554563046,
     },
     uploadedObjects: [
       {
         id: -1,
         src: "/uploads/5.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -2,
         src: "/uploads/6.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -3,
         src: "/uploads/9.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -4,
         src: "/uploads/10.svg",
-        type: "image/svg+xml"
-      }
+        type: "image/svg+xml",
+      },
     ],
     configColors: {
       backgroundColor: { type: "solid", values: ["#efd7e7", "#efd7e7"] },
@@ -1213,13 +1240,13 @@ export default [
         {
           type: "linear",
           values: ["#edbdd7", "#f590bb", "#f7c1bf", "#c8ddd2"],
-          angle: 45
+          angle: 45,
         },
         { type: "linear", values: ["#89b4eb", "#edbdd7"], angle: 45 },
         { type: "linear", values: ["#c8ddd2", "#f7c1bf"], angle: 45 },
-        { type: "linear", values: ["#f7c1bf", "#edbdd7"], angle: 45 }
-      ]
-    }
+        { type: "linear", values: ["#f7c1bf", "#edbdd7"], angle: 45 },
+      ],
+    },
   },
   {
     id: 27,
@@ -1240,55 +1267,55 @@ export default [
       randomizeBlurStrength: 5,
       withRandomColor: false,
       withRandomObjectOrder: true,
-      currentRandomSnapshot: 0.6163846554563046
+      currentRandomSnapshot: 0.6163846554563046,
     },
     configColors: {
       backgroundColor: {
         type: "solid",
-        values: [{ r: 61, g: 0, b: 129, a: 1 }, "#efd7e7"]
+        values: [{ r: 61, g: 0, b: 129, a: 1 }, "#efd7e7"],
       },
       objectColors: [
         {
           type: "linear",
           values: ["#3AD5FA", "#3F5CAB", "#3d0081"],
-          angle: 45
+          angle: 45,
         },
         { type: "linear", values: ["#E5CB23", "#3d0081"], angle: 45 },
-        { type: "linear", values: ["#3d0081", "#FF0097"], angle: 45 }
-      ]
+        { type: "linear", values: ["#3d0081", "#FF0097"], angle: 45 },
+      ],
     },
     uploadedObjects: [
       {
         id: -1,
         src: "/uploads/5.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -2,
         src: "/uploads/8.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -3,
         src: "/uploads/10.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -4,
         src: "/uploads/11.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -5,
         src: "/uploads/12.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -6,
         src: "/uploads/13.svg",
-        type: "image/svg+xml"
-      }
-    ]
+        type: "image/svg+xml",
+      },
+    ],
   },
   {
     id: 28,
@@ -1310,12 +1337,12 @@ export default [
       withBlur: false,
       blurStrength: 5,
       withRandomColor: false,
-      withRandomObjectOrder: false
+      withRandomObjectOrder: false,
     },
     configColors: {
       backgroundColor: { type: "solid", values: ["#fff", "#ccc"] },
-      objectColors: [{ type: "solid", values: ["#000", "#ccc"] }]
-    }
+      objectColors: [{ type: "solid", values: ["#000", "#ccc"] }],
+    },
   },
   {
     id: 29,
@@ -1331,22 +1358,22 @@ export default [
       randomizeSizeStrength: 3.6,
       withRandomColor: false,
       withRandomObjectOrder: false,
-      currentRandomSnapshot: 0.17625711918409737
+      currentRandomSnapshot: 0.17625711918409737,
     },
     configColors: {
       backgroundColor: {
         type: "solid",
-        values: [{ r: 44, g: 37, b: 53, a: 1 }, "#ccc"]
+        values: [{ r: 44, g: 37, b: 53, a: 1 }, "#ccc"],
       },
-      objectColors: [{ type: "solid", values: ["#000", "#ccc"] }]
+      objectColors: [{ type: "solid", values: ["#000", "#ccc"] }],
     },
     uploadedObjects: [
       {
         id: -1,
         src: "/uploads/f/1.svg",
-        type: "image/svg+xml"
-      }
-    ]
+        type: "image/svg+xml",
+      },
+    ],
   },
   {
     id: 30,
@@ -1369,7 +1396,7 @@ export default [
       -13,
       -14,
       -15,
-      -16
+      -16,
     ],
     configValues: {
       objectSize: 30,
@@ -1384,98 +1411,98 @@ export default [
       randomizeBlurStrength: 5,
       withRandomColor: false,
       withRandomObjectOrder: false,
-      currentRandomSnapshot: 0.6896327827879918
+      currentRandomSnapshot: 0.6896327827879918,
     },
     configColors: {
       backgroundColor: {
         type: "solid",
-        values: [{ r: 44, g: 37, b: 53, a: 1 }, "#ccc"]
+        values: [{ r: 44, g: 37, b: 53, a: 1 }, "#ccc"],
       },
       objectColors: [
-        { type: "solid", values: [{ r: 234, g: 143, b: 148, a: 1 }, "#ccc"] }
-      ]
+        { type: "solid", values: [{ r: 234, g: 143, b: 148, a: 1 }, "#ccc"] },
+      ],
     },
     uploadedObjects: [
       {
         id: -1,
         src: "/uploads/f/1.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -2,
         src: "/uploads/f/2.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -3,
         src: "/uploads/f/3.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -4,
         src: "/uploads/f/4.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -5,
         src: "/uploads/f/5.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -6,
         src: "/uploads/f/6.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -7,
         src: "/uploads/f/7.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -9,
         src: "/uploads/f/9.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -10,
         src: "/uploads/f/10.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -11,
         src: "/uploads/f/11.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -12,
         src: "/uploads/f/12.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -13,
         src: "/uploads/f/13.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -14,
         src: "/uploads/f/14.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -15,
         src: "/uploads/f/15.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -16,
         src: "/uploads/f/16.svg",
-        type: "image/svg+xml"
+        type: "image/svg+xml",
       },
       {
         id: -17,
         src: "/uploads/f/17.svg",
-        type: "image/svg+xml"
-      }
-    ]
-  }
+        type: "image/svg+xml",
+      },
+    ],
+  },
 ];

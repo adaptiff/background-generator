@@ -10,7 +10,7 @@ import s from "./explore.less";
 
 export interface Props {}
 
-export const Explore: React.FC<Props> = props => {
+export const Explore: React.FC<Props> = (props) => {
   return (
     <>
       <Head />
@@ -22,6 +22,14 @@ export const Explore: React.FC<Props> = props => {
           <Header className={s["header"]}>
             <Button icon="plus" href="/">
               Create
+            </Button>
+            <Button
+              type="link"
+              icon="twitter"
+              href="https://twitter.com/adaptiff_tools"
+              target="_blank"
+            >
+              Twitter
             </Button>
           </Header>
           <div className={s["grid"]}>
