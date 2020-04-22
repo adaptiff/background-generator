@@ -19,8 +19,8 @@ export const RefreshButton: React.FC<Props> = () => {
       className={s["refresh-button-container"]}
       onClick={() => dispatch(refreshRandomSnapshot())}
     >
-      <Button icon="reload" type="link" className={s["button"]}>
-        Refresh
+      <Button icon="reload" type="primary" ghost className={s["button"]}>
+        Regenerate
       </Button>
     </div>
   );

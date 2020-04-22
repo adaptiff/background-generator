@@ -9,7 +9,7 @@ export default () => {
         type="link"
         icon={isCollapsed ? "down" : "up"}
         onClick={() => setIsCollapsed(!isCollapsed)}
-        style={{ color: "#3aa7f9" }}
+        style={{ color: "#0a96fa" }}
       >
         {isCollapsed ? "Show More" : "Show Less"}
       </Button>

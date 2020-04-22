@@ -1,5 +1,6 @@
 import React from "react";
-import { Form, Layout, Button } from "antd";
+import classnames from "classnames";
+import { Form, Layout } from "antd";
 const { Sider } = Layout;
 import NumberInput from "./NumberInput";
 import BoolWithNumberInput from "./BoolWithNumberInput";
@@ -7,9 +8,11 @@ import Objects from "./Objects";
 import Layouts from "./Layouts";
 import { ConfigFieldType } from "../../types";
 import Logo from "../Logo";
+import RefreshButton from "./RefreshButton";
+import { useSelector, shallowEqual } from "react-redux";
+import { getHasRandomnessOnAnyField } from "../../selectors";
 
 import s from "./ConfigPanel.less";
-import RefreshButton from "./RefreshButton";
 
 export interface Props {
   selectedObjectCount: number;
@@ -22,10 +25,18 @@ export const ConfigPanel: React.FC<Props> = ({
   objectColorCount,
   configFields
 }) => {
+  const hasRandomness = useSelector(getHasRandomnessOnAnyField, shallowEqual);
   return (
     <Sider className={s["sider"]} width={330}>
       <Logo className={s["logo"]} />
-      <Form layout="vertical" className={s["form"]}>
+      <Form
+        layout="vertical"
+        className={classnames(
+          s["form"],
+          hasRandomness && s["form-with-refresh"]
+        )}
+      >
+        <RefreshButton />
         <Layouts />
         <Objects />
         {configFields.map((configField, index) => {
@@ -63,7 +74,6 @@ export const ConfigPanel: React.FC<Props> = ({
           );
         })}
       </Form>
-      <RefreshButton />
     </Sider>
   );
 };
