@@ -2,6 +2,11 @@
   position: relative;
 }
 
+.form,
+.radio-group {
+  user-select: none;
+}
+
 .color {
   border-radius: 4px;
   margin-left: 0;
@@ -15,6 +20,8 @@
 }
 
 .popover-content {
+  width: 233px;
+  box-sizing: border-box;
   padding: 8px 4px;
   & > * {
     box-shadow: none !important;
@@ -25,6 +32,7 @@
   display: flex;
   width: 100%;
   margin-bottom: 24px;
+  font-size: 12px;
   > * {
     width: 100%;
     text-align: center;
@@ -71,4 +79,21 @@
 
 .form-item {
   margin-bottom: 0;
+}
+
+.predefined-colors {
+  display: grid;
+  grid-template-columns: 32px 32px 32px 32px 32px;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.predefined-color {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #c5c5c5;
+  border-radius: 4px;
+  cursor: pointer;
 }

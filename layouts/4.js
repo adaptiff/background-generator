@@ -1,5 +1,5 @@
 import { ConfigFieldType } from "../types";
-import { beforeAll, beforeBooleans } from "./_shared";
+import { beforeAll, beforeBooleans, afterAll } from "./_shared";
 import { deg2rad, rotateItemCoords } from "../utils";
 
 export default {
@@ -47,7 +47,8 @@ export default {
       minValue: 1,
       maxValue: 100
     },
-    ...beforeBooleans
+    ...beforeBooleans,
+    ...afterAll
   ],
   generate: (width, height, configValues) => {
     const {

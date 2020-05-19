@@ -1,5 +1,5 @@
 import { ConfigFieldType, Layout } from "../types";
-import { beforeAll, beforeBooleans } from "./_shared";
+import { beforeAll, beforeBooleans, afterAll } from "./_shared";
 import { deg2rad } from "../utils";
 
 export default {
@@ -12,7 +12,7 @@ export default {
       label: "Item Margin",
       type: ConfigFieldType.NumberInput,
       defaultValue: 20,
-      minValue: 1,
+      minValue: 10,
       maxValue: 100
     },
     {
@@ -20,7 +20,7 @@ export default {
       label: "Circle Margin",
       type: ConfigFieldType.NumberInput,
       defaultValue: 20,
-      minValue: 1,
+      minValue: 5,
       maxValue: 100
     },
     {
@@ -31,7 +31,8 @@ export default {
       minValue: 1,
       maxValue: 100
     },
-    ...beforeBooleans
+    ...beforeBooleans,
+    ...afterAll
   ],
   generate: (width, height, configValues) => {
     const {
@@ -76,12 +77,6 @@ export default {
       //угол поворота центра итема по окружности
       let angle = 0;
 
-      //начальная точка первого итема
-      let firstItemPosition = {
-        left: areaCenterPoint.left + circleRadius,
-        top: areaCenterPoint.top
-      };
-
       const itemsQty = Math.floor(circleLength / itemsMargin);
       let itemIndex = 0;
 
@@ -90,12 +85,17 @@ export default {
           angle = (itemCirclePosition * 180) / (Math.PI * circleRadius);
         }
 
-        items.push({
-          left: areaCenterPoint.left + circleRadius * Math.cos(deg2rad(angle)),
-          top: areaCenterPoint.top + circleRadius * Math.sin(deg2rad(angle)),
-          width: baseWidth * itemSizeIncrement,
-          height: baseHeight * itemSizeIncrement
-        });
+        let itemWidth = baseWidth * itemSizeIncrement;
+
+        if (itemWidth >= 1) {
+          items.push({
+            left:
+              areaCenterPoint.left + circleRadius * Math.cos(deg2rad(angle)),
+            top: areaCenterPoint.top + circleRadius * Math.sin(deg2rad(angle)),
+            width: baseWidth * itemSizeIncrement,
+            height: baseHeight * itemSizeIncrement
+          });
+        }
 
         itemIndex++;
         itemCirclePosition = (circleLength / itemsQty) * itemIndex;

@@ -12,6 +12,7 @@
   box-sizing: border-box;
   padding: 20px;
   padding-top: 80px;
+  width: 100%;
 }
 
 .header {
@@ -20,10 +21,14 @@
   right: 0;
   top: 0;
   background: white;
-  padding: 0;
+  padding: 0 22px;
   z-index: 1;
   box-sizing: border-box;
-  padding-left: 18px;
+  background: hsla(225, 15%, 96%, 1);
+  height: 69px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .card :global(.ant-card-body) {
@@ -37,9 +42,9 @@
 .grid {
   display: grid;
   box-sizing: border-box;
-  padding: 5%;
-  grid-template-columns: 15% 15% 15% 15% 15% 15%;
+  grid-template-columns: 18% 18% 18% 18% 18%;
   grid-gap: 2%;
   row-gap: 2vw;
   padding-top: 40px;
+  padding-bottom: 40px;
 }

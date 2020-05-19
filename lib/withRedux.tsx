@@ -2,6 +2,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import initializeStore from "../store";
 import App from "next/app";
+import { setCanvasDimensions, overrideState } from "../actions";
 
 export const withRedux = (PageComponent, { ssr = true } = {}) => {
   const WithRedux = ({ initialReduxState, ...props }) => {
@@ -56,7 +57,7 @@ export const withRedux = (PageComponent, { ssr = true } = {}) => {
   return WithRedux;
 };
 
-let reduxStore;
+export let reduxStore;
 const getOrInitializeStore = initialState => {
   // Always make a new store if server, otherwise state is shared between requests
   if (typeof window === "undefined") {
@@ -66,6 +67,8 @@ const getOrInitializeStore = initialState => {
   // Create store if unavailable on the client and set it on the window object
   if (!reduxStore) {
     reduxStore = initializeStore(initialState);
+  } else {
+    reduxStore.dispatch(overrideState({ newState: initialState }));
   }
 
   return reduxStore;

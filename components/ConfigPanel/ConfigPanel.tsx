@@ -1,12 +1,16 @@
 import React from "react";
+import classnames from "classnames";
 import { Form, Layout } from "antd";
 const { Sider } = Layout;
 import NumberInput from "./NumberInput";
-import RandomnessInput from "./RandomnessInput";
+import BoolWithNumberInput from "./BoolWithNumberInput";
 import Objects from "./Objects";
 import Layouts from "./Layouts";
 import { ConfigFieldType } from "../../types";
 import Logo from "../Logo";
+import RefreshButton from "./RefreshButton";
+import { useSelector, shallowEqual } from "react-redux";
+import { getHasRandomnessOnAnyField } from "../../selectors";
 
 import s from "./ConfigPanel.less";
 
@@ -21,10 +25,18 @@ export const ConfigPanel: React.FC<Props> = ({
   objectColorCount,
   configFields
 }) => {
+  const hasRandomness = useSelector(getHasRandomnessOnAnyField, shallowEqual);
   return (
     <Sider className={s["sider"]} width={330}>
-      <Logo />
-      <Form layout="vertical" className={s["form"]}>
+      <Logo className={s["logo"]} />
+      <Form
+        layout="vertical"
+        className={classnames(
+          s["form"],
+          hasRandomness && s["form-with-refresh"]
+        )}
+      >
+        <RefreshButton />
         <Layouts />
         <Objects />
         {configFields.map((configField, index) => {
@@ -32,15 +44,25 @@ export const ConfigPanel: React.FC<Props> = ({
           if (configField.type === ConfigFieldType.Hidden) {
             return null;
           }
+          if (configField.name === "withRandomColor" && objectColorCount <= 1) {
+            return null;
+          }
+          if (
+            configField.name === "withRandomObjectOrder" &&
+            selectedObjectCount <= 1
+          ) {
+            return null;
+          }
           switch (configField.type) {
             case ConfigFieldType.NumberInput:
               formField = <NumberInput configFieldName={configField.name} />;
               break;
-            case ConfigFieldType.RandomnessInput:
+            case ConfigFieldType.BoolWithNumberInput:
               formField = (
-                <RandomnessInput
+                <BoolWithNumberInput
                   boolConfigFieldName={configField.name}
                   strengthConfigFieldName={configField.strengthConfigFieldName}
+                  withRandomness={configField.withRandomness}
                 />
               );
               break;
@@ -51,16 +73,6 @@ export const ConfigPanel: React.FC<Props> = ({
             </Form.Item>
           );
         })}
-        {objectColorCount > 1 && (
-          <Form.Item label="Randomize Color">
-            <RandomnessInput boolConfigFieldName="withRandomColor" />
-          </Form.Item>
-        )}
-        {selectedObjectCount > 1 && (
-          <Form.Item label="Randomize Object Order">
-            <RandomnessInput boolConfigFieldName="withRandomObjectOrder" />
-          </Form.Item>
-        )}
       </Form>
     </Sider>
   );
