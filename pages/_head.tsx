@@ -3,10 +3,10 @@ import Head from "next/head";
 
 export interface Props {}
 
-export const HeadComp: React.FC<Props> = props => {
+export const HeadComp: React.FC<Props> = (props) => {
   return (
     <Head>
-      <title>background generator</title>
+      <title>Background Generator v1.2</title>
       <link rel="icon" type="image/png" href="/favicon.png"></link>
       <link
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Poppins:wght@600&display=swap"
