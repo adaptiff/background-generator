@@ -22,17 +22,7 @@ export const IndexPage = () => {
           <Layout className={s["right-side"]}>
             <Header className={s["header"]}>
               <Row className={s["header-row"]}>
-                <Col span={8} className={s["explore-area"]}>
-                  <Button icon="appstore" href="/explore">
-                    Explore
-                  </Button>
-                  <Button
-                    className={s["create-new-button"]}
-                    shape="circle"
-                    icon="plus"
-                    href="/"
-                  />
-                </Col>
+                <Col span={8} className={s["explore-area"]}></Col>
                 <Col span={8} className={s["dimensions-area"]}>
                   <Dimensions />
                 </Col>

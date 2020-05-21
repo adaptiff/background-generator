@@ -6,6 +6,7 @@ import s from "./BorderFrame.less";
 export interface Props {
   className?: string;
   isActive?: boolean;
+  href?: string;
   onClick?: () => void;
 }
 
@@ -13,15 +14,17 @@ export const BorderFrame: React.FC<Props> = ({
   children,
   isActive,
   className,
-  onClick
+  href,
+  onClick,
 }) => {
   return (
-    <div
+    <a
       className={classnames(s["root"], isActive && s["active"], className)}
       onClick={onClick}
+      href={href}
     >
       {children}
-    </div>
+    </a>
   );
 };
 BorderFrame.displayName = "BorderFrame";

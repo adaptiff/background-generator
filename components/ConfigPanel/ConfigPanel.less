@@ -10,7 +10,6 @@
 
 .form {
   padding: 30px;
-  padding-top: 40px;
   padding-bottom: 60px;
   box-sizing: border-box;
   height: calc(100vh - 64px);
@@ -18,8 +17,18 @@
   overflow-x: hidden;
 }
 
-.form-with-refresh {
-  padding-top: 80px;
+:global {
+  .ant-tabs-bar {
+    margin-bottom: 0 !important;
+  }
+}
+
+.presets-tab {
+  height: calc(100vh - 115px);
+  overflow: auto;
+  display: flex;
+  padding: 30px 0;
+  justify-content: center;
 }
 
 .form-item-with-show-more {
