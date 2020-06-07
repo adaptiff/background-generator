@@ -20,7 +20,10 @@
         { "type": "linear", "values": ["#FAD0C4", "#FFD1FF"], "angle": 0 },
         { "type": "linear", "values": ["#0fd850", "#f9f047"], "angle": 0 }
       ]
-    }
+    },
+    "uploadedObjects": [
+      { "id": -1, "src": "/uploads/close.png", "type": "image/png" }
+    ]
   },
   {
     "id": 2,
